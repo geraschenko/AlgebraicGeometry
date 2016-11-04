@@ -1,0 +1,195 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{1}
+ \sektion{Lecture 1}
+
+\def\A{\mathcal{A}}
+
+\marginpar{Why Cohomology?}
+
+Why study cohomology?  Well, it is useful for determining
+$\F(X)=\Gamma(X,\F)$ where $X$ is a scheme and $\F$ is a sheaf of
+abelian groups on $X$.
+
+\marginpar{Key Tool}
+
+Our key tool (so far) is Exercise II.1.8: If $0\to \F' \to \F \to
+\F''\to 0$ is an exact sequence of sheaves (of abelian groups),
+then
+\[
+    0\to \Gamma(X,\F') \to \Gamma(X,\F) \to \Gamma(X,\F'')
+\]
+is exact.  It is not always exact on the right.  For example,
+Exercise II.1.21c: let $k$ be a field, $X=\P^1_k$,
+$P=[1,0],Q=[0,1],Y=\{P,Q\}$ with reduced induced subscheme
+structure, and let $\I_Y$ be the sheaf of ideals of $Y$.  Then
+\[
+    0\to \I_Y \to \O_X\to \underbrace{\O_X/\I_Y}_{i_*\O_X, i:Y\hookrightarrow X} \to 0
+\]
+is exact, but applying the $\Gamma(X,-)$ functor, we have
+\[
+    0\to \underbrace{\Gamma(X,\I_Y)}_0 \to
+         \underbrace{\Gamma(X,\O_X)}_k \to
+         \underbrace{\Gamma(X,\O_X/\I_Y)}_{k^2}
+\]
+where the right arrow cannot be surjective.
+
+\marginpar{Application 1}
+
+Given an exact sequence
+\[
+    0\to \Gamma(X,\F') \to \Gamma(X,\F) \to \Gamma(X,\F'')
+\]
+we get a long exact sequence in cohomology
+\begin{align*}
+0 &\to\ \Gamma(X,\F')\ \to\ \Gamma(X,\F) \ \to\ \Gamma(X,\F'')\ \to \\
+  &\to H^1(X,\F') \to H^1(X,\F) \to H^1(X,\F'') \to \\
+  &\to H^2(X,\F') \to \cdots \\
+\end{align*}
+Sometimes you can show $H^1(X,\F')=0$.  Notation: $H^0(X,\F) =
+\Gamma(X,F)$.
+
+\marginpar{Application 2}
+
+If $X$ is a scheme over a field $k$, then $H^i(X,\F)$ is a
+$k$-vector space (where $\F$ is a sheaf of $\O_X$-modules). Define
+\[
+    h^i(X,\F) = \dim_k H^i(X,\F).
+\]
+Then the Riemann-Roch theorem gives a formula for
+$\displaystyle\sum_{i=0}^{\infty}(-1)^i h^i(X,\F)$
+
+\marginpar{How should it look?}
+    \begin{list}{}{}
+    \item 1) We want it to have a long exact sequence (LES).
+    \item 2) The LES should be functorial in the short exact
+    sequence (SES).  That is, given a morphism of short exact
+    sequences, i.e. a commutative diagram
+    \begin{equation}\label{D:*}\xymatrix{
+        0\ar[r] & \F' \ar[r] \ar[d] & \F \ar[r] \ar[d] & \F''
+        \ar[r] \ar[d] & 0\\
+        0\ar[r] & \G' \ar[r]& \G \ar[r] & \G''
+        \ar[r] & 0\\
+    }\end{equation}
+    there should be an induced morphism of long exact sequences, i.e. a
+    commutative diagram
+    \begin{equation}\label{D:**}\xymatrix@C=4mm{
+        0\ar[r] & H^0(X,\F') \ar[r] \ar[d] & H^0(X,\F) \ar[r] \ar[d] & H^0(X,\F'')
+        \ar[r] \ar[d] & H^1(X,\F')\ar[r]\ar[d] & \cdots \\
+        0\ar[r] & H^0(X,\G') \ar[r] & H^0(X,\G) \ar[r]& H^0(X,\G'')
+        \ar[r] & H^1(X,\G')\ar[r] & \cdots \\
+    }\end{equation}
+    in a functorial way.
+    \end{list}
+So lets require that $\F\mapsto H^i(X,\F)$ be a functor
+$\Ab(X)\xrightarrow{H^i}\Ab$, where $\Ab(X)$ is the category of
+sheaves of abelian groups on $X$ and $\Ab$ is the category of
+abelian groups.
+
+Then we get
+    \begin{list}{}{}
+    \item[-] $2/3$ of the maps in the LES and all the vertical maps
+    in (\ref{D:**})
+    \item[-] commutativity of $2/3$ of the squares in (\ref{D:**})
+    \item[-] SES$\mapsto$ LES is functorial
+    \end{list}
+So we need
+    \begin{list}{}{}
+    \item[-]to find functors $\F\mapsto H^i(X,\F)$ for each $i\in
+    \mathbb{N}$
+    \item[-] for all short exact sequences, $0\to \F' \to \F \to \F''\to
+    0$, and for all $i\in \mathbb{N}$, maps
+    \[
+        \delta^i:H^i(X,\F'')\to H^{i+1}(X,\F')
+    \]
+    such that the LES is exact and so that for all diagrams
+    (\ref{D:*}), the diagram commutes:
+    \[\xymatrix{
+    H^i(X,\F'')\ar[r]^{\delta^i}\ar[d] & H^{i+1}(X,\F')\ar[d] \\
+    H^i(X,\G'')\ar[r]^{\delta^i} & H^{i+1}(X,\G') \\
+    }\]
+
+    \item - an isomorphism of functors $H^0(X,\F)\cong \Gamma(X,\F)$
+    \end{list}
+
+\marginpar{Some Definitions}
+
+\begin{definition}
+ An \emph{abelian category} is a category $\A$ together with
+\begin{list}{}{}
+ \item[(i)] a structure of an abelian group on $Hom(A,B$ for all
+objects $A,B\in \A$.
+ \item[(ii)] fore every morphism $A\to B$, a kernel $A'\to A$ and a
+ cokernel $B\to B'$.
+\end{list}
+such that
+\begin{list}{}{}
+ \item[(1)] $Hom(A,B)\times Hom(B,C) \to Hom(A,C)$ is a bilinear
+map.
+ \item[(2)] Finite sums and products exist.
+ \item[(3)] Every monomorphism\footnote{$A\to B$ monomorphism if
+    for all $C$, $Hom(C,A)\to Hom(C,B)$ is injective.} is the kernel of its
+    cokernel.
+ \item[(4)] Every epimorphism\footnote{$A\to B$ epimorphism if for all $C$, $Hom(B,C)\to
+    Hom(A,C)$ is injective.} is the cokernel of its kernel.
+ \item[(5)] Every morphism can be factored into an epimorphism
+ followed by a monomorphism.
+\end{list}
+\end{definition}
+
+Some examples:
+\begin{list}{}{}
+ \item $\Ab$
+ \item $\Ab(X)$, where $X$ is a topological space
+ \item $\Mod(X)$, the category of $\O_X$-modules where $X$ is a
+ scheme
+\end{list}
+
+\begin{remark}\begin{list}{}{}
+ \item[-] All kernels are monomorphisms and all cokernels are epimorphisms.
+ \item[-] If $\A$ is an abelian category, the so is
+ $\A^{\text{op}}$.
+ \item[-] The empty product (resp. coproduct) is an initial
+ (final) object; call it 0 (0').  There is a (doubly unique)
+ morphism $0\to 0'$, which is an isomorphism (exercise).
+\end{list}\end{remark}
+
+\begin{definition}
+A covariant functor $F:\A \to \mathcal{B}$ of abelian categories
+is \emph{additive} if for all $A,A'\in \A$, the induced map
+$Hom(A,A')\to Hom(FA,FA')$ is a homomorphism of abelian groups.
+Similarly for contravariant functors.
+\end{definition}
+We will want $H^i(X,-)$ to be additive.
+
+\begin{definition}
+A sequence $A\xrightarrow{f}B\xrightarrow{g} C$ is exact at $B$ if
+$g\circ f=0$ and the homology of the sequence (at $B$) is 0.
+\end{definition}
+
+\begin{definition}
+A \emph{complex} $A^{\cdot}$ in an abelian category $\A$ is a set
+of objects $A^i$ and morphisms $d^i:A^i\to A^{i+1}$  for all $i\in
+\mathbb{Z}$ such that $d^{i+1}\circ d^i = 0$.  By convention, if
+$A^i$ is only given for $i\in I\subset \mathbb{Z}$, we assume
+$A^i=0$ for $i\in \mathbb{Z}\smallsetminus I$.
+\end{definition}
+
+\begin{theorem}[Freyd's Embedding Theorem]
+Every abelian can be embedded as a full subcategory of $\Ab$
+\end{theorem}
+
+\begin{definition}
+An object in an abelian category $I\in \A$ is \emph{injective} if
+the functor $Hom(-,I)$ is exact\footnote{The contravariant functor
+$Hom(-,I)$ is always left exact.}.
+\end{definition}
+
+\begin{definition}
+A \emph{resolution} of an object $A$ is a complex $I^{\cdot}$ and
+a morphism $A\to I^0$ such that
+\[
+    0\to A\to I^0\to I^1\to \cdots
+\]
+is exact.  An \emph{injective resolution} is a resolution where
+each $I^i$ is injective.
+\end{definition}

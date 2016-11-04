@@ -1,0 +1,60 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{13}
+ \sektion{Lecture 13}
+
+\marginpar{Begin Fast Forward}
+
+Some stuff about proof in last lecture. in the works.
+
+More on products: If $X,Y,Z,S'$ are $S$-schemes and $X\to Z,Y\to
+Z$ are $S$-morphisms, then \[
+    (X\times_Z Y)\times _S S' = X' \times_{Z'} Y'
+\] where $\lozenge':=\lozenge\times_S S'$. \begin{proof} For all
+$S$-schemes $Y$, we have that $\lozenge'(T) = \lozenge(T)\times
+S'(T)$, so \begin{align*}
+ (X'\times_{Z'} Y')(T) = \{&(\alpha,\gamma,\beta,\gamma') \in
+ X(T)\times S'(T)\times Y(T)\times S'(T) |  \\ &(\alpha,\gamma)\text{
+ and }(\beta,\gamma')\text{ both lie over the same element of } Z(T)\times
+ S'(T)\} \\
+ = \{&(\alpha,\gamma,\beta,\gamma') | \alpha\text{ and }
+ \beta\text{ lie over the same element of } Z(T)\times S'(T)\} \\
+ = (&X\times_Z Y)(T) \times S'(T)\\
+ = (&(X\times_Z Y)\times_S S')(T)
+\end{align*} \end{proof}
+
+\begin{corollary} $(X\times_S Y)\times_S S' = X'\times_{S'}Y'$.
+\end{corollary}
+
+We were in the middle of doing Exercise III.4.4, which states that
+$\varinjlim \check H^p(\U,\F) \to H^p(X,\F)$ is an isomorphism. in
+the works.
+
+\marginpar{Ch III \S 5: Cohomology of Projective space}
+
+Let $A$ be a Noetherian ring, and let $X=\P^r_A$ for some $r\in
+\mathbb{N}$.  Then we will compute $H^i(X,\O(n))$ for all $i\in
+\mathbb{N}$ and $N\in \Z$.  Recall from \S II.5 that if
+$Y\subseteq \P^r_A $ is a closed subscheme and $\F$ is a sheaf on
+$Y$, then \[
+    \Gamma_*(\F):= \bigoplus_{n\in \Z} \Gamma(Y,\F(n))
+\] where $\F(n)=\F\otimes_{\O_Y}\O_Y(n)$, $\O_Y(n)=\O_X(n)|_Y =
+i^*\O_X(n)$ where $i:Y\hookrightarrow X$.
+
+\begin{theorem} If $\F$ is quasi-coherent, then there is a natural
+isomorphism \[
+    \widetilde{\Gamma_*(\F)} \xrightarrow{\sim} \F
+\] (However, if $M$ is a graded $S$-module (where $Y=\proj S$),
+then we may not have $\Gamma_*(\tilde M) \cong M$.). \end{theorem}
+\begin{proof}
+ Let $S=A[x_0,\dots,x_r]$ and $X=\proj S\ (=\P^r_A)$.
+Let $\F=\bigoplus_{n\in \Z}\O(n)$.  This is a quasi-coherent
+$\O_X$-module (though not coherent), and since cohomology commutes
+with arbitratry direct sums (Lemma \ref{L:CohomologyLimit}),
+ \[
+    H^i(X,\F) = \bigoplus_{n\in X} H^i(X,\O_X(n)).
+ \]
+ in the works.
+
+\renewcommand{\qedsymbol}{\text{\tiny proof continued in next
+lecture}}
+ \end{proof}

@@ -1,0 +1,275 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{4}
+ \sektion{Lecture 4}
+
+\def\A{\mathcal{A}}
+
+Last time, we showed that injective objects in $\Mod(X)$ are
+acyclic in $H^{\cdot}(X,-)$.  In particular, the right derived
+functors of $\Gamma(X,-):\Mod(X)\to \Ab$ coincide with
+$H^{\cdot}(X,-)|_{\Mod(X)}$.
+
+\begin{corollary}
+Let $(X,\O_X)$ be a ringed space with $B=\Gamma(X,\O_X)$.  Then
+for all $\F\in \Mod(X)$ and $i\in \mathbb{N}$, $H^i(X,\F)$ has a
+natural $B$-module structure.  Thus, if $X$ is a scheme over
+$\spec A$, then the groups $H^i(X,\F)$ are $A$-modules.
+\end{corollary}
+
+\begin{remark}
+Let $\A$ be an abelian category with enough injectives and
+$\mathcal{B}$ and $\mathcal{C}$ abelian categories.  If $F:\A\to
+\mathcal{B}$ is left exact and $G:\mathcal{B}\to \mathcal{C}$ is
+exact, then the $\delta$-functor $\{R^i(G\circ F)\}$ is isomorphic
+to $\{G\circ R^iF\}$.
+\end{remark}
+
+\begin{theorem}
+Let $X$ be a noetherian topological space of dimension $n$.  Then
+$H^i(X,\F)=0$ for all $i>n$ and for all $\F\in \Ab(X)$.
+\marginpar{Grothendieck Vanishing Theorem}
+\end{theorem}
+Note: For the rest of this lecture, $X$ is a noetherian
+topological space.
+
+\begin{lemma}
+The direct limit of flasque sheaves is flasque.
+\end{lemma}
+\begin{proof}
+Let $\{\F_{\alpha}\}_{\alpha\in A}$ be a directed system of
+flasque sheaves and let $V\subseteq U\subseteq X$ be open sets.
+Then we have that
+\[\xymatrix{
+ (\varinjlim \F_{\alpha})(U) \ar[r]\ar[d]_{\wr} & (\varinjlim
+ \F_{\alpha})(V) \ar[d]_{\wr}\\
+ \varinjlim \F_{\alpha}(U) \ar@{->>}[r] & \varinjlim
+ \F_{\alpha}(V)
+}\]
+ Where the bottom arrow is surjective because the $\F_{\alpha}$
+ are flasque and $\varinjlim$ is an exact functor on abelian
+ groups, and the vertical arrows are isomorphisms by exercises
+ II.1.10 and II.1.11.
+\end{proof}
+
+\begin{lemma} \label{L:CohomologyLimit}
+Let $\{\F_{\alpha}\}$ be a directed system in $\Ab(X)$.  Then
+there are natural isomorphisms for all $i\in \mathbb{N}$
+\[
+ \varinjlim H^i(X,\F_{\alpha}) \xrightarrow{\sim} H^i(X,\varinjlim
+ \F_{\alpha}).
+\]
+\end{lemma}
+\begin{proof}
+Let $\mathcal{C}$ be the category of $A$-directed systems in
+$\Ab(X)$.  Then $(\F_{\alpha})\in \mathcal{C}$.  For each
+$\alpha$, inject $\F_{\alpha}$ into its sheaf of discontinuous
+sections $\G^0_{\alpha}$.  Then inject the cokernel of this map
+into \emph{its} sheaf of discontinuous sections, $\G^1_{\alpha}$,
+etc. This yields a flasque resolution $0\to \F_{\alpha} \to
+\G^{\cdot}_{\alpha}$ which is functorial in $\F_{\alpha}$, so we
+get an $A$-directed system of complexes.  In particular,
+$(\G^i_{\alpha})_{\alpha}\in \mathcal{C}$.
+
+Then we have that \begin{align*}
+ \varinjlim_{\alpha} H^i(X,\F_{\alpha}) &\cong \varinjlim_{\alpha}
+ h^i(\Gamma(X,\G^{\cdot}_{\alpha})) & \text{(definition)} \\
+  &\cong h^i(\varinjlim_{\alpha} \Gamma(X,\G^{\cdot}_{\alpha})) & \text{($\varinjlim$ exact in
+  $\Ab$)}\\
+  &\cong h^i(\Gamma(X,\underbrace{\varinjlim_{\alpha} \G^{\cdot}_{\alpha}}_{\text{flasque}})) &
+  \text{(nontrivial, need $X$ noetherian)}
+\end{align*}
+If $0\to \varinjlim \F_{\alpha} \to \varinjlim \G^0_{\alpha} \to
+\cdots$ is exact, then we are done.  To see that it is exact,
+observe that $\varinjlim$ commutes with taking stalks:
+\[
+    (\varinjlim \F_{\alpha})_P = \varinjlim_{P\in U}
+    \varinjlim_{\alpha} \F_{\alpha}(U) = \varinjlim_{\alpha}
+    \varinjlim_{P\in U} \F_{\alpha}(U) = \varinjlim
+    (\F_{\alpha})_P
+\]
+\end{proof}
+
+\begin{lemma} \label{L:ClosedImmersion}
+Let $j:Y\hookrightarrow X$ be a closed immersion of topological
+spaces and let $\F\in \Ab(Y)$.  Then
+\[
+    H^i(X,j_*\F)\cong H^i(Y,\F)
+\]
+for all $i$.
+\end{lemma}
+\begin{proof}
+$H^0$ coincides for all $j$ by definition of $j_*$.  If $0\to \F
+\to \I^{\cdot}$ is a flasque resolution of $\F$ on $Y$, then $0\to
+j_*\F \to j_*\I^{\cdot}$ is exact (look at the stalks), so the
+computation is the same
+\end{proof}
+
+If $Y\subseteq X$ is a closed subset, $U=X\smallsetminus Y$ and
+$\F\in \Ab(X)$, then define
+\[\F_Y = j_*(\F|_Y)\]
+where $j:Y\hookrightarrow X$ and $\F|_Y = j^{-1}\F$.  We also
+define
+\[ \F_U = i_!(\F|_U)\]
+where $i:U\hookrightarrow X$ is the inclusion.  Then by exercise
+II.1.19, we have that
+\[
+    0 \to \F_U \to \F \to \F_Y \to 0.
+\]
+
+\begin{proof}[Proof of Theorem]\def\R{\mathscr{R}}  Use induction on $n=\dim X$.
+\begin{itemize}
+\item[\underline{Step 1}:] Reduce to the case where $X$ is
+irreducible by induction on the number of components.  If the
+number of components is 0, then we are done (since vacuously).  If
+it is 1, then $X$ is irreducible.  If there is more than one
+irreducible component, then let $Y$ be one component and let
+$U=X\smallsetminus Y$.  Then
+\[
+     0 \to \F_U \to \F \to \F_Y \to 0
+\]
+is exact, so by the long exact sequence in cohomology, we have the
+exact sequence
+\[
+    H^i(X,\F_U)\to H^i(X,\F) \to H^i(X,\F_Y)
+\]
+for each $i>n$, but $H^i(X,\F_Y) = H^i(Y,\F|_Y)=0$ by the
+inductive hypothesis (and Lemma (\ref{L:ClosedImmersion})).  Then
+\[
+    0\to \underbrace{(\F_U)_{X\smallsetminus \overline{U}}}_0 \to
+    \F_U\xrightarrow{\sim} (\F_U)_{\overline{U}}\to 0
+\]
+Hence $H^i(X,\F_U)\cong H^i(X,(\F_U)_{\overline{U}} =
+H^i(\overline{U},(\F_U)_{\overline{U}}) = 0$ by induction.  Thus,
+$H^i(X,\F)=0$ for all $i>n$.
+
+\item[\underline{Step 2}:] If $X$ is irreducible of dimension 0,
+then the open subsets are $\varnothing$ and $X$, so $\F$ is
+flasque and therefore acyclic.  So $H^i(X,\F)=0$ for all $i>0$, as
+desired.
+
+\item[\underline{Step 3}:] Assume $X$ is irreducible (with $n=\dim
+X>0$).  Let $B$ be a generating set for $\F$ (e.g.
+$\coprod_{U\subseteq X} \F(U)$).  Let $A=\{\text{finite subsets of
+} B\}$, then $A$ is a directed system.  For $\alpha\in A$, let
+$\F_{\alpha}$ be the subsheaf of $\F$ generated by $\alpha$. That
+is, $\F_{\alpha}$ is the set of sections that can be obtained from
+$\alpha$ by restrictions and gluing.
+
+Since $X$ is noetherian, all open subsets are quasi-compact, so
+all gluings are finite. Thus, any section of $\F$ comes from a
+finite subset of $B$, so $\F=\varinjlim \F_{\alpha}$.
+
+By Lemma (\ref{L:CohomologyLimit}), it is enough to show the
+theorem for the $\F_{\alpha}$.
+
+Finally, we do induction on the number of elements in $\alpha$. If
+the number of elements in $\alpha$ is greater than 1, choose a
+proper subset $\alpha'$. Then
+\[
+    0\to \F_{\alpha'} \to \F_{\alpha} \to
+    \underbrace{\text{quotient}}_{\text{gen by images of
+    $\alpha\smallsetminus \alpha'$}}\to 0.
+\]
+By the long exact sequence, we have
+\[
+    H^i(X,\F_{\alpha'})\to H^i(X,\F_{\alpha})\to
+    H^i(X,\text{quotient}).
+\]
+By induction on $|\alpha|$, we have that the side terms are zero,
+and so the middle is zero.  Thus, we may assume that $\F$ is
+generated by a single element (over some open set $U$).  Then we
+have the exact sequence
+\[
+    0\to \R \to \Z_U\to \F \to 0
+\]
+which gives us the exact sequence
+\[
+    H^i(X,\Z_U)\to H^i(X,\F)\to H^{i+1}(X,\R).
+\]
+So it is enough to show the result for $\Z_U$ and its subsheaves.
+\begin{itemize}
+\item[\underline{Proof for $\Z_U$}:] Let $Y=X\smallsetminus U$. We
+have that
+\[
+    0\to \Z_U \to \Z \to \Z_Y\to 0,
+\]
+and $\Z$ is flasque since $X$ is irreducible, so for all $i>n$,
+\[
+    H^{i-1}(X,\Z_Y)\to H^i(X,\Z_U)\to \underbrace{H^i(X,\Z)}_0.
+\]
+The leftmost term is $H^{i-1}(X,\Z_Y)\cong H^{i-1}(Y,\Z|_Y)=0$ by
+induction on dimension ($\dim Y<n$).  Thus, $H^i(X,\Z_U)=0$ for
+all $i>n$.
+
+\item[\underline{Proof for $\R$}:]
+%We may assume that for all $x\in U$, $\R_x\not=0$ since
+For all $x\in U$, $\R_x$ is a subgroup of $(\Z_U)_x = \Z$.  Let
+$d$ be a minimal positive element in $\Z$ such that $d\in \R_x$
+for some $x\in U$.  Then $d\in \R(V)$ for some open set $x\in
+V\subseteq U$.  Since $\Z$ is a PID, we have that $\R|_V\subseteq
+d\cdot \Z_V$.  But we also have that $d\cdot \Z_V\subseteq \R|_V$,
+so $\R|_V\cong \Z$ on $V$.  Thus, we have
+\[
+    0\to \Z_V \to \R \to \text{quotient} \to 0.
+\]
+We have already shown that $H^i(X,\Z_V)=0$ for $i>n$, and the
+quotient is a sheaf on the lower dimensional $X\smallsetminus V$,
+so $H^i(X,\text{quotient})=0$ for $i>n$ by induction on dimension.
+Therefore, $H^i(X,\R)=0$ for all $i>n$.
+\end{itemize}
+\end{itemize}
+\end{proof}
+
+Example: Exercise III.2.1a.  Let $X=\mathbb{A}^1_k$ for an
+infinite field $k$.  Let $P,Q$ be distinct closed points.  Let
+$Y=\{P,Q\}$, and let $U=X\smallsetminus Y$.  Then
+$H^1(X,\Z_U)\not=0$ (i.e. the bound given by the theorem cannot be
+improved).
+\begin{proof}
+From
+\[
+    0\to \Z_U\to \Z\to \Z_Y\to 0
+\]
+we get
+\[
+    \underbrace{H^0(X,\Z)}_{\Z} \xrightarrow{\text{not onto}}
+    \underbrace{H^0(X,\Z_Y)}_{\Z\times\Z} \to H^1(X,\Z_U).
+\]
+Therefore, $H^1(X,\Z_U)\not=0$.
+\end{proof}
+Part (b)*: Show for all $n>0$ that if $X=\mathbb{A}^n_k$, $Y=$
+union of $n+1$ hyperplanes with empty intersection (in $\P^n_k$)
+and $U=X\smallsetminus Y$, then $H^n(X,\Z_U)\not=0$.
+
+In the case $n=2$, we have
+\[
+ 0\to \Z_U\to \underbrace{\Z}_{\text{flasque}}\to \Z_Y\to 0
+\]
+\marginpar{
+ \begin{xy}<1cm,0cm>:
+  \ar@{-} (-.7,1.5);(1.5,-.7)
+  \ar@{-} (0,1.5);(0,-.7)
+  \ar@{-} (-.7,0);(1.5,0)
+ \end{xy}
+} so
+\[
+    \underbrace{H^{n-1}(X,\Z)}_0 \to H^{n-1}(X,\Z_Y)
+    \xrightarrow{\sim} H^n(X,\Z_U) \to \underbrace{H^n(X,\Z)}_0
+\]
+so it suffices to show that $H^{n-1}(Y,\Z_Y)\not=0$.  Let $Y'=$
+the three points of intersection and let $U'=Y\smallsetminus Y'$.
+Then
+\[
+    0\to \Z_{U'} \to \Z \to \Z_{Y'}\to 0
+\]
+so
+\[
+    \underbrace{H^0(Y,\Z)}_{\Z} \to
+    \underbrace{H^0(Y,\Z_{Y'})}_{\Z^3} \xrightarrow{\text{not
+    onto}} \underbrace{H^1(Y,\Z_{U'})}_{\Z^3} \to H^1(Y,\Z).
+\]
+To see that $H^1(Y,\Z_{U'})=\Z^3$, observe that $U'=U_1'\cup U_2'
+\cup U_3'$, where each $U_i'\cong\mathbb{A}^1_k\smallsetminus $ 2
+points.  So $H^1(Y,\Z_{U'}) = \bigoplus_{i=1}^3 H^1(Y,\Z_{U_i'}) =
+\Z^3$ by the Mayer-Vietoris sequence (exercise III.2.4).
+Therefore, $H^1(Y,\Z)\not=0$, as desired.

@@ -1,0 +1,240 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{27}
+ \sektion{Lecture 27}
+
+ Comments on the homework:
+ \begin{itemize}
+ \item $\Gamma(-)$ does \emph{not} commute with $\otimes$ (in
+ general).
+ \item Exercises 9.3cd give ways in which 9.7 fails when $\dim Y
+ >1$.
+ \item You \emph{do} need to prove that $x\otimes z \pm y\otimes
+ w\not=0$ in $(x,y)\otimes A$
+ \item In 9.3c, to show that $I\subseteq k[x,y,z,w]$ is primary,
+ you can use the fact that it's homogeneous in $z$ and $w$, but
+ you cannot immediately reduce to working with homogeneous
+ elements.
+ \end{itemize}
+
+ All schemes today are assumed to be of finite type over
+ appropriate field.
+
+ Loose end from last time:  Let $X$ be a scheme over $k$, let
+ $k'$ be an extension of $k$, and let $X'=X\times_k k'$, then
+ $\dim X' = \dim X$
+ \begin{proof}
+ Let $\spec A$ be an open affine in $X$, and let $A'=A\otimes_k
+ k'$, so that $\spec A' = \pi^{-1}(\spec A)$, where $\pi:X'\to X$
+ is the projection.  By Noether's normalization lemma, there is a
+ subring $B\subseteq A$ with $k\subseteq B$, $B\cong k[x_1,\dots,
+ x_r]$, and $A$ is finite over $B$.
+
+ \[\xymatrix{
+  A'\ar@{-}[r]\ar@{-}[d] & A\ar@{-}[d] \\
+  B'\ar@{-}[d] & B\ar@{-}[d] \\
+  k' \ar@{-}[r] & k
+ }\]
+ Then $B':=B\otimes_k k'$ is $\cong k'[x_1,\dots,x_r]$, and $A'$
+ is finite over $B'$.  Then $\dim A'= \dim B' = r = \dim B = \dim
+ A$ (Note that $A$ is integral over $B$; then $\dim A \ge \dim B$
+ by lying over and going up for integral extensions, and $\dim
+ A\le \dim B$ by incomparability for integral extensions).  Then
+ $\dim X = \max_A \dim A = \max_A \dim A' = \dim X'$.
+ \end{proof}
+
+ \underline{Also}, $\pi:X'\to X$ is onto.  To see this, we may assume that $X=\spec
+ A$.  We have that $k'$ is faithfully flat over $k$, so $a'$ is
+ faithfully flat over $A$ (by base change: $M\otimes_k k' =
+ M\otimes_A(A\otimes_k k') = M\otimes_A A' = 0$, so $M=0$).  Then
+ $\spec A'\to \spec A$ is surjective by homework.
+
+ \underline{Also}, all irreducible components of $X'$ dominate irreducible
+ components of $X$.  This follows from going down for flat
+ extensions.
+
+ Back to smooth morphisms.  We were proving part (c) of the
+ proposition: if $X\xrightarrow{f} Y \xrightarrow{g} Z$ are smooth
+ of relative dimension $n$ and $m$, resp., then $g\circ f$ is
+ smooth of relative dimension $n+m$.
+ \begin{proof}
+ (1) flatness is obvious.
+
+ (2) Let $X'$, $Y'$, and $Z'$ be irreducible components of
+ $X,Y,Z$, respectively, such that $f(X')\subseteq Y'$ and
+ $g(Y')\subseteq Z'$.  Then $\dim X' = \dim Z' + n + m$ by (2)
+
+ (3) Use the first exact sequence: let $x\in X$, let $y=f(x)$, and
+ $z=g(f(x))$.  Then
+ \[
+    f^*\Omega_{Y/Z} \to \Omega_{X/Z} \to \Omega_{X/Y} \to 0
+ \]
+ is exact, so
+ \[
+    \underbrace{f^*\Omega_{Y/Z}\otimes k(x)}_{(\Omega_{Y/Z}\otimes k(y))\otimes k(x) } \to \Omega_{X/Z}\otimes k(x) \to
+    \underbrace{\Omega_{X/Y}\otimes k(x)}_{\dim_{k(x)} = n} \to 0
+ \]
+ dimension of first term over $k(x)$ is $m$, so the dimension over
+ $k(x)$ of the middle is $\le n+m$.
+
+ Show the other inequality.  Note that $x\in X_z$, so
+ \[
+    \Omega_{X/Z}\otimes k(x) = \Omega_{X_x/k(z)} \otimes k(x).
+ \]
+ By (2'), for $g\circ f$, $X_z$ has pure dimension $n+m$.  Let
+ $X'$ be an irreducible component of $X_z$ containing $x$.  By the
+ second exact sequence:
+ \[
+    i^*\Omega_{X_z/k(z)} \to \Omega_{X'/k(z)} \to 0
+ \]
+ is exact where $i:X'\to X_z$, so
+ \[
+    \underbrace{i^*\Omega_{X_z/k(z)}\otimes k(x)}_{\Omega_{X_z/k(z)}\otimes k(x)} \to \Omega_{X'/k(z)}\otimes k(x) \to 0
+ \]
+ is exact,
+ so it suffices to show that $\Omega_{X_z/k(z)}\otimes k(x)$ has
+ dimension $\ge n+m$.  We know that $\Omega_{X'/k(z)}$ has rank
+ $\ge n+m$ at the generic point, and it is coherent, so the rank
+ does not decrease when you specialize to $x$ (use Nakayama's Lemma).
+ \end{proof}
+
+ \begin{theorem}
+ Let $f:X\to Y$ be a morphism of schemes (of finite type) over
+ $k$.  Then $f$ is smooth of relative dimension $n$, if and only
+ if
+ \begin{itemize}
+ \item[(1)] $f$ is flat.
+ \item[(2)] for all $y\in Y$, the geometric fiber $X_{\bar y} =
+ X_y\times_{k(y)} \overline{k(y)}$ is regular of pure dimension
+ $n$.
+ \end{itemize}
+ \end{theorem}
+ \begin{proof}
+ ($\Rightarrow$) (1) is obvious. (2): by base change, $X_{\bar y}$
+ is smooth over $\overline{k(y)}$, so it is regular by (II.8.8 or
+ II.8.15).
+
+ ($\Leftarrow$) (1) implies condition (1) for smoothness.  (2)
+ implies (2') for smoothness (all fibers have the same dimension,
+ so geometric fibers have the same dimension).  (2) also implies
+ (3') for smoothness.  To see this, note that $\Omega_{X_{\bar y}/\overline{k(y)}}$
+ is locally free of rank $n$ by II.8.8, which
+ implies that $\Omega_{X_{\bar y}/\overline{k(y)}} \otimes\overline{k(y)}$
+  has dimension $n$ for all $y$, which implies
+ that $\Omega_{X_y/k(y)}\otimes k(x)$ has dimension $n$ for all
+ $x\in X_y$ since $\Omega_{X_{\bar y}/\overline{k(y)}} = \Omega_{X_y/k(y)}\otimes_{k(y)} \overline{k(y)}$
+ \end{proof}
+
+ \begin{corollary}
+ Let $f:X\to Y$ be a morphism of schemes (of finite type) over
+ $k$.  Then $f$ is smooth of relative dimension $n$ if and only if
+ $f$ is flat and $X_y$ is smooth of relative dimension $n$ over
+ $k(y)$ for all $y\in Y$. (second part equivalent to (2))
+ \end{corollary}
+
+\underline{Smoothness over a field:}
+
+ \begin{theorem}[EGA IV 6.74a] Let $X$ be a scheme of finite type
+ over a field $k$, and let $k'$ be an extension field of $k$, let
+ $X'=X\times_k k'$, let $\pi:X' \to X$ be the projection, let
+ $x'\in X'$ and let $x=\pi(x')$.  Then
+ \begin{itemize}
+ \item[(a)] If $X'$ is regular at $x'$, then $X$ is regular at
+ $x$.
+ \item[(b)] The converse holds if $k'$ is separable over $k$.
+ \end{itemize}
+ \end{theorem}
+
+ \begin{corollary}
+ Since $\pi$ is surjective,
+ \begin{itemize}
+ \item[(a)] $X'$ is regular implies that $X$ is
+ regular, and
+ \item[(b)] the converse holds if $k'$ is separable over $k$.
+ \end{itemize} Note that $(b)$ is false in general (Ex 10.1).
+ \end{corollary}
+
+ \begin{corollary}
+ Let $X$ be a scheme of finite type over a perfect field $k$.  If
+ $X$ is regular, then it is smooth over $k$.
+ \end{corollary}
+ \begin{proof}
+ $X\times_k \bar k$ is regular, so $X$ is smooth.
+ \end{proof}
+
+ \begin{corollary}
+ If $X$ is smooth over an arbitrary field $k$, then it is regular by (b) ($\bar k$
+ is separable over $k$).
+ \end{corollary}
+ \begin{proof}
+ $X\times_k \bar k$ is smooth over $\bar k$, so $X\times_k \bar k$
+ i s regular, so $X$ is regular by (a) (of the first corollary).
+ \end{proof}
+
+ A ``more self-contained'' proof:
+ \begin{lemma}
+ Let $k$ be a field.  Then $\A^n_k$ is regular.
+ \end{lemma}
+ \begin{proof}
+ We need to show that $k[x_1,\dots, x_n]$ is a regular ring.  This
+ follows from Matsumura, \underline{Commutative Ring Theory}
+ [1986], Theorem 19.5\footnote{If $R$ is regular and noetherian, then so is
+ $R[x]$}.  It is also Eisenbud, Exercise 19.3
+ \end{proof}
+
+ \begin{proposition}
+ Let $X$ be a smooth scheme of finite type over a field $k$.  Then
+ $X$ is regular.
+ \end{proposition}
+ \begin{proof}
+ We may assume $X=\spec A$ is affine.  Choose a generating set
+ $x_1,\dots ,x_n\in A$, so $k[x_1,\dots, x_n]\twoheadrightarrow
+ A$, so $X\hookrightarrow \A^n_k$.  By Matsumura Thm 19.3 (a
+ localization of a regular local ring at a prime ideal is
+ regular), it suffices to show that $X$ is regular at $x$ for all
+ closed points $x\in X$.  Let $\O$ be the local ring
+ $\O_{\A^n_k,x}$, let $\m$ be its maximal ideal, and let $I$ be
+ the kernel of the surjection $\O\twoheadrightarrow \O_{X,x}$.
+ Then $I\subseteq \m$ ($x\in X$).  Let $d=\dim \O_{X,x} = \dim_x
+ X$.  Use the second exact sequence:
+ \[
+    I/I^2 \xrightarrow{\delta} \Omega_{\O/k}\otimes_{\O} \O_{X,x} \xrightarrow{\alpha}
+    \Omega_{\O_{X,x}/k} \to 0
+ \]
+ is exact, so
+ \[
+    (I/I^2) \otimes k(x) \xrightarrow{\delta'}
+    \underbrace{\Omega_{\O/k}\otimes_ k(x)}_{\txt{dim $n$ over $k(x)$}} \xrightarrow{\alpha'}
+    \underbrace{\Omega_{\O_{X,x}/k}\otimes k(x)}_{\txt{dim $d$ over $k(x)$}} \to 0
+ \]
+ is exact.
+ Let $r-n-d$, and pick $f_1,\dots, f_r\in I$ such that
+ $\delta'((f_i \text{mod } I^2\otimes 1)$ generate $\ker \alpha'$.
+ Let $\O' = \O/(f_1,\dots, f_r)$.  It is local with maximal ideal
+ $\m' = \m/(f_1,\dots,f_r)$.  Then $\m'/\m'^2 \cong \m/(\m^2+(f_1,\dots, f_r))$
+ has dimension $\ge n-r=d$ over $k(x)$. But also $\O'$ maps
+ surjectively to $\O_{X,x}$, so
+ \[
+   \dim_{k(x)}\m'/\m'^2 \ge \dim \O' \ge \dim \O_{X,x} = \text{Stuck}
+ \]
+ is also exact.
+ \end{proof}
+
+ \underline{Next:} \'{E}tale morphisms
+
+ \begin{definition}[Ex 10.3]
+ Let $f:X\to Y$ be a morphism of schemes (of finite type) over
+ $k$.  Then
+ \begin{itemize}
+ \item[(a)] $f$ is \emph{\'{e}tale} if it is smooth of relative dimension
+ 0.
+ \item[(b)] $f$ is \emph{unramified} if for all $x\in X$, letting
+ $y=f(x)$, we have $\m_y \cdot \O_{X,x} = \m_x$ and $k(x)$ is a
+ separable algebraic extension of $k(y)$.
+ \end{itemize}
+ \end{definition}
+
+ \underline{Example:} Let $R=\Z[\sqrt{2}]$, then $\spec R$ is \'{e}tale
+ over $\spec \Z$ except at the prime $(\sqrt{2})\subseteq R$.
+ (These are not schemes over a field, but the same principles
+ apply.)  At other primes, there may be residue field extensions,
+ but they are separable.

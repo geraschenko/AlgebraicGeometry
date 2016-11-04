@@ -1,0 +1,218 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{26}
+ \sektion{Lecture 26}
+
+ We were showing: A projective morphism is flat if and only if the
+ Hilbert polynomial is independent of $y\in Y$.
+
+ \underline{The Setup:} $T=\spec A$, where $A$ is local noetherian
+ domain.  $X=\P^n_T$, and $\F$ is a coherent sheaf on $X$.  It will suffice
+  to show that TFAE:
+ \begin{itemize}
+ \item[(i)] $\F$ is flasque over $T$.
+ \item[(ii)] $H^0(X,\F(m))$ if a free $A$-module (of finite rank)
+ for all $m\gg 0$.
+ \item[(iii)] The Hilbert polynomial, $P_t$ of $\F_t$ on $X_t$ is
+ independent of $t\in T$.
+ \end{itemize}
+ We have already shown that (i)$\Rightarrow$ (ii)
+
+ (ii)$\Rightarrow$ (i): Choose $m_0$ such that $H^0(X,\F(m))$ is
+ free for all $m\ge m_0$.  Let $M=\bigoplus_{m\ge m_0}
+ H^0(X,\F(m))$.  Then $M\cong \Gamma_*(\F)_{m\ge m_0}$, so $\tilde
+ M \cong \widetilde{\Gamma_*(\F)}_{m\ge m_0} \cong \F$.  Since $M$
+ is free, it's flat over $A$, so $\F$ is flat over $A$ (on open
+ affines it's $\sim$ of localizations of $M$).
+
+ \begin{lemma}
+ Let $T,A,X$ as above, and let $\F$ be coherent on $X$.  Then
+ $H^0(X_t,\F_t(m)) \cong H^0(x,\F(m))\otimes_A k(t)$ for all $t\in
+ T$ and $m\gg_t 0$.
+ \end{lemma}
+ \begin{proof}
+ We may assume that $t$ is the closed point of $T$ (replace $T$ with $T':=\spec
+ \O_{T,t}$ and note that $T'$ is flat over $T$, then LHS unaffected by base
+ change and RHS is tensored with $A':=\O_{T,t}$).  Given a finite
+ generating set for the maximal ideal of $A$, we have an exact
+ sequence
+ \[
+    A^n\to A\to k(t) \to 0 \tag{$\ast$}
+ \]
+ so we can get the exact sequence ``$(\ast)\otimes_A \F$'':
+ \[
+    \F^n\to \F\to \F_t \to 0.
+ \]
+ Therefore,
+ \[\xymatrix{
+ H^0(X,\F(m)^n) \ar[r] \ar[d]^{\wr} & H^0(X,\F(m)) \ar[r] \ar@{}[d]|{\parallel} & H^0(X_t,\F_t(m))
+ \ar[r] \ar@{.>}[d]^{\wr}_{\exists} & 0\\
+H^0(X,\F(m))^n \ar[r] & H^0(X,\F(m)) \ar[r] &
+H^0(X,\F(m))\otimes_A k(t) \ar[r] &
+ 0\\
+ }\]
+ The top row is exact by some homework exercise for $m\gg 0$, and
+ the bottom row is exact for all $m$ because it is $(\ast)\otimes_A
+ H^0(X,\F(m))$ (and tensor is right exact).  And the diagram
+ commutes. Therefore, you get the isomorphism on the right.
+ \end{proof}
+
+ (ii)$\Rightarrow$(iii): The Lemma implies that the rank of
+ $H^0(X,\F(m))$ is $\dim_{k(t)} H^0(X-t,\F_t(m))$ for all $t\in T$
+ and $m\gg_t 0$.  The RHS is $P_t(m)$ for all $m\gg 0$, and the
+ LHS is independent of $t$.
+
+ (iii)$\Rightarrow$(ii): Recall II.8.9: A finitely generated
+ module over $A$ (as above) is free if and only if $M\otimes_A K$
+ and $M\otimes_A k$ have the same dimensions over the fraction
+ field $K$ and the residue field $k$, respectively.  In our case,
+ $H^0(X,\F(m))$  free is implied by $\dim_{k(\tau)}
+ H^0(X,\F(m)\otimes_A k(\tau)) = \dim_{k(t)} H^0(X,\F(m))\otimes_A
+ k(t)$ where $\tau$ and $t$ are the generic and special points of
+ $T$, respectively.  By the Lemma, the LHS is $P_t(m)$ for $m\gg
+ 0$, and the RHS is $P_t(m)$ for $m\gg 0$.
+
+ So we're done.
+
+ \begin{remark}
+ To prove flatness, it's enough to compare Hilbert polynomials at
+ closed and generic points.
+ \end{remark}
+
+ \begin{corollary}
+ Let $T$ be a connected noetherian scheme, and let $X$ be a closed
+ subscheme of $\P^n_T$, flat over $T$.  Then the degree, dimension, and
+ arithmetic genus of $X_t$ is independent of $t\in T$.
+ \end{corollary}
+ \begin{proof}
+ By base change to an irreducible component of $T$ (with reduced induced
+ subscheme structure), we may assume
+ that $T$ is integral.  Then use the fact that the Hilbert
+ polynomial is independent of $t\in T$ (all of these things are determined
+ by the Hilbert polynomial).
+ \end{proof}
+
+ \underline{Exercise III.9.1:} {\it Let $f:X\to Y$ be a flat morphism
+ of finite type of noetherian schemes.  Then $f$ is an
+ open\footnote{For all open $U\subseteq X$, $f(U)\subseteq Y$ is open.}
+ morphism.}
+ \begin{proof}
+ Let $U\subseteq X$ be open.  Then $f(U)\subseteq Y$ is
+ constructable (Ex. II.3.19), meaning that it is a closed set
+ minus a constructable set of lower dimension.  By Ex. II.3.18c, it
+ will suffice to show that $f(U)$ is stable under generization.
+ That is, if $y\in f(U)$ and $\eta\in Y$ such that $\eta
+ \rightsquigarrow y$, then $\eta \in f(U)$.  To see this, let
+ $\spec A\subseteq Y$ be an open affine neighborhood of $y$ (thus,
+ $\eta\in \spec A$).  Let $x\in f^{-1}(y)$, and let $\spec B$ be an
+ open affine neighborhood of $x$ in $U\cap f^{-1}(\spec A)$.  Then
+ $B$ is flat over $A$.  Let $\p,\p',\q$ be prime ideals of $A,A,
+ B$ (resp.) corresponding to $y,\eta,x$ (resp.)
+ \[\xymatrix @C=4mm {
+  & \q \ar@{}[r]|{\subseteq} \ar@{-}[d] & B \ar@{-}[d]^{\txt{flat}}\\
+  \p'\ar@{}[r]|{\subseteq} & \p\ar@{}[r]|{\subseteq} & A
+ }\]
+ There is a prime $\q'$ of $B$ lying over $\p'$ such that
+ $\q'\subseteq \q$.  let $\xi\in U\subseteq X$ be the
+ corresponding point.  Then $\eta = f(\xi) \subseteq f(U)$, as was
+ to be shown.
+ \end{proof}
+
+ \underline{Exercise III.9.4:} {\it Let $f:X\to Y$ be a morphism
+ of finite type of noetherian schemes.  Then $\{x\in X|f \text{ flat at }x\}\subseteq
+ X$ is open.}
+
+ \marginpar{\S III.10: Smoothness}
+ This is a relative version of non-singularity (\emph{almost}).
+ For this section, $k$ is any field (not necessarily algebraically
+ closed), and all schemes considered will be assumed to be of
+ finite type over $k$ (or locally of finite type).
+
+ \begin{definition}
+ Let $f:X\to Y$ be a morphism of schemes over $k$ (as above), then
+ $f$ is \emph{smooth} of relative dimension $n$ if
+ \begin{itemize}
+ \item[(1)] $f$ is flat
+ \item[(2)] if $X'$ and $Y'$ are irreducible components of $X$ and
+ $Y$ (resp.) such that $f(X')\subseteq Y'$, then $\dim X' = \dim
+ Y' +n$.
+ \item[(3)] for all $x\in X$ (closed or not), $\dim_{k(x)}
+ (\Omega_{X/Y}\otimes k(x))=n$.
+ \end{itemize}
+ \end{definition}
+
+ \begin{remark}
+ \begin{itemize}
+ \item[]
+ \item[(i)] By $(1)$ and Cor III.9.6, (2) is equivalent to
+
+    (2') for all $y\in Y$ (closed or not), $X_y$ is equidimensional
+    of dimension $n$.
+
+    Also, (3) is equivalent to
+
+    (3') for all $x\in X$, $\dim_{k(x)} (\Omega_{X_y/k(y)} \otimes
+    k(x))=n$ where $y=f(x)$. $\Omega_{X_y/k(y)}$ is really
+    $\Omega_{X/Y}$ pulled back to $X_y$.
+
+    So (2) and (3) just concern the fibers $X_y$.
+ \item[(ii)] Smoothness of relative dimension $n$ is local on $X$
+ (therefore local on the base) in the sense that $f:X\to Y$ is
+ smooth of relative dimension $n$ if and only if there exists an
+ open cover $(U_i)_{i\in I}$ of $X$ such that $f_{U_i}$ is smooth
+ of relative dimension $n$ for all $i$.  So we can define $f:X\to
+ Y$ is smooth of relative dimension $n$ \emph{at $x$} if there is
+ an open neighborhood $U\subseteq X$ such that $f|_U$ is smooth of
+ relative dimension $n$.  Then $f$ is smooth of relative dimension
+ $n$ if and only if it is at each point in $X$.  Also, $\{x\in
+ X|\text{$f$ smooth of relative dimension $n$}\}\subseteq X$ is
+ open.
+ \end{itemize}
+ \end{remark}
+
+ \underline{Examples:}
+ \begin{itemize}
+ \item[(i)] For any $Y$, $\P^n_Y$ and $\A^n_Y$ are smooth over
+ $Y$ of relative dimension $n$.  It is enough to show it for $\A^n_Y$ since $\P^n_Y$ is
+ covered by open affines isomorphic to $\A^n_Y$.
+ \begin{proof}
+ (1) Flatness is ok. (2') is easy: $\dim_{k(y)} \A^n_Y = n$.  (3')
+ $\Omega_{\A^n_Y/Y}$ is free of rank $n$; ditto for its fibers.
+ \end{proof}
+
+ \item[(ii)] Let $Y=\spec k$ with $k$ algebraically closed.  Then
+ $X$ is smooth over $Y$ of relative dimension $n$ if and only if
+ $X$ is non-singular of pure dimension $n$ if and only if $X$ is
+ regular of pure dimension $n$.
+ \begin{proof}
+ The second equivalence comes from Chapter I.  The first condition
+ is equivalent to the third is given by II.8.15.
+ \end{proof}
+ \underline{Caution:} We do need $k$ algebraically closed here
+  (see Ex III.10.1).
+ \end{itemize}
+
+ \begin{proposition}
+ \begin{itemize}
+ \item[]
+ \item[(a)] An open immersion is smooth of relative dimension 0.
+ \item[(b)] (Base Change) If $f:X\to Y$ is smooth of relative
+ dimension $n$, and $Y'\to Y$ is any morphism, then $f':X':=
+ X\times_Y Y'\to Y'$ is also smooth of relative dimension $n$.
+ \item[(c)] (Composition) If $X\xrightarrow{f} Y\xrightarrow{g} Z$
+ are smooth of relative dimension $n$ and $m$, resp., then $g\circ
+ f:X\to Z$ is smooth of relative dimension $n+m$.
+ \item[(d)] (Products) if $f:X\to Y$ and $f':X'\to Y'$ are smooth
+ $S$-morphisms of relative dimensions $n$ and $n'$, resp., then
+ $f\times_S f':X\times_S X' \to Y\times_S Y'$ is smooth of
+ relative dimension $n+n'$. (Book's special case: $Y=Y'=S$)
+ \end{itemize}
+ \end{proposition}
+ \begin{proof}
+ (a) is trivial. (d) follows from (b) and (c) by published proof of Exercise
+ II.4.8d.
+
+ (b): Flatness is immediate.  For (2') and (3'), let $y'\in Y'$ and
+ let $y\in Y$ be the image of $y'$.  Then $X'_{y'} = X_y
+ \times_{k(y)} k(y')$.  $k(y')$ is a finite extension of $k(y)$,
+ so it doesn't affect dimension\footnote{see next lecture}.  And it doesn't affect (3')
+ \end{proof}

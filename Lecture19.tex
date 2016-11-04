@@ -1,0 +1,112 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{19}
+ \sektion{Lecture 19}
+
+Recall the lemma from last time: if $P=\P^N_k$, and $X\subseteq P$
+has codimension $r$, then $\Ext^i_P(\O_X,\omega_P)=0$ for $i<r$.
+
+\begin{lemma}\label{L:lec19} Let $k, N,P, X$ and $r$ be as before,
+and let $\omega_X^{\circ}=\Ext^r_P(\O_X,\omega_P)$.  Then for all
+$\O_X$-modules $\F$, there is a functorial isomorphism
+ \[
+    \hom(\F,\omega_X^{\circ})\cong \ext^r_P(\F,\omega_P).
+ \]
+ \end{lemma}
+ \begin{proof}
+ in the works
+ \end{proof}
+
+ \begin{theorem} Let $X$ be a projective scheme over a field $k$.
+ Then $X$ has a dualizing sheaf.
+ \end{theorem}
+ \begin{proof}
+ We may assume $X\not=\varnothing$.  Embed $X\hookrightarrow
+ \P^N_k=P$, and let $n=\dim X$, $r=\codim_P X=N-n$.  Let
+ $\omega_X^{\circ} = \Ext^r(\O_X,\omega_P)$.  Then for all
+ $\O_X$-modules $\F$,
+ \[
+    \hom_X(\F,\omega_X^{\circ})\stackrel{\ref{L:lec19}}{\cong} \ext^r_P(\F,\omega_P)
+    \stackrel{\ref{T:III.7.1}}{\cong} H^{N-r}(P,\F)' \cong H^n(X,\F)'
+ \]
+ functorially in $\F$.
+ \end{proof}
+
+ \begin{theorem}[(part of) Duality]
+ Let $X$ be a non-empty projective scheme over a field $k$; let
+ $\omega_X^{\circ}$ be a dualixing sheaf for $X$, and let $n=\dim
+ X$.  Then for all $i\in \mathbb{N}$ and $\F\in
+ \mathfrak{Coh}(X)$, there are natural maps
+ \[
+    \theta^i:\ext^i_X(\F\omega_X^{\circ})\to H^{n-i}(X,\F)'
+ \]
+ which for $i=0$ reduces to the isomorphism in the definition of
+ the dualizing sheaf.
+ \end{theorem}
+ \begin{proof}
+ Pick a projective embedding $X\subseteq P=\P^N_k$.  We have a
+ surjection $\E\to \F\to 0$, where $\E$ is a finite direct sum
+ $\bigoplus \O(-q)$ for $q\gg 0$ (Cor II.5.18).  Then
+ \[
+    \ext^i(\E,\omega_X^{\circ}) = \bigoplus
+    \ext^i(\O(-q),\omega_X^{\circ}) = \bigoplus
+    H^i(X,\omega_X^{\circ}(q))=0
+ \]
+ for all $i>0$, so $\Ext^i(-,\omega_X^{\circ})$ is coeffacable for
+ $i>0$.  Also, $H^{n-i}(X,\F)'$ are contravariant
+ $\delta$-functors, agreeing with
+ $\ext^{\cdot}(-,\omega_X^{\circ})$ in degree 0.  Thus, but
+ Theorem III.1.3A, there are maps of
+ delta functors, as desired, and these are the $\theta^i$ we seek.
+ \end{proof}
+ \begin{remark}
+ We didn't need $k$ to be algebraically closed.
+ \end{remark}
+
+ \begin{definition} A non-empty noetherian scheme $X$ is
+ \emph{equidimensional} (of dimension $n$) if all of its
+ irreducible components have the same dimension ($n$).
+ \end{definition}
+
+ \begin{definition}
+ A scheme $X$ is \emph{Cohen-Macaulay} if all its local rings are
+ Cohen-Macaulay.
+ \end{definition}
+
+ A finite dimensional local ring $(A,\m)$ is Cohen-Macaulay if
+ depth$A=\dim A$.  Here \emph{depth} of $A$ is the maximal length
+ of a regular sequence in $A$.  A \emph{regular sequence} is a
+ sequence $x_1,x_2,\dots, x_n\in \m$ such that $x_i$ is not a
+ zero divisor in $A/(x_1,\dots,x_{i-1})$ for all $i$.
+
+ Facts about Cohen-Macaulay rings and schemes:
+ \begin{itemize}
+  \item[(1)] A regular scheme is Cohen-Macaulay (II.8.21Aa).
+  \item[(2)] A locally complete intersection inside a regular
+  scheme of finite type over a field is Cohen-Macaulay.
+  \begin{proof}
+   Let $Y\subseteq X$ be a locally complete intersection with $X$
+   regular and of finite type over a field.  Let $P\in Y$.  After
+   shrinking $X$, we may assume $Y$ is globally a complete
+   intersection, cut out by $X_1,\dots, X_r$.  Thus, $\O_{Y,P} =
+   \O_{X,P}/(x_1,\dots, x_r)$.  By II.8.21Ac, $x_1,\dots, x_r$ is
+   a regular sequence in $\O_{X,P}$, so by II.8.21Ad, $\O_{Y,P}$
+   is Cohen-Macaulay.
+
+   To apply II.8.21Ad above, we need to check that
+   \[
+    r = \dim \O_{X,P} - \dim \O_{Y,P}.
+   \]
+   We always have the inequality $\ge$.  We may assume that
+   $X=\spec A$, and $Y=\spec A/I$, in which case
+   \begin{align*}
+    \dim \O_{X,P} &= \height_A P \\
+        &= \dim A - \depth_A P\\
+   \end{align*}
+   and
+   \begin{align*}
+    \dim \O_{Y,P} &= \height_{A/I} P \\
+        &= \dim A/I - \depth_{A/I} P\\
+        &= \dim A/I - \dim(A/P) & \text{(since $\I\subseteq P$)}
+   \end{align*}
+   \end{proof}
+  \end{itemize}

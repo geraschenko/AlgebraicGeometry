@@ -1,0 +1,205 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{10}
+ \sektion{Lecture 10}
+
+\begin{proof}[continued proof]
+in the works.
+\end{proof}
+\marginpar{end fast forward} \marginpar{$\xymatrix{ X
+\ar@{^(->}[r]^i \ar[dr]^f & \P^n_Y \ar[d]^{\pi} \\  & Y}$} It
+follows that $\P^n_Y\to Y$ is proper (it is a base extension). So
+given a projective morphism $f:X\to Y$ we have that $f=\pi\circ i$
+is a composition of proper morphisms, so it is proper.
+\marginpar{Projective morphisms are proper}
+
+The converse is false.  There are proper morphisms (even over
+$\spec k$ with $k$ algebraically closed) which are not projective.
+
+\begin{lemma}[Chow's Lemma, ex II.4.10]
+Given a proper morphism $f:X\to S$, with $S$ noetherian, there is
+a birational morphism\footnote{A \emph{birational morphism} is a
+morphism which, as a rational map, is birational.} $g:X'\to X$
+such that $f\circ g$ is projective.
+\end{lemma}
+
+\begin{definition}
+A morphism $f:X\to Y$ is \emph{quasi-projective} if there is an
+open immersion $i:X\hookrightarrow X'$ and a projective morphism
+$X'\to Y$ such that $f=g\circ i$:
+\[\xymatrix{
+ X \ar@{^(->}[r]^{\txt{\tiny open}} \ar[dr]_f & X'
+ \ar@{^(->}[r]^{\txt{\tiny closed}} \ar[d]^{\txt{proj}} & \P^n_Y
+ \ar@/^4ex/[dl]
+ \\
+ & Y
+}\] (therefore, $X$ is isomorphic to a subscheme of $\P^n_Y$ for
+some $n$)
+\end{definition}
+
+\begin{definition}
+A \emph{subscheme} of a scheme $Y$ is an immersion
+$X\hookrightarrow Y$.  An \emph{immersion} is a map that can be
+written as an open immersion followed by a closed immersion (or
+vice versa (exercise)).
+\end{definition}
+
+\begin{theorem}
+If $f:X\to Y$ is quasi-projective and $Y$ is noetherian, then $f$
+is separated and of finite type.
+\end{theorem}
+\begin{proof}
+Let $X\to X'$ be an open immersion with $X'$ projective.  Then
+$X\to X' \to Y$ is separated (it is a composition of separated
+morphisms) and of finite type (it is a composition of finite type
+morphisms - Ex II.3.3c; $X'$ noeth $\Rightarrow X$ noeth
+$\Rightarrow X$ quasi-compact).
+\end{proof}
+
+\underline{Near Converse(Nagata)}: If $f:X\to Y$ is separated and
+of finite type, then there is an open immersion $X\hookrightarrow
+X'$ with $X'$ proper over $Y$.
+
+\begin{definition}
+Let $k$ be an algebraically closed field.  A \emph{variety} over
+$k$ is an integral scheme, separated and of finite type over
+$\spec k$.  (i.e. it is a separated, finite type morphism $X\to
+\spec k$ with $X$ integral).
+
+It is \emph{projective} (resp. \emph{quasi-projective)} if the
+morphism is, and it is \emph{complete} if the morphism is proper.
+\end{definition}
+
+Note: not everybody uses this definition.  Some say $X$ is reduced
+instead of integral.  Many allow arbitrary $k$ (in which integral
+may be replaced by geometrically integral\footnote{$X$ is
+\emph{geometrically integral} if $X\times_{\spec k} \bar k$ is
+integral.  See exercise II.3.15}).
+
+\vspace{8mm} \marginpar{\S III.4 \v{C}ech Cohomology}
+
+In this section:
+\begin{itemize}
+ \item[-] $X$ is a topological space
+ \item[-] $\U=(U_i)_{i\in I}$ is an open cover of $X$ with a
+ \emph{well ordered} index set $I$
+ \item[-] $\F$ is a sheaf of abelian groups on $X$
+ \item[-] $C^p(\U,\F) := \displaystyle\prod_{i_0<i_1< \cdots <
+ i_p}\!\!\!\!\!\!\!\!
+ \F(U_{i_0 i_1 \cdots i_p})$, with $U_{i_0 i_1 \cdots i_p}:=
+ U_{i_1}\cap U_{i_2}\cap \cdots \cap U_{i_p}$ for any $p\in
+ \mathbb{N}$
+\end{itemize}
+
+If $\alpha\in C^p(\U,\F)$, we write its components as $\alpha_{i_0
+i_1 \cdots i_p}\in \F(U_{i_0 i_1 \cdots i_p})$.  For arbitrary
+$(p+1)$-tuples $i_0 i_1 \cdots i_p$ we write
+\[
+ \alpha_{i_0 i_1 \cdots i_p} = \left\{
+ \begin{tabular}{ll}
+ 0 & if the tuple contains a repeat \\
+ $(-1)^{|\sigma|}\alpha_{\sigma (i_0) \sigma( i_1) \cdots \sigma (i_p)}$
+ & where $\sigma (i_0) < \cdots < \sigma (i_n)$
+ \end{tabular} \right.
+ \]
+
+Define $d:C^p(\U,\F) \to C^{p+1}(\U,\F)$ by
+\[
+    (d\alpha)_{i_0 i_1 \cdots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j
+    \alpha_{i_0 \cdots \hat i_j \cdots i_{p+1}}|_{U_{i_0\cdots i_{p+1}}}.
+\]
+Observe that the definition is compatible with the convention for
+arbitrary $i_0 i_1 \cdots i_{p+1}$.  Also, we have that $d^2=0$.
+
+Thus, we have a complex $C^{\cdot}(\U,\F)$
+\begin{definition}
+The \v{C}ech Cohomology of $\F$ with respect to $\U$ is
+\[
+    \check H^p(\U,\F) = h^p(C^{\cdot}(\U,\F)).
+\]
+\end{definition}
+
+
+Example: $X,\F$ as above, with $\U=\{X\}$.  Then $C^p(\U,\F)=0$
+for all $p\not=0$ and $C^0(\U,\F)=\Gamma(X,\F)$, so
+\[
+    \check{H}^p(\U,\F) = \left\{
+ \begin{tabular}{ll}
+ $\Gamma(X,\F)$ & $p=0$ \\
+ 0 & $p\not=0$.
+ \end{tabular} \right.
+\]
+In particular, \v{C}ech Cohomology might not have a long exact
+sequence.  We will eventually show that if all the $U_{i_1\cdots
+i_p}$ are acyclic for $\F$, then
+\[
+    \check H^{\cdot}(\U,\F) \cong H^{\cdot} (X,\F).
+\]
+
+Example: Lets find $\check H(\U,\O(1))$ where
+\begin{itemize}
+ \item[] $X=\P^1_k = \proj k[x,y]$ for $k$ a field
+ \item[] $\U = \{U,V\}$ with
+ \item[] \quad $U=D_+(x) = \spec k[1/t]$ where $t=x/y$
+ \item[] \quad $V=D_+(y) = \spec k[t]$
+\end{itemize}
+Then \begin{align*}
+ C^0 &= \Gamma(U,\O(1))\times \Gamma(V,\O(1)) \\
+    &\cong \Gamma(U,\O_U)\times \Gamma(V,\O_V) \\
+    &= k[1/t]\times k[t]\\
+ C^1 &= \Gamma(U\cap V,\O(1)) \\
+    &\cong \Gamma(U\cap V,\O_{U\cap V})\\
+    &= k[t]_t = k[t,1/t]
+ \end{align*}
+What is the map $d$?  Recall that $\O(1) = \widetilde{S(1)}$, so
+\begin{align*}
+ \O(1)|_{D_+(x)} &= \widetilde{S(1)_{(x)}} = \widetilde{\ xk[1/t]\ }\\
+ \O(1)|_{D_+(y)} &= \widetilde{S(1)_{(y)}} = \widetilde{\ yk[t]\ }
+\end{align*}
+So
+\[
+ {\begin{array}{rl}
+  \Gamma(U,\O(1)) & \hspace{-2.5mm} = xk[1/t]\cong k[1/t]    \\
+  \Gamma(V,\O(1)) & \hspace{-2.5mm} = yk[t]\cong k[t]        \\
+  \Gamma(U\cap V,\O(1)) & \hspace{-2.5mm} = xk[t]_t \cong k[t,1/t]
+ \end{array}}\quad
+ \begin{xy}<1cm,0cm>:<0cm,5mm>::
+   \ar@{|->} (0,0) *{\ni 1};(1,-1) *{1/t},
+   \ar@{|->} (1,1) *{\ni 1};(3,-1) *{1},
+ \end{xy}
+\]
+
+%\begin{align*}
+% \Gamma(U,\O(1)) &= xk[1/t]\cong k[1/t] \hspace{2cm} \rnode{a}{1}\\
+% \Gamma(V,\O(1)) &= yk[t]\cong k[t]\hspace{2cm} \rnode{b}{1}\\
+% \Gamma(U\cap V,\O(1)) &= xk[t]_t \cong k[t,1/t]\hspace{2cm} \rnode{c}{1/t}
+% \hspace{15mm} \rnode{d}{1} \ncline{|->}{a}{d}
+% \ncline{|->}{b}{c}
+%\end{align*}
+
+Then we have $\check H^1(\U,\O(1)) = C^1/\im(C^0\to C^1)$.  But
+\begin{align*}
+\im (\Gamma(U,\O(1))\to C^1) &= \bigoplus_{n\le 0} kt^n\\
+\im (\Gamma(V,\O(1))\to C^1) &= \bigoplus_{n\ge -1} kt^n\\
+\end{align*}
+so $\im(C^0\to C^1)$ is all of $C^1$, and therefore $\check
+H^1(\U,\O(1))=0$.
+\begin{align*}
+\check H^0(\U,\O(1)) &= \ker(C^0\to C^1) \\
+    &=\im(\Gamma(U,\O(1))\to \Gamma(U\cap V,\O(1)))& \text{(since these maps}\\ &\quad \cap \im(\Gamma(V,\O(1))\to \Gamma(U\cap
+    V,\O(1))) &\text{are one to one)}\\
+    &= \bigoplus_{n\le 0} kt^n \cap \bigoplus_{n\ge -1} kt^n\\
+    &= kt^{-1}\oplus kt^0 = k^2 = \Gamma(X,\O(1))
+\end{align*}
+
+More generally, for all $X,\F,\U$, $\check H^0(\U,\F) =
+\Gamma(X,\F)$.
+\begin{proof}
+\[\xymatrix{
+ 0\ar[r] &\check H^0(\U,\F) \ar[r] & C^0(\U,\F) \ar[r]^f \ar@{}[d]|{\parallel} &
+ C^1(\U,\F) \ar@{^(->}[d] \\
+ 0 \ar[r] & \Gamma{X,\F} \ar[r]  & \prod \F(U_i) \ar[r]_(.4)g \ar@{}[ru]|{\circlearrowleft} &
+ \prod_{i,j}\F(U_i\cap U_j)
+}\] The top row is exact, and the bottom row is exact by the sheaf
+axioms.  Commutativity of the square tells us that $\ker f = \ker
+g$, as desired.
+\end{proof}

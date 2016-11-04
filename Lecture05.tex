@@ -1,0 +1,214 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{5}
+ \sektion{Lecture 5}
+
+Note on Freyd's Theorem:  every abelian category can be embedded
+as a full subcategory of $\Ab$.  This does \emph{not} imply that
+$\varinjlim$ is always exact (just because it is exact in $\Ab$).
+For example, $\varprojlim$ (which is the $\varinjlim$ in
+$\Ab^{\text{op}}$) is not exact.
+
+\marginpar{III \S 3}
+
+\begin{theorem}[Goal]\label{T:lec5}
+Let $\F$ be a quasi-coherent sheaf on a noetherian affine scheme
+$X=\spec A$, then $\F$ is acyclic. \marginpar{Qco sheaves on
+noetherian affine schemes are acyclic}
+\end{theorem}
+
+Note: $A$ is noetherian (Proposition II.3.2) and $\F= \tilde{M}$
+for some $A$-module $M$.
+
+\begin{lemma}[Key Lemma]\label{L:lec5keylemma}
+If $I$ is an injective module over a noetherian ring $A$, then the
+sheaf $\tilde I$ on $\spec A$ is flasque.
+\end{lemma}
+
+\begin{proof}[Proof assuming Key Lemma]
+Let $0\to M\to I^{\cdot}$ be an injective resolution of $M$ (in
+$\Mod{A}$.  Then $0\to \tilde M\to \tilde I^{\cdot}$ is exact
+($\tilde{}$ is exact).  By the Key Lemma, this is an acyclic
+resolution, so we have $H^i(X,\F) = h^i(\Gamma(X,I^{\cdot})) =
+h^i(I^{\cdot})=0$ for all $i>0$.
+\end{proof}
+
+\begin{lemma}\label{L:lec5IdealsEnoughInjectivity}
+Let $A$ be a ring and $J$ an $A$-module.  Then $J$ is injective if
+and only if for all ideals $\a\subseteq A$, all maps $\phi:\a\to
+J$ extend to $A\to J$.
+\end{lemma}
+\begin{proof}
+($\Rightarrow$) Trivial from definition of injectivity:$\xymatrix
+@C=4mm @R=4mm{0\ar[r] & \a \ar[d]_(.4){\phi} \ar[r] &
+A\ar@{.>}[dl]^(.4){\text{$J$ inj}} \\ & J}$
+
+($\Leftarrow$) Let $M'\subseteq M$ be $A$-modules and let
+$\phi:M'\to J$.  By the usual Zorn's Lemma argument, it suffices
+to extend $\phi$ to a map $\langle M',x\rangle \to J$ for some
+$x\in M\smallsetminus M'$.  We have the obvious surjection
+$M'\oplus A \to \langle M',x\rangle$.  Let $\a=\{a\in A|ax\in
+M'\}$ be the kernel
+\begin{align*}
+    0\to &\a \to M'\oplus A \to
+    \langle M',x\rangle \to 0\\
+    &a\mapsto (ax,-a)
+\end{align*}
+To extend $\phi$, we need a map $\psi:A\to J$ such that $\phi+
+\psi: M'\oplus A \to J$ vanishes on $\a$.  This is exactly what we
+get from the assumption.
+\end{proof}
+
+\begin{lemma}\label{L:lec5lemma1}
+Let $I$ be an injective module over a noetherian ring $A$ and let
+$f\in A$.  Then the localization map $\theta:I\to I_f$ is
+surjective.
+\end{lemma}
+\begin{proof}
+For all $i\in \mathbb{N}$, let $\b_i=\ann(f^i)$.  Then
+$0=\b_0\subseteq \b_1\subseteq \cdots$.  By the noetherian
+hypothesis, there is some $r$ such that $\b_r=\b_{r+1}=\cdots$.
+Pick $x\in I_f$ and write $x=y/f^n$ with $y\in I$ and $n\in
+\mathbb{N}$.  Define $\phi:(f^{n+r})\to I$ by $f^{n+r}\mapsto
+f^ry$ [if $af^{n+r}=0$, then $a\in \b_{n+r}=\b_r$, so $af^r=0$ and
+so the map is well defined]. \marginpar{$\xymatrix @C=4mm
+@R=4mm{0\ar[r] & (f^{n+r}) \ar[r]\ar[d]_{\phi} &
+A\ar@{.>}[dl]^{\psi} \\ & I}$}By injectivity, there is some
+$\psi:A\to I$ such that $\psi|_{(f^{n+r})}=\phi$. Let $z=\psi(1)$,
+then $\theta(z)=f^{-n}y=x$.
+\end{proof}
+
+\begin{definition}[Exercise II.5.6] Let $A$ be a ring, let $\a$ be a
+principal ideal in $A$, and let $M$ be an $A$-module. Then
+$J=\Gamma_{\a}(M) = \{x\in M|\a^nx=0 \text{ for some } n\in
+\mathbb{N}\}$.
+\end{definition}
+
+\begin{lemma}
+Let $X=\spec A$, $I$ be an $A$-module, $\a=(f)\subseteq A$ a
+principal ideal, $J=\Gamma_{\a}(I)$, $U\subseteq X$ open, and
+$Z=Z(f)=V_f$.  Then
+\[
+    J=\Gamma_Z(X,\tilde I) = \{s\in \Gamma(X,\tilde I)|s_P=0 \text{ for all } P\not\in Z\}
+\]
+and
+\[
+ \Gamma(U,\tilde J) = \Gamma_Z(U,\tilde I).
+\]
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\Gamma_Z(X,\tilde I) &= \{x\in I: x\mapsto 0 \in I_P \text{ for
+all } P\not\in Z\}\\
+    &= \{x\in I| x\mapsto 0\in I_f\} \\
+    &= \ker(I\to I_f) \\
+    &=\{x\in I| f^nx=0 \text{ for some } n\in \mathbb{N}\}\\
+    &=\{x\in I| \a^nx=0 \text{ for some } n\in \mathbb{N}\}\\
+    &= \Gamma_{\a}(I) = J.
+\end{align*}
+
+For the other claim, start with the special case $U=D(g)$, so
+$\Gamma(U,\tilde J)=J_g=(\ker(I\to I_f))_g$.  So $x\in
+\Gamma(U,\tilde J)$ if and only if there are $n,m\in \mathbb{N}$
+such that $x=g^{-n}y$, $y\in I$ and $f^my=0$. On the other hand,
+$\Gamma_Z(U,\tilde I)=\ker(I_g\to (I_g)_f)$,  So $x\in
+\Gamma_Z(U,\tilde I)$ if and only if there are $n,n',m\in
+\mathbb{N}$ such that $x=g^{-n}y$, $y\in I$ and $g^{n'}f^my=0$.
+Thus, $\Gamma_Z(U,\tilde I)=\Gamma(U,\tilde J)$ in this case. For
+the general case, cover $U$ with open affine sets an glue.
+\end{proof}
+
+\begin{lemma}\label{L:lec5lemma2}
+ Let $A$ be a noetherian ring, $\a\in A$ an ideal, $I$
+ an $A$-module, and $J=\Gamma_{\a}(I)$.  If $I$ is
+ injective, then so is $J$.
+\end{lemma}
+\begin{proof}
+By Lemma (\ref{L:lec5IdealsEnoughInjectivity}), it suffices to
+complete the diagram
+\[\xymatrix{
+ 0\ar[r] & \b \ar[r] \ar[d]_{\phi} & A \ar@{.>}[dl]\\
+ & J
+ }\]
+for any ideal $\b$ and any $\phi: \b\to J$. For all $b\in \b$,
+there is some $n$ such that $\phi(\a^nb) = \a^n\phi(b)=0$.  Since
+$\b$ is finitely generated, we may choose one $n$ that works for
+all $b$. Thus, $\a^n\b\subseteq \ker \phi$.
+
+Recall \underline{Krull's Theorem}: Let $\a\subseteq A$ be an
+ideal in a noetherian ring, and let $M\subseteq N$ be finitely
+generated $A$-modules.  Then the $\a$-adic topology on $M$ is
+induced by the $\a$-adic topology on $N$.  That is, for all $n$,
+there is some $n'$ such that $\a^nM\supseteq M\cap \a^{n'}N$.
+Thus, taking $M=\b$ and $N=A$, $\a^n\b \supseteq \b\cap \a^{n'}$.
+So we have
+\[\xymatrix@C=13mm{
+ A\ar@{->>}[r] & A/\a^{n'}\ar@{.>}@/^/[dr] \ar@{.>}@/^/[drr]^{\psi}\\
+ \b\ar@{^(->}[u]\ar[r] \ar@/_3ex/[rr]_{\phi} & \b/\b\cap \a^{n'}
+ \ar@{^(->}[u] \ar[r]^(.6){\text{Krull}} & J \ar@{^(->}[r] & I
+ }\]
+By injectivity of $I$, $\psi$ exists such that the diagram
+commutes.  If we can show $\im \psi \subseteq J$, then we're done.
+This is true because the image is killed by $\a^{n'}$.
+\end{proof}
+
+\begin{proof}[Proof of Key Lemma]
+Statement:if $X=\spec A$ is noetherian, $I\in \Mod(A)$ injective,
+then $\tilde I$ is flasque.
+
+We want to show that for all $U\subseteq V$, $\Gamma(V,\tilde
+I)\to \Gamma(U,\tilde I)$ is
+surjective.\marginpar{$\xymatrix@C=3mm
+@R=3mm{\Gamma(V,\tilde I)\ar[r] & \Gamma(U,\tilde I)\\
+\Gamma(X,\tilde I)\ar[u]\ar[ur]}$}  It suffices to check the case
+where $V=X$.  Let $Y=\supp \tilde I = \{P\in X| I_P\not=0\}$.  Now
+we apply noetherian induction on $Y$.  If $Y\cap U=\varnothing$,
+then $\Gamma(U,\tilde I)=0$ and there is nothing to show.  So we
+may assume that $Y$ meets $U$.  Then there is some $f\in A$ such
+that $D(f)\subseteq U$ and $D(f)\cap Y\not=\varnothing$.  Let
+$Z=X\smallsetminus D(f) = Z(f)$ and consider the commutative
+diagram
+\[\xymatrix{
+ I=\Gamma(X,\tilde I) \ar[r] & \Gamma(U,\tilde I) \ar[r] & \Gamma(D(f),\tilde
+ I)=I_f & \text{(row \emph{not} exact)}\\
+ \Gamma_Z(X,\tilde I)\ar@{^(->}[u] \ar[r] & \Gamma_Z(U,\tilde
+ I)\ar@{^(->}[u]\\
+ J=\Gamma(X,\tilde J) \ar@{}[u]|{\parallel} \ar[r] & \Gamma(U,\tilde J)\ar@{}[u]|{\parallel}
+ }\]
+Let $s\in \Gamma(U,\tilde I)$, and let $s'\in \Gamma(D(f),\tilde
+I)$ be its image.  By Lemma (\ref{L:lec5lemma1}) \marginpar{Lem
+\ref{L:lec5lemma1}: $I\to I_f$ surjective} there is some $t\in
+\Gamma(X,\tilde I)$ mapping to $s'$. Let $t'=t|_U\in
+\Gamma(U,\tilde I)$, so that $s-t'\in \Gamma_Z(U,\tilde I)$ [$s$
+and $t'$ agree on $D(f)=Z^c$].  So it suffices to check that the
+bottom map is surjective.
+
+By Lemma (\ref{L:lec5lemma2}), $J$ is injective \marginpar{Lem
+\ref{L:lec5lemma2}: $I$ inj $\Rightarrow
+J=\Gamma_{\mathfrak{a}}(I)$ inj}.  Also, $\supp J \subseteq Y\cap
+Z \subsetneq Y$, so we can apply induction on the dimension of
+$Y=\supp I$.
+\end{proof}
+
+\begin{corollary}[to the Theorem]\label{C:lec5}
+Let $\F$ be a quasi-coherent sheaf on a noetherian scheme $X$.
+Then $\F$ can be embedded into a flasque, quasi-coherent sheaf.
+\end{corollary}
+\begin{proof}
+Cover $X$ with finitely many open affine sets $U_i=\spec A_i$,
+$i=1\dots n$.  For each $i$, $\F|_{U_i} \cong \tilde M_i$ for some
+$A_i$-module $M_i$.  Embed $M_i$ into an injective $A_i$-module
+$I_i$, and let
+\[
+    \G = \bigoplus_{i=1}^n f_{i*}(\tilde I_i)
+\]
+where $f_i:U_i\to X$ is the inclusion map.  We have $\F|_{U_i}\to
+\tilde I_i$, which is injective for each $i$, and we have
+\[\F\to
+\underbrace{f_{i*}(\F|_{U_i})}_{V\mapsto \F(V\cap U_i)} \to
+f_{i*}(\tilde I_i).\] Composing and adding these maps, we get an
+injection $\F\to \G$ [check on stalks that $\F\to f_{i*}(\tilde
+I_i)$ is injective].  By the Key Lemma (\ref{L:lec5keylemma}),
+$\tilde I_i$ is flasque for each $i$, so $f_{i*}(\tilde I_i)$ is
+flasque by exercise II.1.16d, so $\G$ is flasque.  Similarly, $\G$
+is quasi-coherent.
+\end{proof}

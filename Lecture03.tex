@@ -1,0 +1,257 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{3}
+ \sektion{Lecture 3}
+
+\def\A{\mathcal{A}}
+
+For effaceable functors, see the book.
+
+Recap of what we've done:
+\begin{list}{}{}
+ \item[(1)] Given a covariant left exact functor from an abelian
+category with enough injectives to an abelian category, there are
+right derived functors.
+ \item[(2)] A Cohomology should have some desirable properties.
+\end{list}
+
+\begin{definition}
+An abelian group $A$ is \emph{divisible} if for all $a\in A$ and
+non-zero $n\in \Z$, there is some $a'\in A$ such that $na'=a$.
+\end{definition}
+\marginpar{Injective\\ $A$-modules} For example, 0,
+$\mathbb{Q},\mathbb{Q/Z}, \mathbb{R}, \mathbb{R/Z}, \dots$ are
+divisible groups.
+
+\begin{lemma} An abelian group is injective if and only if it is
+divisible.
+\end{lemma}
+\begin{proof}
+($\Rightarrow$) Let $A$ be an injective group, and let $a\in A,
+0\not=n\in \Z$, then
+\[\xymatrix{
+    0 \ar[r] & \Z \ar[r]^{\cdot n} \ar[d]^{\phi} & \Z \ar@{.>}[dl]^{\psi} \\
+    & A
+}\]
+ where $\phi(1)=a$.  Then by injectivity, $\psi$ exists, and
+ $n\cdot \psi(1)=a$.  Thus, $A$ is divisible.
+
+($\Leftarrow$) Let $M'\subseteq M$ be abelian groups, and let
+$\phi:M'\to A$ be a homomorphism, where $A$ is divisible.
+\[\xymatrix{
+    0 \ar[r] & M' \ar[r] \ar[d]^{\phi} & M  \\
+    & A
+}\]
+ Pick $x\in M\smallsetminus M'$, and let $d$ be a non-negative
+ integer generator of the ideal $\{n\in \Z| nx\in M'\}$.  If
+ $d=0$, then $\langle M',x \rangle \cong M'\oplus \Z$ and we can
+ extend $\phi$ to $\langle M',x \rangle \to A$ by setting
+ $\phi(x)=0$.  If $d\not=0$, then pick $a\in A$ such that
+ $da=\phi(dx)$.  Then we can extend $\phi$ to $\langle M',x
+ \rangle$ by setting $\phi(x)=a$.  By the standard Zorn's Lemma argument, we
+ can extend $\phi$ to a map $M\to A$, so $A$ is injective.
+\end{proof}
+
+\begin{lemma}
+The category $\Ab$ of abelian groups has enough injectives.
+\end{lemma}
+\begin{proof}
+For an abelian group $A$, we define the \emph{dual} $\hat
+A=\Hom(A,\mathbb{Q/Z})$.  Then a homomorphism $f:A\to B$ has a
+dual $\hat f: \hat B\to \hat A$.  We have a natural map $A\to
+\hat{\hat A}= \Hom(\Hom(A,\mathbb{Q/Z},\mathbb{Q/Z}), a\mapsto
+[\phi\mapsto \phi(a)]$
+\begin{itemize}
+\item[\underline{Claim:}] This map is one to one.
+
+\noindent Indeed, if it were not, then there would be a non-zero
+$a\in A$ such that $\phi(a)=0$ for all $\phi \in \hat A$.  But
+since $\mathbb{Q/Z}$ is injective, we have
+\[\xymatrix{
+ 0\ar[r] & \langle a \rangle \ar[r] \ar[d]_{\phi_0} & A\ar@{.>}[dl]\\
+ & \mathbb{Q/Z}
+}\] For any $\phi_0:\langle a \rangle \to \mathbb{Q/Z}$ we have an
+extension $\phi: A\to \mathbb{Q/Z}$ so it suffices to find
+$\phi_0:\langle a \rangle \to \mathbb{Q/Z}$ with
+$\phi_0(a)\not=0$.  But either $\langle a \rangle \cong \Z$, in
+which case we can send $a\mapsto 1/2 \in \mathbb{Q/Z}$, or
+$\langle a \rangle \cong \Z/n\Z$, in which case we can send
+$a\mapsto 1/n\in \mathbb{Q/Z}$.  Thus, the claim is true.
+\end{itemize}
+So $A\hookrightarrow \hat{\hat A}$.  Next, there is a surjection
+$\bigoplus_{i\in I} \Z \to \hat A \to 0$ for some index set $I$.
+By taking duals, we get a map
+ \begin{align*}
+ \hat{\hat A} \to \widehat{\bigoplus_{i\in I}\Z} &= \Hom(\bigoplus \Z,
+ \mathbb{Z/Q})\\
+ &= \prod \Hom(\Z,\mathbb{Q/Z})\\
+ &= \prod \mathbb{Q/Z}
+ \end{align*}
+ which is divisible, and therefore injective.  Also, the map $\hat{\hat A} \to
+ \widehat{\bigoplus_{i\in I}\Z}$ is one to one because the dual of
+ a surjective map is one to one.  Thus, $A\hookrightarrow
+ \hat{\hat A} \hookrightarrow \prod \mathbb{Q/Z}$.
+\end{proof}
+
+If $A$ is a ring, $T$ is an abelian group, and $X$ is an
+$A$-module, then we can put an $A$-module structure on
+$\Hom_{\Z}(X,T)$ by setting $a\cdot \phi = (x\mapsto \phi(a\cdot
+x))$ for each $a\in A$
+
+\begin{lemma}
+If $A$ is a ring, $X$ is an $A$-module, and $T$ is an abelian
+group, then
+\begin{align*}
+\Hom_{\Z}(X,T) & \stackrel{\sim}{\rightarrow}
+\Hom_A(X,\Hom(A,T))\\
+\phi &\mapsto \ (x\mapsto (a\mapsto \phi(ax)))
+\end{align*}
+as abelian groups (also as $A$-modules).
+\end{lemma}
+\begin{proof}
+exercise.
+\end{proof}
+
+\begin{lemma}
+If $T$ is and injective abelian group, then $\Hom_{\Z}(A,T)$ is an
+injective $A$-module.
+\end{lemma}
+\begin{proof}
+Given $A$-modules $0\to X\to Y$, we have \marginpar{Exercise: show
+that the diagram commutes}\[\xymatrix{
+    \Hom_A(Y,\Hom_{\Z}(A,T)) \ar[r] \ar[d]^{\wr} & \Hom_A(X,\Hom_{\Z}(A,T))
+    \ar[r] \ar[d]^{\wr} & 0\\
+    \Hom_{\Z}(Y,T)\ar[r] & \Hom_{\Z}(X,T) \ar[r] & 0
+}\] with the top row exact.
+\end{proof}
+
+\begin{theorem}
+The category of $A$-modules has enough injectives.
+\end{theorem}
+\begin{proof}
+Let $M$ be an $A$-module.  Embed it into an injective abelian
+group $T$, so $f:M\hookrightarrow T$.  Define $g:M\to
+\Hom_{\Z}(A,T)$ by $g(m)=(a\mapsto f(am))$.  If $m\not=0$, then
+$g(m)(1)=f(1\cdot m)\not=0$, so $g$ is one to one.
+\end{proof}
+
+\begin{theorem}
+If $(X,\O_X)$ is a ringed space, then $\Mod(X)$ has enough
+injectives.
+\end{theorem}
+\begin{proof}
+Let $\F$ be a sheaf of $\O_X$-modules.  For each $x\in X$, $\F_x$
+is an $\O_{X,x}$-module, and can therefore be embedded into an
+injective module $I_x$.  Define $\J = \prod_{x\in X}j_*\I_x$,
+where $\I_x=I_x$ as a sheaf at $x$ and $j:\{x\}\hookrightarrow X$
+is the inclusion, so $j_*\I_x$ is a skyscraper sheaf.
+
+Then we have that
+\[
+ \Hom(\F,\J) = \prod_{x\in X} \Hom(\F,j_*\I_x) = \prod_{x\in
+ X}\Hom_{\O_{X,x}}(\F_x,I_x).
+\]
+By taking an injection from each factor, we get a map $\F\to \J$
+which must be an injection because it is an injection on all
+stalks.
+
+Finally, we must show injectivity of $\J$.  Given any $\G_1\to
+\G_2$, we have that
+\begin{align*}
+ \Hom_{\O_{X,x}}(\G_{2,x},I_x) &\twoheadrightarrow
+ \Hom_{\O_{X,x}}(\G_{1,x},I_x) \\
+ \Hom(\G_{2,x},j_*\I_x) &\twoheadrightarrow
+ \Hom(\G_{1,x},j_*\I_x) \\
+ \Hom(\G_{2,x},\J) &\twoheadrightarrow
+ \Hom(\G_{1,x},\J) & \text{(prod of surj is surj)} \\
+\end{align*}
+\end{proof}
+
+\begin{corollary}
+If $X$ is a topological space, then $\Ab(X)$ has enough
+injectives.
+\end{corollary}
+\begin{proof}
+Make $X$ into a ringed space by setting $\O_X$ to the constant
+sheaf $\Z$.  Then $\Mod((X,\O_X))=\Ab(X)$.
+\end{proof}
+
+\begin{definition}
+Let $X$ be a topological space, then the cohomology functors
+$H^{\cdot}(X,-)$ are the right derived functors of
+$\Gamma(X,-):\Ab(X)\to \Ab$. \marginpar{$H^{\cdot}(X,-)$ defined}
+\end{definition}
+
+Note: We use injective filtrations in $\Ab(X)$ rather than
+$\Mod(X)$ because sometimes we will want to consider sheaves of
+abelian groups which are not $\O_X$-modules.  The following
+theorem says that we get the same cohomology as we would have if
+we used $\Mod(X)$ injectives.
+
+\begin{theorem}[*] If $(X,\O_X)$ is a ringed space (e.g. a
+scheme), then the right derived functors $\Mod(X)\to \Ab$
+associated to $\Gamma(X,-)$ coincide with $H^{\cdot}(X,-)$,
+restricted to $\Mod(X)$.
+\end{theorem}
+
+Recall that if $X$ is a topological space and $\F$ is a sheaf (of
+abelian groups) on $X$, then we say $\F$ is flasque if
+$\rho_{UV}:\F(U)\to \F(V)$ is surjective for all open sets
+$V\subseteq U$.
+
+\begin{lemma}
+Let $(X,\O_X)$ be a ringed space.  Then any injective element of
+$\Mod(X)$ is flasque. \marginpar{Injective sheaves are flasque}
+\end{lemma}
+\begin{proof}
+Let $V\subseteq U$ be open.  Regard $\O_U$ and $\O_V$ as sheaves
+on $X$ by extending by zero (see exercise II.1.19b), so $W\mapsto
+\O_U(W)$ if $W\subseteq U$ and $W\mapsto 0$ otherwise.
+
+We have a map $\O_V\to \O_U$ as $\O_X$-modules, which is injective
+on stalks, and therefore injective.  Now look at
+\[
+ \Hom_{\O_X}(\O_U,\F) \to \Hom_{\O_X}(\O_V,\F) \to 0.
+\]
+The sequence is exact by injectivity of $\F$.  But we have a
+natural isomorphism $\Hom_{\O_X}(\O_U,\F)\cong \F(U)$ (since a
+morphism is determined by the image of $1\in \O_U(U)$), so
+$\F(U)\to \F(V)$ is surjective.
+\end{proof}
+
+\begin{proposition}
+Let $X$ be a topological space and $\F$ a flasque sheaf on $X$,
+the $\F$ is acyclic.
+\end{proposition}
+\begin{proof}
+ Embed $\F$ into an injective sheaf and let $\G$ be the quotient.
+ \[
+    0\to \F\to \I \to G\to 0.
+ \]
+Then $\F$ and $\I$ are flasque, so $\G$ must also be flasque
+(Exercise in chapter II), and we get
+\[
+    0\to \Gamma(X,\F)\to \Gamma(X,\I)\to \Gamma(X,\G)\to 0
+\]
+from the same exercise.  Therefore, we get the long exact sequence
+\[\begin{tabular}{lllll}
+ 0 &$\to \Gamma(X,\F) $&$\to \Gamma(X,\I) $&$\twoheadrightarrow
+ \Gamma(X,\G) $&$\xrightarrow{0}$\\
+ &$\xrightarrow{0} H^1(X,\F) $&$\to 0 $&$\to H^1(X,\G)$&$ \to$ \\
+ &$\xrightarrow{0} H^2(X,\F) $&$\to 0 $&$\to H^2(X,\G)$&$ \to \cdots$ \\
+\end{tabular}\]
+where the middle column is 0 because $\I$ is injective.  So we
+have that $H^1(X,F)=0$ and $H^i(X,\F)=H^{i-1}(X,\G)$.  But since
+$\G$ is also flasque, we have that $H^{i-1}(X,\G)=0$ by induction.
+\end{proof}
+
+So flasque sheaves can be used to compute cohomology.
+
+\begin{proof}[Proof of (*)]
+Let $\F\in \Mod(X)$ and let $0\to \F\to \I^{\cdot}$ be an
+injective resolution (in $\Mod(X)$).  Then
+$h^i(\Gamma(X,\I^{\cdot}))$ computes the right derived functors of
+$\Gamma(X,-):\Mod(X)\to \Ab$.  But the $\I^i$ are flasque and
+therefore acyclic, and so $h^i(\Gamma(X,\I^{\cdot})) = H^i(X,\F)$.
+\end{proof}
+
+For next time, read page 209.

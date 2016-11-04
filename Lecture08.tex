@@ -1,0 +1,94 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{8}
+ \sektion{Lecture 8}
+
+\begin{proof}[Valuative Criterion proof continued]
+still in the works.
+\end{proof}
+
+\begin{corollary}
+When working with noetherian schemes: \marginpar{Separatedness on
+noetherian schemes}
+\begin{itemize}
+ \item[(a)] Open and closed immersions are separated.
+ \item[(b)] Compositions of separated morphisms are separated.
+ \item[(c)] Separatedness is stable under base extension. i.e.  if
+ $f:X\to Y$ is separated, then $f':X\times_Y Y' \to Y'$ is
+ separated.
+ \[\xymatrix{
+ X\times_Y Y' \ar[r] \ar[d]^{f'} & X\ar[d]^f\\
+ Y' \ar[r] & Y
+}\]
+ \item[(d)] If $f:X\to Y$ and $f':X'\to Y'$ are separated
+ $S$-morphisms, then so is $f\times f':X\times_S X' \to Y\times_S
+ Y$.
+ \item[(e)] If $X\xrightarrow{f} Y \xrightarrow{g} Z$ are
+ morphisms and $g\circ f$ is separated, then so is $f$.
+ \item[(f)] Separatedness is local on the base.  i.e. $f:X\to Y$
+ is separated if and only if there is an open cover $\{U_i\}$ of
+ $Y$ such that $f^{-1}(U_i)\to U_i$ is separated for all $i$.
+ \item[(g)] $f:X\to Y$ is separated if and only if
+ $f_{\text{red}}:X_{\text{red}}\to Y_{\text{red}}$ is separated.
+\end{itemize}
+\end{corollary}
+\begin{proof}[Proof of (e)]
+in the works.
+\end{proof}
+\begin{proof}[Proof of (g)]
+in the works.
+\end{proof}
+
+\begin{remark}
+All of these things are true without the noetherian hypothesis.
+\end{remark}
+
+\begin{corollary}[of the Corollary]
+A morphism of separated schemes is separated.  More precisely, if
+$f:X\to Y$ with $X$ separated (over $\Z$), then $f$ is separated.
+\end{corollary}
+\begin{proof}
+Use (e) of the Corollary above.
+\end{proof}
+
+\begin{corollary}[of the Corollary]
+Most schemes you work with will be separated.  An exception:
+\underline{gluing}.
+\end{corollary}
+
+\marginpar{Properness} In topology, a map is proper if the inverse
+image of a compact set is compact.  We want $\P^1_k\to \spec k$ to
+be proper, but $\mathbb{A}^1_k\to \spec k$ not to be proper.
+
+\begin{definition}
+A morphism $f:X\to Y$ is \emph{closed} if for all closed
+subschemes $Z\subseteq X$, $f(Z)$ is closed in $Y$.  We say that
+$f$ is \emph{universally closed} if for all morphisms $Y'\to Y$,
+the pullback of $f$ is closed.
+\[\xymatrix{
+ X'\ar[d]^{f'} \ar[r] & X\ar[d]^f\\
+ Y'\ar[r] & Y
+}\]
+\end{definition}
+
+Example: $\mathbb{A}^1_k\to \spec k$ is closed, but not
+universally closed.  Take $Y'= \mathbb{A}^1_k$, so $X' =
+\mathbb{A}^2_k$, and $f'$ is a projection.  Then look at
+$Z=\{xy=1\}$.
+
+\begin{definition}
+A morphism is \emph{proper} if it is separated, of finite type,
+and universally closed.
+\end{definition}
+
+\begin{theorem}[Valuative Criterion for Properness]
+\marginpar{Valuative Criterion for Properness} Let $f:X\to Y$ be a
+finite type morphism of noetherian schemes, then $f$ is proper if
+and only if
+\[\xymatrix{
+ U:= \spec K \ar[r] \ar[d]^i & X\ar[d]^f\\
+ T:= \spec R \ar[r] \ar@{.>}[ur]^{\exists !} & Y
+}\]
+\end{theorem}
+\begin{proof}
+in the works.
+\end{proof}

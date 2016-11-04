@@ -1,0 +1,226 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{25}
+ \sektion{Lecture 25}
+
+[[The last proposition of the last lecture was missing some
+hypothesis -  like noetherian.]]
+
+\begin{proposition} Let $f:X\rightarrow Y$ be a morphism of
+noetherian schemes. Assume that $Y$ is integral and regular of dim
+1. Then $f$ is flat iff all associated points of $X$ lie over the
+generic point of $Y$.
+
+In particular, if $X$ is reduced, then $f$ is flat iff all
+irreducible components of $X$ dominate $Y$ \end{proposition}
+\begin{proof}
+`$\Rightarrow$' last time.\\
+
+`$\Leftarrow$' Let $x \in X$, and let $y = f(x)$. We need to show
+that the local rings are flat, i.e. $\O_{x,X}$ is flat over
+$\O_{y,Y}$.
+
+\textbf{Claim}. A module $M$ over a PID $R$ is flat iff it is
+torsion free. \\
+
+\textbf{Proof} `$\Rightarrow$' Suppose $M$ has torsion, say $t =
+0$ with $x \in R$, $m \in M$, both $\neq 0$. Then $M$ is not flat
+because multiplication by $x$ is an injection from $R$ to $R$
+(since $R$ is a domain and $x$ is non-zero, but it aquires a
+kernel after
+tensoring wiht $M$.\\
+
+`$\Leftarrow$' We need to show that $\mathfrak{a} \otimes M
+\rightarrow M$ is injective for all ideals $\mathfrak{a}$ [[which
+are all finitely generated since $A$ is a PID]]. We may assume
+$\mathfrak{a} \neq (0)$. Then $\mathfrak{a} = (x)$ for some $x \in
+R$, and so $\mathfrak{a}\otimes M \cong M$, and the map is
+multiplication by $x$ on $M$. That's injective because $M$ is
+torsion free. $\Box$\\
+
+
+\textbf{Case 1}. If $y$ is the generic point then $\O_{Y,y}$ is a
+field so there's nothing to show.\\
+
+\textbf{Case 2}. here, $y$ is a closed point. Then $\O_{Y,y}$ is a
+d.v.r. Suppose $\O_{X,x}$ is not flat over $\O_{Y,y}$. Then it has
+torsion: there exists some nonzero $t \in \O_{Y,y}$ s.t.
+multiplication by $f^{\#}t$ is not injective in $\O_{X,x}$. Then
+$f^{\#}t$ is a zero divisor, so it lies in some associated prime
+$\mathfrak{p}$ of $\O_{X,x}$. This gives an associated point $x'
+\in X$. But $f(x') = y$ since [[as there are only 2 prime ideals
+in a PID]] $\mathfrak{p} \cap \O_{Y,y}$ contains $t \neq 0$.
+Therefore $\mathfrak{p}\cap\O_{Y,y} \neq (0)$, so $f(x') \neq $
+the generic point, contradicting our assumption that all
+associated points lie
+over the generic point.\\
+
+\textbf{Example}. $\mathbb{Q}$ is flat over $\Z$, therefore it is
+torsion
+free. But it's not free.\\
+\end{proof}
+
+\textbf{Hard Work - Scheme Theoretic Closure, Schematic Denseness,
+and Associated Points}.\\
+
+\underline{Recall (II ex.3.11(d)):} Let $f:Z \rightarrow X$ be a
+morphism with $Z$ noetherian. Then there exists a unique closed
+subscheme $Y$ of $X$ such that $f$ factors through $Y$, and such
+that if $f$ factors through any other closed subscheme $Y'$, then
+$Y \subset Y'$ schematically ($\mathscr{I} \supset \mathscr{I}'$).
+This is the \textbf{closed scheme theoretic image of $f$}.
+
+\begin{definition} Let $i:Z \rightarrow X$ be a subscheme of a
+noetherian scheme $X$. Then the \textbf{scheme theoretic closure}
+of $Z$ is the closed scheme-theoretic image of $i$.
+\end{definition}
+
+\begin{definition} $Z$ is \textbf{scheme-theoretically dense} if
+its scheme-theoretic closure is all of $X$ (as a scheme). An open
+set is scheme theoretically dense if the corresponding open
+subscheme is. \end{definition}
+
+\underline{Example} $X = \spec{k[x,y]/(x^2,xy)}$ (i.e. the
+$y$-axis with an embedded point at (0,0)). Let $U = X -
+\{(0,0)\}$. Let $A = k[x,y]/(x^2,xy)$. Then $U = \spec{A_y}$. But
+$A_y = (k[x,y]/(x))_y \cong k[y]_y$. Since $U$ is reduced, its
+scheme theoretic closure is $X_{\text{red}} = \spec{k[y]} $, so
+$U$ is not schematically dense. (Note that $U$ is dense
+set-theoretically). (You can compute the scheme-theroetic closure
+of $\spec{B}\rightarrow\spec{A}$ by finding $\ker(A\rightarrow
+B)$).
+
+
+\begin{proposition} An open subset of a noetherian scheme is
+chematicallly dense iff it contains all of the associated points.
+\end{proposition}
+
+\begin{proof} This is a local question, so we may assume $X =
+\spec{A}$ is affine. Let $U$ be an open subscheme [[equivalently
+an open subset]]. Lets let $\mathfrak{q}_1 \cap \cdots \cap
+\mathfrak{q}_n$ be a minimal primary decomposition of $(0)$ in
+$A$. [[This is where we use the fact that $A$ is noetherian.]] Let
+$\mathfrak{p}_i = \sqrt{\mathfrak{q}_i}$, so
+$\mathfrak{p}_1,\cdots,\mathfrak{p}_n$
+are the associated primes of $A$.\\
+
+`$\Leftarrow$'. Say $U$ contains
+$\mathfrak{p}_1,\cdots,\mathfrak{p}_n$, and let $\mathfrak{a}$ be
+the ideal associated to the schematic closure $\overline{U}$ of
+$U$. Since $\mathfrak{p}_i \in U$, and $U \subset \overline{U}$,
+we have $(A/\mathfrak{a})_{\mathfrak{p}_i/\mathfrak{a}} \cong
+A_{\mathfrak{p}_i}$. Therefore, for any $f \in \mathfrak{a}$, $f =
+0$ in $A _{\mathfrak{p}_i}$, so $\text{Ann}(f)$ meets
+$A/\mathfrak{p}_i$. By prime avoidance [an actual term in
+Eisenbud's book, or just by general messing around], there is some
+$x \in \text{Ann}(f)$ such that $x \not \in \mathfrak{p}_1 \cap
+\cdots \cap \mathfrak{p}_n$. Therefore $x$ is not a zero divisor
+(and $x \neq 0$), so $f = 0$. Therefore $\mathfrak{a} = (0)$, so
+$\overline{U} = X$ and therefore $U$ is schematically dense.\\
+
+`$\Rightarrow$' Suppose its false. Then $U$ is schematically dense
+but without loss of generality $\mathfrak{p}_n \not \in U$. We may
+assume $\{i : \mathfrak{p}_i \not \supset \mathfrak{p}_n\}$ =
+$\{1,\cdots,r\}$; $r < n$. Let $\mathfrak{a} = \mathfrak{q}_1 \cap
+\cdots \cap \mathfrak{q}_r$. By minimality, $\mathfrak{a} \neq
+(0)$. So it will suffice to show that $U \subset
+\spec{(A/\mathfrak{a})}$.
+
+Let $\p \in U$. Since $\p_n \not \in U$, $\p_n \not \rightarrow
+\p$ [make this arrow squiggly], so $\p_n \not \subset \p$.
+Therefore $\p \not \supset \p_i$, for all $i > r$. Let $S = A /
+\p$; then $S$ meets $\p_i$ for all $i > r$, so $S^{-1}\q_i = (1)$
+for all $i > r$. Therefore $(0) = \bigcap_{i=1}^nS^{-1} \q_i =
+\bigcap _{i = 1}^r S^{-1}\q_i = S^{-1}\mathfrak{a}$, so
+$S^{-1}\mathfrak{a} = (0)$. Therefore $\p \in
+\spec{(A/\mathfrak{a})}$. ($f \in \mathfrak{a} \Rightarrow
+\text{Ann}(f)$ meets $S \Rightarrow f \in \p$ primeness). also
+$(A/\mathfrak{a})_{\p/\mathfrak{a}} \cong A_{\p}$, since LHS $ =
+A_{\p}/\mathfrak{a}/{\p} = A_{\p}/(0)$. So $U \subset
+\spec{(A/\mathfrak{a})}$ as schemes [[here he drew a big frowny
+face with x'ed out eyes]].\end{proof}
+
+\begin{proposition}
+
+Lelt $Y$ be an integral, regular, noetherian scheme of dimension
+1, let $P \in Y$ be a closed point, and let $X \subset
+\mathbb{P}^n_{Y/P}$ be a closed subscheme which is flat over
+$y/P$. Then there exists a unique closed sobscheme $\overline{X}$
+of $\mathbb{P}^n_{Y}$ such that $\overline{X} \cap
+\mathbb{P}^n_{Y/P} = X$ and $\overline{X}$ is flat over $Y$.
+\end{proposition}
+
+\begin{proof} \textbf{Existence} Let $\overline{X}$ be the
+schematic closure of $X$ in $\mathbb{P}^n_{Y}$. We didn't add any
+associated points, so
+its still flat.\\
+
+\textbf{Uniqueness}. Suppose $X'$ also saatisfies the condition.
+We have to have $X' \subset_{\text{subschemes}}\overline{X}$ (by
+definition of schematic closure). since $\overline{X}$ is not
+schematically dense in $X'$, $X'$ contains some associated point
+not in $\overline{X}$. Then that point lies over $P$ (because
+where else could it lie), contradicting flatness. \end{proof}
+
+[[We didn't really need the fact that we were in
+$\mathbb{P}^n_{Y}$. We just wanted to be concrete, and in
+applications we only use $\mathbb{P}^n_{Y}$. In practice you could
+use any noetherian scheme in place of $\mathbb{P}^n_{Y}$.]]
+
+The last application has to do with bases of arbitrary dimension.
+
+\begin{theorem} Let $T$ be an integral noetherian scheme, and let
+$X \subset \mathbb{P}^n_{T}$ be a closed subscheme. Then for each
+point $t \in T$ (closed or not), lets let $P_t \in \mathbb{Q}[z]$
+be the Hilbert polynomial of the fiber $X_t = X \times_T k(t)$
+(which is a closed subscheme of $\mathbb{P}^n_{k(t)}$ - calculate
+the Hilbert polynomial by calculating dimensions of things over
+$k(t)$).
+
+Then $X$ is flat over $T$ iff $P_t$ is independent of $t$.
+\end{theorem}
+
+\begin{proof} Recall the definition of Hilbert Polynomial: $P_t$
+is characterized by $P_t(m) = \text{dim}_{k(t)} H^o(X_t,\O(m))$
+for all $m \gg 0$. Also, $k(t)$ is not necessarily closed, but by
+a flat base change, we can pass to the algebraic closure.
+
+We will prove this theorem by first generalizing it: More
+generally let $\F$ be a coherent sheaf on $X$. Then we can write
+$\F_t = \F|_{X_t} = i^*\F$, where $i:X_t \rightarrow X$ is the
+inclusion map. So we have a Hilbert polynomial of $\F_t$" \[
+P_t(m) = h^0(X_t,\F_t(m)), m \gg 0.\] So we may assume $X =
+\mathbb{P}^n_{T}$ (let $\F = \O_{\text{old } X}$ [[literally waved
+hands and said `usual trick']]).
+
+Also, we may assume $T = \spec{A}$, with $A$ a local noetherian
+ring.\\
+
+So the situation is $T = \spec{A}$ as above, $X =
+\mathbb{P}^n_{A}$,
+and $\F$ is coherent on $X$. [[Now we prove some claims]].\\
+
+\textbf{Claim 1}. $\F$ is flat over $T$ iff $H^0(X,\F(m))$ if a
+free $A$ module (of finite rank - this part always holds) for $m
+\gg
+0$.\\
+
+\textbf{Proof}. `$\Rightarrow$'. Let $\mathscr{U}$ be the standard
+open affine cover of $\mathbb{P}^n_{A}$ [[offhand I can't think of
+why it has to be the standard one, but why not?]]. Then
+$H^i(\U,\F(m)) = H^i(X,\F(m)) = 0$ for all $m \gg 0$ So the
+sequence (imagine the kernels and cokernels) \[ 0 \rightarrow
+H^0(X, \F(m)) \rightarrow C^0(\U,\F(m)) \rightarrow C^1(\U,\F(m))
+\rightarrow \cdots \rightarrow C^{n-1}(\U,\F(m)) \rightarrow
+C^{n}(\U,\F(m)) \rightarrow 0 \] (no verb either).
+
+All the $C^{i}(\U,\F(m))$ are flat over $A$. [[Twisting by $m$
+doesn't affect flatness - you can check it locally, and it is
+unaffected locally. So then you have a short exact sequence on the
+right where everything is flat, and working your way back all the
+kernels and cokernels are flat too.]] Splitting this into short
+exact sequences, you get that $\mathscr{K}_i$ is flat over $A$ for
+all $i$, so $H^0(X,\F(m))$ is flat over $A$ by (III 9.1A(e)).
+Also, $H^0(X, \F(m))$ is finitely generated, so by (III 9.1A(f)),
+its free (of finite rank).
+
+\end{proof}

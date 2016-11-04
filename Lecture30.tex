@@ -1,0 +1,204 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{30}
+ \sektion{Lecture 30}
+
+ \underline{Last time:} We did Corollary (\ref{lec29cor}).
+ Compare this with the \emph{inverse} function theorem.\\
+ We also did Theorem (\ref{lec29etale})
+ \begin{proof}
+ ($\Leftarrow$) $f|_U$ is a composition of smooth morphisms, so it
+ is smooth, of relative dimension $0+n=n$.\\
+ ($\Rightarrow$)  Pick local sections $g_1,\dots, g_n$ of $\O_X$
+ near $x$ such that $dg_1,\dots,dg_n$ form a basis for
+ $\Omega_{X/Y}$ near $x$.  Let $U$ be an open neighborhood of $x$,
+ where this happens.  Let $g:U\to \A^n_Y$ be the map given by
+ $(g_1,\dots, g_n)$ (think of the $g_i$ as maps $X\to \A^1_Y$).
+ Then note that $\Omega_{\A^n_Y/Y}$ is free with basis
+ $dx_1,\dots, dx_n$.  Then $g^* \Omega_{\A^n_Y/Y}$ is free with
+ basis $g^*dx_1,\dots, g^*dx_n$, but these are just $dg_1,\dots,
+ dg_n$ because $g^*dx_i=d(g^*x_i)=dg_i$.  So
+ \[
+    g^*\Omega_{\A^n_Y/Y} \to \Omega_{X/Y}
+ \]
+ is an isomorphism, so $g$ is \'etale.
+ \end{proof}
+
+ \marginpar{Riemann-Roch (for curves)}
+
+ \underline{Riemann-Roch (for curves):}  For this section,
+ \emph{curves} (varieties of dimension 1, thus over an
+ algebraically closed field) are assumed to be projective and
+ non-singular (= smooth).  If $X$ is such a curve, we have that
+ $p_a(X)=p_g(X)$; call this value $g(X)$ or the \emph{genus}.  We
+ have that $g\ge 0$ (since one of these is the dimension of some
+ $H^1$), and all integers $\ge 0$ occur.
+
+ \underline{Divisors and line sheaves on curves:} Weil divisors
+ and Cartier divisors are the same thing.  Recall that a Weil
+ divisor is of the form $\sum n_P P$, where the $P$ are closed points,
+ and $n_P$ are integers, almost all of which are zero. A Cartier
+ divisor is a pull-back for a dominant (i.e. finite) morphism of
+ curves.  If $f\in K(X)^{\times}$ and $P\in X$ a closed
+ point\footnote{We're usually using closed points ... if I don't say it, I probably meant
+ to.}.  Then $\O_{X,P}$ is a dvr with fraction field $K(X)$, so we
+ can get $n_P=v(F)\in \mathbb{Z}$.  note that $n_P=0$ for almost
+ all $P$.  Thus, we get a principal divisor $(f)=\sum n_P P$.  Two
+ divisors are equivalent ($D_1\sim D_2$) if the difference is
+ principal.  We get a homomorphism $K(X)^{\times} \to \div X$.
+ The cokernel is the group of divisor classes, $\cl X$.  For all
+ $D$, we can define a line sheaf $\O(D)$ (or $\L(D)$), defined as
+ a subsheaf of the constant sheaf $K(X)$.  Then $1\in K(X)$
+ corresponds to a non-zero rational section of $\O(D)$, called
+ $1_D$.
+
+ Given a rational section $s\not=0$ of a line sheaf $\L$, form a
+ divisor as follows:  Given $P\in X$, let $s_0$ be a local
+ generator for $\L$ near $P$, then $s/s_0\in K(X)^{\times}$, so
+ let $n_P=v(s/s_0)$.  This is well-defined, so define $(s)=\sum
+ n_P P$.  For two rational sections $s,t\not=0$ of $\L$, $(s)-(t)$ is
+ a principal divisor, equal to the principal divisor $(s/t)$ (note
+ that $s/t$ is a non-zero rational function).  More generally, if
+ $s_1,s_2$ are rational sections of $\L_1$ and $\L_2$, resp., then
+ $s_1\otimes s_2$ is a non-zero rational section of $\L_1\otimes
+ \L_2$, and $(s_1\otimes s_2)=(s_1)+(s_2)$.  Also, recalling $1_D$
+ as a rational section of $\O(D)$, we have $(1_D)=D$.  Recall also
+ that $\O(D_1+D_2)\cong \O(D_1)\otimes \O(D_2)$, so we get an
+ isomorphism $\cl X \xrightarrow{\sim} \pic X$, taking $D$ to
+ $\O(D)$.  The reverse map is obtained by taking any non-zero
+ rational section, and taking its divisors.  All of this is
+ functorial.
+
+ A divisor $D=\sum n_P P$ is \emph{effective} if $n_P\ge 0$ for
+ all $P$.  Let $s\not=0$ be a rational section of $\L$, then $(s)$
+ is effective if and only if $s\in \Gamma(X,\L)$.
+
+ \begin{definition}
+ Let $D$ be a divisor on $X$.  Then the \emph{complete linear
+ system}, written $|D|$, is the set of effective divisors linearly
+ equivalent to $D$.
+ \[
+    |D|\buildrel{\leftrightarrow}\over{1-1} (H^0(X,\O(D))\smallsetminus \{0\})/k^*
+ \]
+ given by $(s)\leftarrow s$, and $E=D+(f)\mapsto f$ (in $K(X)$,
+ this is $\{f\in K(X)^{\times}: D+(f)\ge 0\} $).  Then $|D|$ has an
+ algebraic structure of dimension
+ $\underbrace{h^0(X,\O(D))}_{=:l(D)}-1$  A \emph{linear system}
+ associated to $D$ is a subset of a complete linear system
+ corresponding to a linear subspace of
+ $H^0(X,\O(D))\smallsetminus\{0\}$.  $D_1\sim D_2$ implies that
+ $l(D_1)=l(D_2)$.
+ \end{definition}
+ All of this behaves nicely with respect to pull-backs (via
+ dominant morphisms of curves).
+
+ \begin{definition}
+ If $D=\sum n_P P$, then $\deg D=\sum n_P$.  If $D$ is principal,
+ say $(f)$, then $\deg D=0$.
+ \end{definition}
+ \begin{proof}
+ If $\phi:X\to Y$ is a finite (= dominant) morphism of curves and
+ $E$ is a divisor on $Y$, then
+ \begin{align*}
+    \deg(\phi^* D) &= \underbrace{(\deg \phi)(\deg
+    E)}_{[K(X):K(Y)]}\\
+    &= k- \text{length of fibers over closed points}
+ \end{align*}
+ The function $f$ gives a finite map (provided $f\not\in k$; $f\in k\Rightarrow (f)=0$, so $\deg
+ D=0$) $\phi:X\to \P^1$ and $f=\phi^*z$ so
+ $(f)=(\phi^*z)=\phi^*(z) = \phi^*([0]-[\infty])$, so $\deg D =
+ (\deg \phi)\underbrace{(\deg (z))}_0 = 0$.
+ \end{proof}
+ Thus, the degree gives well-defined group homomorphisms:
+ \[\xymatrix{
+    \cl X\ar[r]\ar@{}[d]|{\parallel}^{\wr} & \Z\\
+    \pic X\ar[r] & \Z
+ }\]
+
+ Since $X$ is a curve, $\omega_X=\wedge^1 \Omega_{X/k} =
+ \Omega_{X/k}$.  Any divisor of $X$ associated to $\omega_X$ is
+ called ``the'' canonical divisor of $X$, written $K$.
+
+ \begin{theorem}[Riemann-Roch for curves]
+ Let $X$ be a curve over $k$, let $K$ be a canonical divisor of
+ $X$, and let $D$ be any divisor on $X$.  Then
+ \[
+    l(D)-l(K-D) = \deg D +1-g.
+ \]
+ where $g=g(X)$ (Note that the LHS is  independent of the choice
+ of $K$)
+ \end{theorem}
+ \begin{proof}
+ Note that $l(D)=h^0(X,\O(D))$ and
+ \begin{align*}
+ l(K-D)&=h^0(X,\O(K-D))\\
+ &=h^0(X,\omega_X\otimes \O(D)^{\vee})\\
+ &=_{\text{duality}} h^1(X,\O(D))
+ \end{align*}
+ so LHS $= \chi (\O(D))$
+
+ Now show:
+ \begin{itemize}
+ \item[(1)] $\chi(\O(D))=\deg D$ is independent of $D$
+ \item[(2)] compute $\chi(\O(D))$ for one particular $D$
+ \end{itemize}
+ Start with (2): if $D=0$, then $\O(D)=\O_X$, and
+ $\chi(\O_X)=h^0(X ,\O_X)-h^1(X,\O_X)=1-g$. So $\chi(\O(D))=\deg D
+ = 1-g$ if $D=0$.
+
+ Now we'll do (1): $\chi(\O(D+P))=\underbrace{\deg(D+P)}_{\deg
+ D+1} = \chi(\O(D)) - \deg D$ for all $D,P$.  That is,
+ $\chi(\O(D+P))=\chi(\O(D))+1$
+
+ Regard $P$ as a reduced closed subscheme of $X$; $i:P\to X$.  Its
+ sheaf of ideals is $\O(-P)$, so
+ \[
+    0\to \O(-P) \to \O_X \to \underbrace{k(P)}_{\text{skyscraper}} \to 0
+ \]
+ is exact.  Tensor with $\O(D+P)$, and note that $k(P)\otimes
+ \underbrace{\O(D+P)}_{\txt{locally triv\\ near $P$}}\cong k(P)$
+ (non-canonically),so
+ \[
+    0\to \O(D) \to \O(D+P) \to k(P) \to 0
+ \]
+ is exact, so
+ \[
+    \chi(\O(D+P)) = \chi(\O(D))+\chi(k(P)).
+ \]
+ \begin{align*}
+ \chi(k(P) &= h^0(X,i_*\O_P) - h^1(X,i_*\O_P)\\
+ &= h^0(P,\O_P)-h^1(P,\O_P)\\
+ &= 1-0 = 1
+ \end{align*}
+ \end{proof}
+
+ What happens if $D=K$?  $\underbrace{l(K)-l(0)}_{-\chi(\O_X)=g-1}=\deg(K)+1-g$,
+ so we have that $\deg(K)=2g-2$.
+
+ To compute $K$, pick any $f\in K(X)\smallsetminus k$.  Compute
+ $(df)$ (where $df$ is the rational section of $\Omega_{X/k}$).
+
+ \begin{lemma}
+ Let $D$ be an effective divisor.  Then $\deg D\ge 0$, and if
+ $\deg D=0$, then $D=0$.
+ \end{lemma}
+
+ \begin{lemma}
+ Let $D$ be a divisor on $X$ with $l(D)\not=0$.  Then $\deg D\ge
+ 0$, and if $\deg D=0$, then $D$ is principal.
+ \end{lemma}
+ \begin{proof}
+ Apply the earlier lemma to some effective divisor $E$, linearly
+ equivalent to $D$ (such an $E$ exists by the assumption).
+ \end{proof}
+
+ \begin{proposition}
+ If $X$ is a curve of genus 0, then $X\cong \P^1$.
+ \end{proposition}
+ \begin{proof}
+ let $P\not= Q$ be two distinct points on $X$, and apply RR to
+ $D=P-Q$.  Then
+ $l(P-Q)-l(\underbrace{K-P+Q}_{\deg =
+ -2})=\underbrace{\deg(P-Q)}_0+\underbrace{1-g}_1$.  So
+ $l(P-Q)=1$, so since $\deg(P-Q)=0$, $P-Q$ is principal.  Then $f$
+ gives a morphism $X\to \P^1$, which is thus an isomorphism.
+ \end{proof}

@@ -1,0 +1,57 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{21}
+ \sektion{Lecture 21}
+
+Recall the previous definition.
+
+\begin{proposition} If $f_1,\dots, f_r$ is a regular sequence for
+an $A$-module $M$, then
+ \[
+ h_i(K_{\cdot}(f_1,\dots,f_r,M)) = \left\{\begin{array}{ll}
+ M/(f_1,\dots,f_r)M & \text{if } i=0\\
+ 0 & \text{if } i>0
+ \end{array} \right.
+ \]
+ \end{proposition}
+ ($i=0$ is trivial ... you don't even need the regular sequence.)
+ Thus, if $M$ is free, the Kozul complex is a free resolution of
+ $M/(f_1,\dots, f_r)M$.
+
+ \begin{theorem}
+ Let $X$ be a locally complete intersection closed subscheme of
+ $P=\P^N_k$, with ideal sheaf $\I$.  Then
+ \[
+     \omega_X^{\circ} = \omega_P \otimes
+     \wedge^r(\I/\I^2)\check{}.
+ \]
+ In particular, the dualizing sheaf is a line sheaf on $X$.
+ \end{theorem}
+ \begin{proof}
+ in the works
+ \end{proof}
+
+ \begin{remark} This works for any field.
+ \end{remark}
+
+ \underline{Next:} Compare $\omega_X^{\circ}$ with $\omega_X$ when
+ $X$ is a non-singular variety.
+
+ We prove half of a theorem from chapter II:
+ \begin{theorem}[II.8.17] Let $X$ be a non-singular variety over
+ an algebraically closed field $k$.  Let $Y\subseteq X$ be an
+ irreducible closed subscheme, and let $\I$ be its sheaf of
+ ideals.  Then $Y$ is non-singular if and only if
+ \begin{itemize}
+  \item[(1)] $\Omega_{X/Y}$ is locally free, and
+  \item[(2)] the second exact sequence is a short exact sequence
+  \[
+    0\to \I/\I^2 \to \Omega_{X/k}\otimes \O_Y\to \Omega{Y/k} \to
+    0.
+  \]
+  \end{itemize}
+  In this case, $\I/\I^2$ is locally free (on $Y$) of rank
+  $r=\codim Y$ and $Y$ is a locally complete intersection in $X$.
+  \end{theorem}
+  \begin{proof}[Half Proof]
+  in the works
+  \end{proof}

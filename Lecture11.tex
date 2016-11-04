@@ -1,0 +1,255 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{11}
+ \sektion{Lecture 11}
+
+We will show that $\check H^p(\U,\F)\xrightarrow{\sim} H^p(X,\F)$
+whenever $\U$ is such that $\F|_{U_{i_0\dots i_p}}$ is acyclic
+with respect to derived functor cohomology.
+
+Define a sheaf version of $C^{\cdot}(\U,\F)$ in the following way:
+\[
+    \C^p(\U,\F) = \prod_{i_0<\cdots <i_p} f_*(\F|_{U_{i_0\dots
+    i_p}})
+\]
+where $f$ has components $f_{i_0\dots i_p}:U_{i_0\dots
+i_p}\hookrightarrow X$.  Then we have that
+$\Gamma(X,\C^p(\U,\F))=C^p(\U,\F)$.  Also, define
+$d:\C^p(\U,\F)\to \C^{p+1}(\U,\F)$ in the obvious way.
+
+\begin{lemma}\label{L:lec11cechexact}
+For all $X,\U,\F$, the complex $\C^{\cdot}(\U,\F)$ is a resolution
+of $\F$.
+\end{lemma}
+\begin{proof}
+Define $\epsilon: \F \to \C^0(\U,\F)=\prod_i f_*(\F|_{U_i})$ by
+$\F(V)\ni s\mapsto (s|_{U_i\cap V})_i$.  Then we need to show that
+the sequence
+\[
+    0\to \F \xrightarrow{\epsilon} \C^0(\U,\F)\xrightarrow{d}
+    C^1(\U,\F) \xrightarrow{d} \cdots
+\]
+is exact.
+
+First, $\epsilon$ is injective because it is injective on $\F(V)$
+for all $V$ (since $\F$ is a sheaf).  So view $\F$ as a subsheaf
+of $\C^0(\U,\F)$.  Then exactness at $p=0$ is equivalent to
+\[
+    \ker(\C^0(\U,\F)\to \C^1(\U,\F)) = \F.
+\]
+But that follows from
+\begin{align*}
+    \ker(\C^0(\U,\F)(V)\to \C^1(\U,\F)(V)) &= \ker(C^0(\U|_V,\F|_V)\to
+    C^1(\U|_V,\F|_V))\\
+     &= \check H^0(\U|_V,\F|_V) = \Gamma(V,\F|_V)\\
+     &= \F(V)
+\end{align*}
+
+To show exactness everywhere else, fix $x\in X$ and $j$ such that
+$x\in U_j$.  For each $p\ge 1$, define
+\[
+    k:\C^p(\U,\F)_x\to \C^{p-1}(\U,\F)_x
+\]
+in the following way: given $\alpha_x\in \C^p(\U,\F)_x$, lift it
+to $\C^p(\U,\F)(V)$ for some open neighborhood $x\in V\subseteq
+U_j$.  Then for any $i_0<\cdots<i_{p-1}$, let
+\[
+    (k\alpha)_{i_0\dots i_{p-1}} = \alpha_{j,i_0\dots i_{p-1}}.
+\]
+Then $k(\alpha_x) = (k\alpha)_x$.  This is well defined
+(independent of $V$).
+\[\xymatrix{
+    \C^0(\U,\F)\ar[r]^d \ar@<-2pt>[d]_{\text{id}} \ar@<2pt>[d]^0 &
+    \C^1(\U,\F)\ar[r]^d \ar[dl]_k \ar@<-2pt>[d]_{\text{id}} \ar@<2pt>[d]^0 &
+    \C^1(\U,\F)\ar[r]^d \ar[dl]_k \ar@<-2pt>[d]_{\text{id}} \ar@<2pt>[d]^0 &
+    \cdots \ar[dl]_k \\
+    \C^0(\U,\F)\ar[r]^d & \C^1(\U,\F)\ar[r]^d & \C^1(\U,\F)\ar[r]^d & \cdots\\
+}\]
+ \vspace{-5mm}
+\begin{itemize}
+ \item[] \begin{claim} $(kd+dk)(\alpha_x) = \alpha_x$ for all
+ $\alpha_x\in\C^p(\U,\F)_x$.  That is, $k$ is a homotopy between
+ the identity map on the complex $\C^{\cdot}(\U,\F)$ and the zero
+ map. \end{claim}
+ \begin{proof}[Proof of Claim]
+  Compute away:
+  \begin{align*}
+   (d(k(\alpha_x)))_{i_0\dots i_p} &= \sum_{l=0}^p (-1)^l
+   (k(\alpha_x))_{i_0\dots \hat i_l \dots i_p}|_{U_{i_0\dots
+   i_p}}\\
+   &= \sum_{l=0}^p (-1)^l \alpha_{j,i_0\dots \hat i_l \dots
+   i_p}|_{U_{i_0\dots i_p}}\\
+   (k(d(\alpha_x)))_{i_0\dots i_p} &= (d\alpha)_{j,i_0\dots i_p}\\
+   &= \alpha_{i_0\dots i_p} +
+   \sum_{l=0}^p (-1)^{l+1}\alpha_{j,i_0\dots \hat i_l \dots
+   i_p}|_{U_{i_0\dots i_p}}
+  \end{align*}
+  Now add the two and you get $\alpha_{i_0\dots i_p}$.
+ \renewcommand{\qedsymbol}{$\square_{\text{Claim}}$}
+ \end{proof}
+\end{itemize}
+
+Since the identity map on the complex $\C^{\cdot}(\U,\F)$ is
+homotopic to the identity, the induced maps on homologies are the
+same, so the homologies are zero\footnote{Another way to say this:
+if $\alpha$ is a cocycle, then we have that $\alpha =
+(kd+dk)\alpha = d(k\alpha)$, so it is a coboundary.}. That is, the
+sequence is exact for $p\ge 1$, as desired.
+\end{proof}
+
+\begin{lemma}\label{L:lec11cohommap}
+Let $X,\U,\F$ be as usual.  Then there is a map
+\[
+    \check H^p(\U,\F) \to H^p(X,\F)
+\]
+for all $p\in \mathbb{N}$ which is natural in $\F$.
+\end{lemma}
+\begin{proof}
+Let $0\to \F \to \I^{\cdot}$ be an injective resolution of $\F$.
+Then by Lemma (\ref{L:lec2lemma1}), there are maps $f^p$ for all
+$p\in \mathbb{N}$ such that
+\[\xymatrix{
+ 0 \ar[r] & \F \ar[r]^(.4){\epsilon}\ar@{}[d]|{\parallel} &
+ \C^0(\U,\F)\ar[r]^d \ar[d]^{f^0} & \C^1(\U,\F)
+ \ar[r]^d\ar[d]^{f^1} & \cdots\\
+ 0 \ar[r] & \F \ar[r]_{\epsilon} & \I^0\ar[r] & \I^1\ar[r] & \cdots
+}\] and the system of maps $f^{\cdot}$ is unique up to homotopy.
+Eliminating the first column and taking global sections, we have
+\[\xymatrix{
+ 0\ar[r] & C^0(\U,\F) \ar[r]^d \ar[d] & C^1(\U,\F)\ar[r]^(.6)d \ar[d] & \cdots \\
+ 0\ar[r] & \Gamma(X,\I^0)\ar[r] & \Gamma(X,\I^1)\ar[r] & \cdots
+}\] Taking homologies, we get well defined maps
+\[
+    \check H^p(\U,\F)\to H^p(X,\F)
+\]
+for all $p\in \mathbb{N}$.
+
+Finally, we need to show naturality.  That is, we need to show
+that for all maps $\F\to \G$, the box
+\[\xymatrix{
+ \check H^p(\U,\F) \ar[r]\ar[d] & H^p(X,\F)\ar[d]\\
+ \check H^p(\U,\G) \ar[r] & H^p(X,\G)
+}\] commutes.  To see this, let $\J^{\cdot}$ be an injective
+resolution of $\G$, then observe that the diagram of complexes
+\[\xymatrix{
+ C^{\cdot}(\U,\F) \ar[r]\ar[d] & \I^{\cdot}\ar[d]\\
+ C^{\cdot}(\U,\G) \ar[r] & \J^{\cdot}
+}\] commutes up to homotopy\footnote{I didn't actually check
+this.}. Thus, when we take homologies, we get a commutative
+diagram.
+\end{proof}
+
+\begin{lemma}
+Let $X,\U,\F$ be as usual.  If $\F$ is flasque, then
+\[ \check H^p(\U,\F)=0 \] for all $p>0$.
+\end{lemma}
+\begin{proof}
+For all $V\subseteq X$ open and for all $p$, we have
+\[\xymatrix{
+ \C^p(\U,\F)(X)\ar[r] \ar@{}[d]|{\parallel} &
+ \C^p(\U,\F)(V)\ar@{}[d]|{\parallel}\\
+ \prod \F(U_{i_0\dots i_p}) \ar[r] & \prod \F(U_{i_0\dots i_p}\cap
+ V)
+}\]where the bottom arrow is surjective because it is surjective
+componentwise.  Thus, the top arrow is surjective.  This shows
+that $\C^p(\U,\F)$ is flasque.  Thus, $\C^{\cdot}(\U,\F)$ is a
+flasque resolution of $\F$, so we can use it to compute derived
+functor cohomology.
+\begin{align*}
+ H^p(X,\F) &= h^p(\Gamma(X,\C^{\cdot}(\U,\F)))\\
+    &= h^p(C^{\cdot}(\U,\F))\\
+    &= \check H^p(\U,\F)
+\end{align*}
+But $H^p(X,\F)=0$ for all $p>0$ because $\F$ is flasque.
+\end{proof}
+
+\begin{theorem}[Exercise III.4.11] \label{T:lec11} \marginpar{\v{C}ech Cohomology
+agrees with Derived Functor Cohomology for the right $\U$} Let
+$X,\U,\F$ be as usual. Assume that $H^l(U_{i_0\dots
+i_p},\F|_{U_{i_0\dots i_p}})=0$ for all $p\in \mathbb{N}$,
+$i_0<\cdots i_p$, and $l>0$.  Then the maps from Lemma
+(\ref{L:lec11cohommap}) are isomorphisms:
+\[
+    \check H^p(\U,\F) \xrightarrow{\sim} H^p(X,\F).
+\]
+\end{theorem}
+\begin{proof}
+We apply induction on $p$.  If $p=0$, then both cohomologies are
+isomorphic to $\Gamma(X,\F$.
+
+For $p>0$, assume the result up to $p-1$.  Embed $\F$ into a
+flasque sheaf $\G$, and let $\R$ be the quotient:
+\[
+    0\to \F \to \G \to \R \to 0
+\]
+Then we get the exact sequence
+\[
+    0\to \F(U_{i_0\dots i_p}) \to \G(U_{i_0\dots i_p}) \to \R(U_{i_0\dots
+    i_p}) \to \underbrace{H^1(U_{i_0\dots i_p},\F|_{U_{i_0\dots
+    i_p}})}_{0\text{ by assumption}}
+\]
+That is,
+\begin{equation}\label{S:lec11seq}
+    0\to C^{\cdot}(\U,\F)\to C^{\cdot}(\U,\G) \to C^{\cdot}(\U,\R) \to 0
+\end{equation}
+is exact, so we get a long exact sequence in \v{C}ech cohomology:
+\[
+    0\to \check H^0(\U,\F) \to  \check H^0(\U,\G) \to  \check H^0(\U,\R)
+    \to  \check H^1(\U,\F) \to  \underbrace{\check H^1(\U,\G)}_{0\text{ since $\G$ flasque}}
+\]
+
+Let $0\to \F \to \I^{\cdot}$ and $0\to \R \to \J^{\cdot}$ be
+injective resolutions.  Then, as in Theorem (\ref{T:lec2thm}), we
+see that $\I^{\cdot}\oplus \J^{\cdot}$ is an injective resolution
+for $\G$. such that
+ \[\xymatrix{
+ & 0\ar[d] & 0\ar[d] & 0\ar[d]\\
+ 0\ar[r] &\F\ar[r]\ar[d] & \G\ar[r]\ar[d] & \R\ar[r]\ar[d] & 0\\
+ 0\ar[r]& \I^0\ar[r]\ar[d] & \I^0\times \J^0 \ar[r] \ar[d] & \J^0 \ar[r]
+ \ar[d] & 0\\
+ & \vdots & \vdots & \vdots
+} \] commutes.  Then we will get a diagram
+\[\xymatrix{
+ 0\ar[r] & C^{\cdot}(\U,\F)\ar[r] \ar[d] & C^{\cdot}(\U,\G) \ar[r] \ar[d] &
+ C^{\cdot}(\U,\R) \ar[r] \ar[d] & 0\\
+ 0\ar[r] & \Gamma(X,\I^{\cdot}) \ar[r] & \Gamma(X,\I^{\cdot}\oplus
+ \J^{\cdot}) \ar[r] & \Gamma(X,\J^{\cdot}) \ar[r] & 0
+}\tag{loose end 1}\] such that the rows are exact and it commutes.
+
+Taking long exact sequences, we get
+\[\xymatrix{
+    0\ar[r]& \check H^0(\U,\F) \ar[r] \ar[d]^{\wr} &  \check H^0(\U,\G) \ar[r] \ar[d]^{\wr}
+    &  \check H^0(\U,\R) \ar[r] \ar[d]^{\wr} &  \check H^1(\U,\F) \ar[r] \ar[d] &  0 \\
+    0\ar[r]& H^0(\U,\F) \ar[r]& H^0(\U,\G) \ar[r]&  H^0(\U,\R)
+    \ar[r]& H^1(\U,\F) \ar[r]&  0
+}\] So the map on the right must also be an isomorphism (though we
+still need to show it is the same as the map obtained in Lemma
+(\ref{L:lec11cohommap}) ... this is loose end 2).
+
+For all $p>1$, the long exact sequence obtained from
+(\ref{S:lec11seq}) give us that
+\[\xymatrix{
+ 0\ar@{}[r]|(.3){=} & \check H^{p-1}(\U,\G) \ar[r] &
+ \check H^{p-1}(\U,\R) \ar[d]^{\wr\text{ induction}} \ar[r]^{\sim}& \check H^p(\U,\F)\ar[r]\ar[d] & \check H^p(\U,\G)\ar@{}[r]|(.7){=} & 0 \\
+ 0\ar@{}[r]|(.3){=} & H^{p-1}(X,\G) \ar[r] & H^{p-1}(X,\R) \ar[r]^{\sim} & H^p(X,\F)\ar[r] &
+ H^p(X,\G) \ar@{}[r]|(.7){=} & 0
+}\]
+ To use induction, we need $\R$ to satisfy the hypothesis.  That
+ is, we need to check that $H^l(U_{i_0\dots i_p},\R|_{U_{i_0\dots
+ i_p}})=0$ for all $l>0$, $p\in \mathbb{N}$, and $i_0<\cdots<i_p$.
+ To see this, note that we have
+ \[
+    0\to \F|_{U_{i_0\dots i_p}} \to \G|_{U_{i_0\dots i_p}} \to
+    \R|_ {U_{i_0\dots i_p}}\to 0
+ \]
+ exact, so the long exact sequence in cohomology tells us that
+ \[
+    \underbrace{H^l(U_{i_0\dots i_p},\G|_{U_{i_0\dots i_p}})}_{0\text{ since $\G$ flasque}}
+    \to H^l(U_{i_0\dots i_p},\R|_{U_{i_0\dots i_p}}) \to \underbrace{H^{l+1}(U_{i_0\dots i_p},\F|_{U_{i_0\dots
+    i_p}})}_{0\text{ by assumption}}
+ \]
+ for all $l>0$, so $H^l(U_{i_0\dots i_p},\R|_{U_{i_0\dots
+ i_p}})=0$, as required.
+
+Now only two loose ends remain.
+\renewcommand{\qedsymbol}{\text{\tiny proof continued in next lecture}}
+\end{proof}

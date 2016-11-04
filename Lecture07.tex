@@ -1,0 +1,112 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{7}
+ \sektion{Lecture 7}
+
+Recall that $f:X\to Y$ is separated if $\Delta:X\to X\times_Y X$ is a closed
+immersion.
+
+\begin{proposition}
+If $f:X\to Y$ is a morphism of affine schemes, then it is
+separated.
+\end{proposition}
+\begin{proof}
+Let $X=\spec A$ and $Y=\spec B$.  Then $X\times_Y X = \spec
+(A\otimes_B A)$ and $\Delta$ corresponds to the morphism
+$A\otimes_B A\to A$, $a\otimes a'\mapsto aa'$, which is onto.
+Thus, $\Delta$ is a closed immersion.
+\end{proof}
+
+\begin{corollary}
+All affine schemes are separated.
+\end{corollary}
+\begin{corollary}
+A morphism $f:X\to Y$ is separated if and only if $\Delta(X)$ is a
+closed subset of $X\times_Y X$
+\end{corollary}
+\begin{proof}
+($\Rightarrow$) obvious.
+
+($\Leftarrow$) We need to show that
+\begin{itemize}
+ \item[(1)] $\Delta$ is a homeomorphism onto $\Delta(X)$
+ \item[(2)] $\O_{X\times_Y X} \to \Delta_* \O_X$ is onto
+\end{itemize}
+
+(1) We have
+\[\xymatrix{
+ X\ar@/_4ex/[ddr]_{\text{id}_X}\ar@{.>}[dr]^{\Delta}
+ \ar@/^4ex/[drr]_{\text{id}_X} \\
+ & X\times_Y X \ar[r]^(.6){\pi_2} \ar[d]^{\pi_1} & X\ar[d]^f\\
+ & X\ar[r]^f & Y
+}\]
+ Since $\pi_1\circ \Delta:X\to \Delta(X)\to X$ is the identity,
+ $\Delta$ must be one to one, and $\pi_1$ is a continuous inverse,
+ so $\Delta$ is a homeomorphism $X\to \Delta(X)$.
+
+(2) It is enough to look at stalks.  Let $P=\Delta(P')\in
+\Delta(X)$ for some $P'\in X$.  Restrict to an open affine
+neighborhood $V$ of $f(P')$ in $Y$, and an open affine
+neighborhood $U$ of $P'$ in $f^{-1}(V)$.  Then we've reduced to
+the affine case, where we know the result holds.
+\end{proof}
+
+\begin{theorem}[Valuative Criterion of Separatedness]
+\marginpar{Valuative Criterion for Separatedness}
+A morphism $f:X\to Y$ of noetherian schemes is separated if and
+only if the following criterion holds: for any field $K$ and any
+valuation ring $R$ of $K$ (Frac($R)=K$), and for any diagram
+\[\xymatrix{
+ U:= \spec K \ar[r] \ar[d]^i & X\ar[d]^f\\
+ T:= \spec R \ar[r] \ar@{.>}[ur]^{\exists \le 1} & Y
+}\] there exists at most one $h:T\to X$ such that the diagram
+commutes.
+\end{theorem}
+
+\begin{remark}
+\begin{itemize}
+ \item[(1)] You really only need $X$ noetherian.
+ \item[(2)] Criterion fails for the affine line with the doubled
+ origin.
+ \item[(3)] Have to use valuation rings rather than curves.
+\end{itemize}
+\end{remark}
+
+\begin{lemma}
+Let $R,K,U,T$ be as above, and let $X$ be a scheme, then
+\begin{itemize}
+ \item[(a)] To give a map $U\to X$ is equivalent to giving a point
+ $x\in X$ and a field extension $k(x)\hookrightarrow K$, where
+ $k(x)=\O_x/\mathfrak{m}_x$.
+ \item[(b)] Giving a map $T=\spec R \to X$ is equivalent to giving
+ points $x_0,x_1\in X$ with $x_1\rightsquigarrow x_0$
+ and\footnote{$x_1\rightsquigarrow x_0$ means that $x_0$ is a
+ specialization of $x_1$.  i.e. $x_0$ is in the closure of
+ $\{x_1\}$} an inclusion $k(x_1)\hookrightarrow K$ such that if
+ you let $z=\overline{\{x_1\}}\subseteq X$ (with reduced induced
+ subscheme structure), then $R$ dominates the local ring
+ $\O_{X,z}$
+\end{itemize}
+\end{lemma}
+\begin{proof}
+in the works.
+\end{proof}
+
+\begin{lemma}
+Let $f:X\to Y$ be a quasi-compact morphism of schemes, and let
+$Z=f(X)\subseteq Y$.  Then $Z$ is closed if and only if it is
+stable under specialization.
+\end{lemma}
+\begin{proof}
+in the works.
+\end{proof}
+
+\begin{remark}
+Since $X$ is noetherian, $\Delta: X\to X\times_Y X$ is
+quasi-compact.
+\end{remark}
+
+\begin{proof}[Proof of Valuative Criterion]
+in the works
+
+\renewcommand{\qedsymbol}{\text{\tiny proof continued in next lecture}}
+\end{proof}

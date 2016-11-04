@@ -1,0 +1,224 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{31}
+ \sektion{Lecture 31}
+
+ Comments on Homework 12:
+ \begin{itemize}
+ \item[(i)]Common mistake (\#1) was failing to realize the difference between a closed point and a rational point.  $X$
+ defined by $y^2=x^p-t$.  There is a point in $X$ corresponding to
+ the point $(t^{1/p},0)$, namely $P= \spec k[x,y]/(y,x^p-t)$. Then
+ $k(P)=k(t^{1/p})$.  This is a closed, but not rational point.
+ \item[(ii)] (\#2) This can be used to \emph{define} \'etale
+ (provided you rephrase it not to require that
+ $k(x)\hookrightarrow \hat \O_x$
+ \item[(iii)](\#3) This is an example of the general principal
+ that irreducible components in $\spec \hat \O_{X,x}$ can be
+ separated in an \'etale cover.
+ \end{itemize}
+
+ Back to Riemann-Roch.  Again, curves are smooth and projective
+ over an algebraically closed field $k$, until we say otherwise.
+
+ Recall that we have $\deg:\pic X\to \Z$ well-defined surjective group
+ homomorphism.
+
+ \begin{definition}
+ $\pic^0 X =$ the kernel of $\deg$, which is $\{\L\in \pic X|
+ \deg(\L)=0\}$.
+ \end{definition}
+ If $X$ has genus 0, then $X\cong \P^1$, so $\pic X=\Z$ (via
+ $n\leftrightarrow \O(n)$, so $\pic^0 X$ is trivial.  In genus
+ $>0$, $\pic X$ is non-trivial.  Pick two distinct points $P,Q$.
+ Then $\O(P-Q)\not\cong \O_X$ (lest $X\cong \P^1$), so $\pic^0
+ X\not=0$.
+
+ Genus 1 curves:  Let $X$ be a curve of genus 1 and fix $P_0\in
+ X$.  Then we have a map $\phi:X(k)\to \pic^0 X$ given by
+ $P\mapsto \O(P-P_0)$.
+
+ \begin{remark}
+   The canonical divisor $K$ is $\sim 0$.  By RR applied to the
+   divisor 0, $l(0)-l(K)=1-l(k)=0$.  So $l(K)=1$.  But $\deg
+   K=2g-2 =0$, so $K\sim 0$ by an earlier lemma.
+ \end{remark}
+
+ \begin{proposition}
+   $\phi$ as above is a bijection.
+ \end{proposition}
+ \begin{proof}
+ 1-1: $\phi(P)=\phi(Q) \Leftrightarrow P-P_0\sim Q-P_0 \sim P-Q
+ \sim 0$, which cannot happen (lest $X\cong \P^1$)
+
+ Onto: Pick $\L\in \pic^0 X$, and let $D$ be a corresponding
+ divisor.  Apply RR to $D+P_0$:
+ \[
+    l(D+P_0)-l(K-D-P_0) = 1+1-g =1.
+ \]
+ so $l(D+P_0)=1$, so $D+P_0\sim Q$, for an effective divisor $Q$.
+ Then $D\sim Q-P_0$, so $\L=\phi(Q)$
+ \end{proof}
+
+ \begin{corollary}
+ There is a canonical (depending on choice of $P_0$) group
+ structure on $X(k)$ given by $\phi$ and the group structure on
+ $\pic^0 X$.
+ \end{corollary}
+
+ \begin{definition}
+ An \emph{elliptic curve} is a smooth curve of genus 1 over a
+ field $k$ together with a choice of rational point $P_0\in X(k)$.
+ \end{definition}
+
+ Note that $\phi(P_0)=\O(P_0-P_0)=\O_X$, so $P_0$ is the identity
+ element.  Let's call it 0 from now on.
+
+ Apply RR to some multiples of $[0]$:
+ \[
+    l([0])-\underbrace{l(K-[0])}_0 = 1+1-g =1 = \dim
+    (H^0(X,\O([0]))=k)
+ \]
+ where we think of $\O([0])$ as a subsheaf of $K(X)$. Similarly
+ \[
+    l(2[0])=2
+ \]
+ A basis of $H^0(X,\O(2[0]))$ is $1,x$.\\
+ $l(3[0])=3$ ... basis is $1,x,y$.\\
+ $l(4[0])=4$ ... basis is $1,x,y,x^2$.\\
+ $l(5[0])=5$ ... basis is $1,x,y,x^2,xy$.\\
+ $l(6[0])=6$ ... basis is $1,x,y,x^2,xy$, ($x^2$ or $y^2$).\\
+
+ So $1,x,y,x^2,xy,x^2,y^2$ are linearly dependent over $k$, and the
+ resulting function $f$ \emph{does} involve $y^2$ and $x^3$.  By
+ Exercise 1.3, $X\smallsetminus\{0\}$ is affine, and $x,y$ generate
+ its affine ring: ($H^0(X,\O(n\cdot[0]))$ has basis
+ $1,x,y,x^2,xy,x^3,x^2y, ...$), so $k[x,y]$ maps onto the affine
+ ring, and the kernel is $(f)$.  So $X$ is the projective closure
+ of $\spec k[x,y]/(f)$ in $\P^2$.  So it is a non-singular cubic in
+ $\P^2$, and it has only one point at infinity, namely 0.
+
+ If the characteristic of $k$ is not 2 or 3, then we can do a
+ linear coordinate change so that $f$ is $y^2=4x^3+ax+b$ with
+ $a,b\in k$.  This is called Weierstrass form.
+
+ Let $P=(x_0,y_0)\in X$, and let $P'=(x_0,-y_0)$.  Then
+ $[P]+[P']\sim 2\cdot[0]$ because $(x-x_0) = [P]+[P']-2[0]$.  So
+ $P'=-P$ in the group.  Also, if $P,Q,R$ are colinear, then
+ \[
+    [P]+[Q]+[R]-3[0] = \text{the principal divisor } (\text{equation of the line})
+ \]
+ so $P+Q+R=0$ in the group law, so $Q+R=P'$.
+
+ \marginpar{insert picture around here}
+
+ \emph{Varieties over arbitrary fields:} now $k$ may not be
+ algebraically closed.
+
+ \underline{Examples:}
+ \begin{itemize}
+ \item[(i)] Let $k$ be a field.  On $\A^1_k=\spec k[x]$, you have
+ the generic point, plus the closed points;  also, $\{\text{closed
+ points}\} \leftrightarrow \{\text{irreducible monics}\}/\text{action of Aut}_k(\bar k)$
+ \item[(ii)] $\sqrt{2}\in \A^1_{\Q}$, only it is paired with
+ $-\sqrt{2}$. $\spec \Q[x]/(x^2-2)$.  $k{P}=\Q[\sqrt{2}]$.  it is
+ a closed point, but not a rational point.
+ \item[(iii)] Let $k=\mathbb{F}_p(t)$.  Then $\sqrt[p]{t}\in
+ \A^1_k$, realized as $\spec k[x]/(x^p-t)$.  When we base change
+ to $\bar k$, we get $\spec \bar k[x]/(x-t^{1/p})^p$, which is not
+ reduced.\\
+ So the point $t^{1/p}$ in $\A^1_k$ is not geometrically
+ reduced.\\
+ Likewise $\spec \Q[x]/(x^2-2)$ becomes $\bar
+ \Q[x]/(x-\sqrt{2})(x+\sqrt{2})$ which is reducible, so our point
+ is not geometrically irreducible. (See Exercise II.3.15)
+ \end{itemize}
+ What about $\A^1_k$?  This situation is similar:
+ \[
+    \{\text{closed points}\} ``='' \bar k^n/(\text{action of Aut}_k\bar k)
+ \]
+
+ \emph{Grothendieck Topologies:} (reference: Vistoli, Notes on
+Grothendieck topologies fibered categories, and descent theory\footnote{This is on the
+arXiv.})
+
+ General idea: If you had a smooth map of complex manifolds $f:X\to
+ Y$, you can work near $P\in X$ by finding a local section of $f$
+ near $f(P)$.  You can't necessarily do this with schemes because
+ the Zariski topology is too coarse (exceptions: $\P(\E)$, etc.).
+ One way to appoximate the classical topology is to work in $\hat
+ \O_{X,x}$. Then you have
+ \[\xymatrix{
+ \spec \hat \O_{X,x} \ar[d]\\
+ \spec \hat \O_{Y,f(x)} \ar@{.>}@/^/[u]^{\exists}
+ }\]
+ The image is cut out by $f_1,\dots, f_r\in \hat \m_x/\hat\m_x^2$.
+ These can be lifted to $\mod \hat\m^2$ to $f_1,\dots, f_r\in
+ \m_x\smallsetminus \m_x^2$.  Lift to $f_1,\dots, f_r\in \O_X(U)$
+ for some open neighborhood.  Take the closure $Z(f_1,\dots, f_r)$
+ to get $Z\subseteq X$ closed subscheme.\\
+ $Z$ may have many sheets over $Y$, and you can't keep one and
+ throw out the others.  But you do have $f|_Z$ is \'etale at $x$
+ ($x=P$).  You can base change to $Z:$
+ \[\xymatrix{
+ X' = X\times_Y Z\ar[d]\\
+ Z\ar@/^/[u]
+ }\]
+ Of course $f|_Z$ is not \'etale everywhere, but it is in a
+ Zariski-open neighborhood of $x$.\\
+ This is called working locally in the \'etale topology.
+
+ \def\C{\underline{\mathcal{C}}}
+
+ \begin{definition}
+ Let $\C$ be a category.  A \emph{Grothendieck topology} on $\C$
+ is, for each object $U$, a collection of covers of $U$, where a
+ cover is a set of morphisms $\{U_i\to U\}$ in $\C$ satisfying:
+ \begin{itemize}
+ \item[(i)] if $V\to U$ is an isomorphism in $\C$, then $V\to U$
+ is a cover.
+ \item[(ii)] if $\{U_i\to U\}$ is a covering and $V\to U$ is a
+ morphism, then $U_i\times_U V$ exists in $\C$, and $\{U_i\times_U
+ V\}$ is a covering (of $V$)
+ \item[(iii)] if $\{U_i\to U\}$ is a covering, and $\{V_{i,j}\to
+ U_i\}_{j\in J}$ is a covering for each $i$, then the composites
+ $\{V_{i,j}\to U\}$ form a covering.
+ \end{itemize}
+ \end{definition}
+
+ \underline{Example:} Let $\C=$ category of schemes.  Given $U\in
+ \C$, a covering is a collection $\{U_i\to U\}$ of open immersions
+ whose images cover $U$.
+ \begin{itemize}
+ \item[(i)] ok
+ \item[(ii)] if $\{U_i\}$ cover $U$, then $\{f^{-1}(U_i)\}$ cover
+ $V$.
+ \item[(iii)] trivial
+ \end{itemize}
+
+ This is how the Zariski topology is realized as a Grothendieck
+ topology.
+ \begin{definition}
+ The Grothendieck topology on $U$ is the collection of open
+ covers.
+ \end{definition}
+ \begin{remark}
+ Grothendieck topologies versus the earlier kind:
+ \begin{itemize}
+ \item open sets are now morphisms
+ \item intersections are now fibered products over $U$
+ \item unions are now obsoleted by looking at covers
+ \end{itemize}
+ \end{remark}
+
+ \begin{definition}
+ A \emph{site} is a category with a Grothendieck topology.
+ \end{definition}
+
+ Another example of a site: fix a field $k$.  Let $\C=$ category
+ of schemes of finite type over $k$.  Given $U\in \C$, a covering
+ of $U$ is a finite collection $\{U_i\to U\}$ of \'etale morphisms
+ such that the union of the images is all of $U$.  This ``is'' the
+ \'etale site.
+
+ Exercise 10.5 says: if a (Zariski) sheaf is locally free as a
+ sheaf on the \'etale topology, then it is locally free under the
+ Zariski topology.

@@ -1,0 +1,249 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{12}
+ \sektion{Lecture 12}
+
+\begin{corollary}[of unfinished theorem] Let $\F$ be a
+quasi-coherent sheaf on a noetherian separated scheme $X$, and let
+$\U$ be an open affine cover of $X$.  Then the conclusion of the
+theorem holds.  The maps from Lemma (\ref{L:lec11cohommap}) are
+isomorphisms:
+\[
+    \check H^p(\U,\F) \xrightarrow{\sim} H^p(X,\F).
+\]
+\end{corollary}
+\begin{proof}
+All the $U_{i_0\dots i_p}$ are affine by exercise II.4.3, so use
+Theorem (\ref{T:lec5}). \marginpar{Theorem \ref{T:lec5}:qco
+sheaves are acyclic on affine schemes}
+\end{proof}
+
+\begin{proof}[Continued proof of \ref{T:lec11}] \def\M{\mathscr{M}}
+Loose end 1: we need to construct the commutative diagram
+\begin{equation}\label{D:lec12loose}\xymatrix{
+ 0\ar[r] & C^{\cdot}(\U,\F)\ar[r] \ar[d] & C^{\cdot}(\U,\G) \ar[r] \ar[d] &
+ C^{\cdot}(\U,\R) \ar[r] \ar[d] & 0\\
+ 0\ar[r] & \Gamma(X,\I^{\cdot}) \ar[r] & \Gamma(X,\I^{\cdot}\oplus
+ \J^{\cdot}) \ar[r] & \Gamma(X,\J^{\cdot}) \ar[r] & 0
+}\end{equation}
+ To do this, we switch to sheaves:
+\[\xymatrix{
+ 0\ar[r] & \C^{\cdot}(\U,\F)\ar[r] \ar@{.>}[d]^1 & \C^{\cdot}(\U,\G) \ar[r] \ar@{.>}[d]^2 &
+ \C^{\cdot}(\U,\R) \ar@{.>}[d]^3 & \txt{(not surjective)}\\
+ 0\ar[r] & \I^{\cdot} \ar[r] & \I^{\cdot}\oplus
+ \J^{\cdot} \ar[r] & \J^{\cdot} \ar[r] & 0
+}\]
+ Note that the sequence of sheaves is not exact on the right.  We wish
+ to construct arrows 1,2, and 3.  Assume we have
+ constructed them up to $p-1$.  Then we have the commutative diagram
+ \[\hspace{-1cm} \xymatrix@!0 @C=15mm @R=15mm {
+  0\ar[rr] &    & \K'\ar[rr]\ar@{^(->}[dr]\ar[dd]|\hole &
+    & \K\ar[rr]\ar@{^(->}[dr]\ar[dd]|\hole  &
+    & \K''\ar@{^(->}[dr] \ar[dd]|\hole &    &  \txt{(not surjective)} \\
+    & 0\ar[rr]  &
+    & \C^p(\U,\F) \ar[rr] \ar@{.>}[dd]^(.3)1 &
+    & \C^p(\U,\G) \ar[rr]^(.35){\psi} \ar@{.>}[dd]^(.3)2 &
+    & \C^p(\U,\R)  \ar@{.>}[dd]^(.3)3 &   &  \txt{(not surjective)} \\
+  0\ar[rr] &
+    & \M'\ar[rr]|\hole \ar@{^(->}[dr] &
+    & \M\ar[rr]|\hole \ar@{^(->}[dr]  &
+    & \M''\ar[rr]|\hole \ar@{^(->}[dr] &    &  0 \\
+    & 0\ar[rr]  &
+    & \I^p \ar[rr] &
+    & \I^p \oplus \J^p \ar[rr] &
+    & \J^p \ar[rr] &   & 0
+ }\]
+ where the $\K$'s and $\M$'s are the cokernels of the map from
+ $(p-2)$-th to the $(p-1)$-th terms in the complexes.  Since each
+ complex is exact (Lemma \ref{L:lec11cechexact}), these cokernels
+ inject into the $p$-th terms.  If $p=0$, then $\K'=\M'=\F$,
+ $\K=\M=\G$, and $\K''=\M''=\R$, with the downward morphisms
+ identity maps.  Note that the rows of $\K$'s and $\M$'s are
+ exact (to the degree shown).  The maps from
+ the $\K$'s to the $\M$'s are the induced cokernel maps.
+
+ To construct arrow 1, note that $\K'$ maps to $\I^p$, then
+ injectivity of $\I^p$ produces the arrow.
+
+ To construct arrow 2, consider the map $\varphi:\C^p(\U,\F)\oplus \K
+ \to \C^p(\U,\G)$ given by addition of the images of the
+ coordinates.  Then
+ \begin{align*}
+  \ker \varphi &= \{(x,-x)|x\in \C^p(\U,\F)\cap \K\}\\
+    &= \C^p(\U,\F)\cap \K \\
+    &= (\ker \psi) \cap \K\\
+    &= \ker (\psi|_{\K})\\
+    &= \ker(\K\to \K'') = \K'
+ \end{align*}
+Also, both $\C^p(\U,\F)$ and $\K$ map to $\I^p\oplus \J^p$, so we
+get a map $\C^p(\U,\F)\oplus \K\to \I^p\oplus \J^p$ by adding the
+images, and the kernel of this map contains $\C^p(\U,\F)\cap\K =
+\K'=\ker \varphi$, so we get an induced map from the image of
+$\varphi$ to $\I^p\oplus \J^p$:
+\[\xymatrix{
+ 0\ar[r] & \im \varphi \ar[d] \ar[r] & \C^p(\U,\G)\ar@{.>}[dl]^2\\
+ & \I^p\oplus J^p
+}\] Then we get arrow 2 from injectivity of $\I^p\oplus \J^p$.
+
+To construct arrow 3, note that the existence of arrows 1 and 2
+imply that there is a map from the image of $\psi$ to $\J^p$
+(since $\psi^{-1}$ followed by 2 followed by projection is well
+defined). By injectivity of $\J^p$, we get arrow 3.
+
+Taking global sections of the front face of the diagram, we get
+the diagram (\ref{D:lec12loose}) and tie up our loose end (note
+that we get surjectivity of the top row).
+
+\vspace{3mm}
+
+Loose end 2:  When we take long exact sequences of the rows in
+diagram (\ref{D:lec12loose}), we get induced maps from \v{C}ech
+cohomology to derived functor cohomology, and we need to know that
+these maps are the same as those obtained in Lemma
+(\ref{L:lec11cohommap}).  In the lemma, we constructed a map of
+resolutions $\C^{\cdot}(\U,\F)\xrightarrow{f^{\cdot}} \I^{\cdot}$,
+took global sections, and looked at the induced maps in homology.
+The way we tied up loose end 1 makes it clear that the maps
+obtained in the theorem are the same.
+\end{proof}
+
+\vspace{5mm} \underline{Exercise III.4.4:}\marginpar{Exercise
+III.4.4}
+ \def\V{\mathcal{V}}
+ \def\W{\mathcal{W}}
+Let $X$ be a topological space, and let $\F\in \Ab(X)$, then we
+will show that
+\[
+ \varinjlim_{\U} \check H^1(\U,\F)\ \longrightarrow\ H^1(X,\F)
+\]
+is an isomorphism.
+
+{\bf (a)} Let $\U=(U_i)_{i\in I}$ and $\V = (V_j)_{j\in J}$ be
+open covers of $X$.  Suppose we're also given a function
+$\lambda:J\to I$ such that $V_j\subseteq U_{\lambda(j)}$ for all
+$j$ (that is, $\V$ is a refinement of $\U$).  Then for all $p$,
+there is an induced map $\lambda^p:\check H^p(\U,\F)\to \check
+H^p(\V,\F)$.  To see this, define
+\begin{align*}
+ C^p(\lambda): C^p(\U,\F) & \to C^p(\V,\F)\\
+                    \alpha\quad &\mapsto\quad \beta
+\end{align*}
+where $\beta_{j_0\dots
+j_p}=\alpha_{\lambda(j_0)\dots\lambda(j_p)}|_{V_{j_0\dots j_p}}$
+(with the usual sign convention).  As $p$ varies, these maps
+commute with the coboundary maps of $C^{\cdot}(\U,\F)$ and
+$C^{\cdot}(\V,\F)$.  Thus, we get induced maps $\lambda^p:\check
+H^p(\U,\F)\to \check H^p(\V,\F)$ for each $p$.  Moreover, given a
+refinement $\W = \{W_k\}_{k\in K}$ of $\V$ and $\mu:K\to J$ such
+that $W_k\subseteq V_{\mu(k)}$ for all $k$, the following diagram
+commutes:
+\[\xymatrix{
+ \check H^p(\U,\F)\ar[r]^{\lambda^p}\ar[dr]_{(\mu\circ \lambda)^p}
+ & \check H^p(\V,\F) \ar[d]^{\mu^p}\\
+ & \check H^p(\W,\F).
+}\]
+
+So far, $\lambda^p$ depends on $\lambda$.
+\begin{lemma*}
+$\lambda^p$ is independent of $\lambda$, at least for $p\le 1$.
+\end{lemma*}
+\begin{proof}
+ \underline{If $p=0$}: Let $\alpha\in C^0(\U,\F)$ be a cocycle (i.e.
+ $d\alpha = 0$), so
+ \[
+    0 = (d\alpha)_{i_0,i_1} =
+    (\alpha_{i_0}-\alpha_{i_1})|_{U_{i_0,i_1}} \qquad \quad \forall
+    i_0<i_1
+ \]\marginpar{All sections are restricted termwise to the appropriate open sets.}
+ Then
+ \[
+    (\lambda^0(\alpha)-\mu^0(\alpha))_j = (\alpha_{\lambda(j)} -
+    \alpha_{\mu(j)}) = 0
+ \] so $\lambda^0(\alpha) = \mu^0(\alpha)$ for any $\lambda$ and
+ $\mu$.
+
+ \underline{If $p=1$}: Let $\alpha \in C^1(\U,\F)$ be a cocycle, so
+\[
+    (d\alpha)_{j_0,j_1,j_2} = \alpha_{j_1,j_2} - \alpha_{j_0,j_2}
+    + \alpha_{j_0,j_1} = 0 \qquad\quad \forall j_0<j_1<j_2
+\]
+ Given
+ $j_0,j_1\in J$, let $i_0=\lambda(j_0), i_1=\lambda(j_1), i_0' =
+ \mu(j_0), i_1' = \mu(j_1)$, then
+ \begin{align*}
+ (\lambda^1(\alpha)-\mu^1(\alpha))_{j_0,j_1} &=
+ \alpha_{i_0,i_1}-\alpha_{i_0',i_1'} \\
+    &= (\alpha_{i_0,i_1}-\alpha_{i_0,i_1'})
+        +(\alpha_{i_0,i_1'}-\alpha_{i_0',i_1'})\\
+    &= -\alpha_{i_1,i_1'} + \alpha_{i_0,i_0'} & \text{($\alpha$ a
+    cocycle)}\\
+    &= (d\gamma)_{j_0,j_1}
+ \end{align*}
+ where $\gamma$ is defined by $\gamma_j =
+ -\alpha_{\lambda(j),\mu_j}|_{V_j}$.  Thus, $\lambda^1(\alpha)$ and
+ $\mu^1(\alpha)$ are cohomologous.
+\end{proof}
+
+
+More on $X\cong (X\times_S Y)\times_{Y\times_S Y}Y$, and when
+fiber products associate. \marginpar{A neat trick for showing
+schemes are isomorphic - a glimpse of Yoneda's Lemma}
+
+The following always hold:
+\begin{align*}
+(A\otimes_S B)\otimes_S C &\cong A\otimes_S (B\otimes_S C) &\text{(for rings)}\\
+A\otimes_S B &\cong B\otimes_S A \\
+(A\times_S S')\times_{S'} B &\cong A\times_S B & \text{(for \underline{base change})}\\
+A\times_S S &\cong A
+\end{align*}
+
+
+Fix a scheme, $S$.  Recall that $\Sch(S)$ is the category of
+$S$-schemes, whose objects are morphism $X\to S$ and whose arrows
+are commutative diagrams
+ \xymatrix@!0 { X\ar[r]\ar[dr] & Y\ar[d] \\ & S}.
+ An object $X\in \Sch(S)$ may also be viewed as the representable
+ contravariant functor $\Hom_S(-,X):\Sch(S)\to {\bf Sets}$,
+ $S'\mapsto \Hom_S(S',X) = X(S')$.  Then an $S$-morphism $f:X\to
+ Y$ corresponds to a natural transformation of functors, $\varphi:
+ X\to Y$ given by $\varphi(S') = f\circ -$.  Thus, given $S''\to S$, the diagram
+ \[\xymatrix{
+    X(S')\ar[r]^{\varphi(S')} \ar[d] & Y(S')\ar[d]\\
+    X(S'') \ar[r]^{\varphi(S'')} & Y(S'')
+ }\]
+ commutes.  Conversely, given a natural transformation $\varphi:
+ X\to Y$\marginpar{\xymatrix{X(X)\ar[r]^{\varphi(X)} & Y(X)}}, you can define $f =
+ \varphi(X)(\id_X)$, which is an element of $Y(X) = \Hom_S(X,Y)$.
+ If you start with $f$ and produce a natural transformation
+ $\varphi$, then one may verify that $\varphi(X)(\id_X) =f$.
+ Likewise, one may verify that the natural transformation
+ associated to $\varphi(X)(\id_X)$ is indeed $\varphi$.
+
+ So $S$-morphisms are the same a natural transformations\footnote{There is
+ nothing special about $S$-schemes.  Objects in \emph{any} category may be viewed this
+ way.  It is an immediate corollary of Yoneda's Lemma.}.  Now
+ suppose $X, Y\in \Sch(S)$ give isomorphic functors, then the
+ natural isomorphism between the functors induces an isomorphism
+ of $S$-schemes.  Thus, to show that the two schemes are
+ isomorphic, it is enough to find a natural transformation between
+ the functors.
+
+One may verify that $\Hom_S(S',-)$ behaves as
+expected\footnote{$\Hom_S(S',-)$ should be the right adjoint to
+something like $-\times_S S'$ ... I haven't verified this.}. For
+example $(X\times_Z Y)(S') = X(S')\times_{Z(S')} Y(S') =
+\{(x,y)\in X(S')\times Y(S')| f\circ x = g\circ y \text{ in }
+Z(S')\}$.
+
+Thus, we may calculate \marginpar{\xymatrix{
+Y\ar[d]^{\Delta} \\
+Y\times_S Y \\
+X\times_S Y \ar[u]^{f\times \id_Y}}}
+\begin{align*}
+ ((X\times_S Y)\times_{Y\times_S Y}Y)(S') \
+    &\cong (X(S')\times Y(S'))\times_{Y(S')\times Y(S')}Y(S')\\
+    &= \{(\alpha,\beta,\gamma)\in X(S')\times Y(S')\times Y(S')| \\
+    &\qquad (f(\alpha),\beta) = (\gamma,\gamma)\in Y(S')\times Y(S')
+    \}\\
+    &= X(S')\qquad \qquad (\beta=\gamma=f(\alpha))
+\end{align*}
+So $(X\times_S Y)\times_{Y\times_S Y}Y\cong X$.

@@ -1,0 +1,181 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{9}
+ \sektion{Lecture 9}
+
+A question from last time: If $f:\spec K\to X\times_Y X$ sends the
+point to $\xi \in \Delta$, then $f$ factors though $\Delta$ as a
+morphism of schemes.
+\[\xymatrix{
+ X\ar@/_4ex/[ddr]_{\text{id}_X}\ar@{->}[dr]^{\Delta}
+ \ar@/^4ex/[drr]_{\text{id}_X} \\
+ & X\times_Y X \ar[r] \ar[d] & X\ar[d]^f\\
+ & X\ar[r]^f & Y
+}\hspace{2.4cm}\xymatrix{
+ k(x_1)\ar@{<-}@/_4ex/[ddr]_{\text{id}}\ar@{<-}[dr]
+ \ar@{<-}@/^4ex/[drr]_{\text{id}} \\
+ & k(\xi) \ar@{<-}[r] \ar@{<-}[d] & k(x_1)\\
+ & k(x_1)
+}\] Since $\xi \in \Delta$, there is some $x_1\in X$ such that
+$\Delta(x_1)=\xi$.  So we get the diagram on the right, in which
+every arrow must be an isomorphism (since all the morphisms are
+between fields).  Now $\spec K \to X\times_Y X$ gives $k(\xi)\cong
+k(x_1)\to K$, so $f$ factors through $\Delta$.
+
+\begin{corollary}[of the Valuative Criterion for Properness]\
+\begin{itemize}
+ \item[(a)] Closed immersions are proper (but not open immersions).
+ \item[(b)] Compositions of proper morphisms are proper.
+ \item[(c)] Properness is stable under base extension. i.e.  if
+ $f:X\to Y$ is proper, then $f':X\times_Y Y' \to Y'$ is
+ proper.
+ \[\xymatrix{
+ X\times_Y Y' \ar[r] \ar[d]^{f'} & X\ar[d]^f\\
+ Y' \ar[r] & Y
+}\]
+ \item[(d)] If $f:X\to Y$ and $f':X'\to Y'$ are proper
+ $S$-morphisms, then so is $f\times f':X\times_S X' \to Y\times_S
+ Y$.
+ \item[(e)] If $X\xrightarrow{f} Y \xrightarrow{g} Z$ are
+ morphisms and $g\circ f$ is proper and $g$ is separated, then $f$ is proper.
+ \item[(f)] Properness is local on the base.  i.e. $f:X\to Y$
+ is proper if and only if there is an open cover $\{U_i\}$ of
+ $Y$ such that $f^{-1}(U_i)\to U_i$ is proper for all $i$.
+ \item[(g)] If $f:X\to Y$ is proper, then so is
+ $f_{\text{red}}:X_{\text{red}}\to Y_{\text{red}}$.  If $f$ is of
+ finite type, the the converse also holds.
+\end{itemize}
+\end{corollary}
+\begin{proof}[Partial Proof]
+ In each case, we need to check finite-type-ness first.
+\end{proof}
+Again, this result actually holds without the noetherian
+assumption.
+
+The Valuative criterion for properness is \emph{important}, as
+illustrated by the following fact.
+
+\marginpar{An important application of the Valuative Criterion}Let
+$Y$ be proper over a noetherian scheme $S$. Let $X$ be a
+noetherian regular $S$-scheme of dimension 1. Assume $f$ is a
+rational map such that the diagram
+\[\xymatrix{
+X\ar@{-->}[r]^f \ar[dr]&Y\ar[d]\\
+& S }\] commutes.  Then $f$ extends (uniquely) to a morphism $X\to
+Y$.
+\begin{proof}
+We have a dense open $U\subseteq X$ and an $S$-morphism $f:U\to
+Y$.  Since $X\smallsetminus U$ is zero dimensional and $X$ is
+noetherian, $X\smallsetminus U$ has a finite number of points.
+
+For $x\in X\smallsetminus U$, let $R=\O_{X,x}$.  Then $R$ is a
+regular noetherian local ring of dimension 1.  By remark
+II.6.11.2A on page 142\footnote{A regular local ring is a UFD.},
+it is entire (an integral domain), so by theorem I.6.2A on page
+40\footnote{For a noetherian local domain of dimension 1, TFAE: i)
+is a DVR ii) is integrally closed iii) is regular iv) max'l ideal
+is principal.}, it is a DVR. Let $K=\text{Frac}\, R$. Let $T=\spec
+R$ with $t=$ the closed point, and $\tau=$ the generic point.  Let
+$g:T\to X$ be the canonical map.  Let $\xi=g(\tau)\in X$, then
+$\xi\in U$ since it is not a closed point of $X$, so we get the
+diagram
+\[\xymatrix{
+ \spec K \ar[rr] \ar[d] & & Y\ar[d]\\
+ T=\spec R \ar[rr]\ar@{^(->}[dr] \ar@{.>}[urr]^{\exists !h}& & S\\
+ & X  \ar[ur] \ar@{-->}[uur]^(.25){f}|!{[ur];[ul]}{\hole}
+}\] By the valuative criterion, we get the map $h$.  Then we can
+extend $f$ by saying $f(x)=h(t)$.
+
+We may assume $S$ is affine, equal to $\spec C$.  Let $\spec B$ be
+an open affine neighborhood of $h(t)\in Y$, and let $X'=\spec A$
+be an open affine neighborhood of $x\in X$.  Let
+$\mathfrak{p}\subseteq A$ correspond to $x$, then we get the
+diagram
+\[\xymatrix{
+ K & & B \ar[ll] \ar[dll]^{h^*} \ar@{}[r]|(.3){=} & C[y_1,\dots,y_r]  \\
+ A_{\mathfrak{p}}\ar[u] &  & C\ar[ld]\ar[u]\\
+ & A \ar[lu]
+ }\]
+ There is some $a\not\in \mathfrak{p}$ such that $h^*(y_i)\in A_a$
+ for all $i$.  So replace $A$ with $A_a$.  Then we get a map $B\to
+ A$ and still have $x\in \spec A$.  From an exercise, we have that
+ \[\xymatrix{
+  \Hom_S(U\cap X',\spec B) \ar[r]^(.47){\sim} \ar@{}[dr]|{\circlearrowleft} & \Hom_C(B,\Gamma(U\cap
+  X',\O_{X'})) \\
+  \Hom_S(X',\spec B) \ar[u] \ar[r] & \Hom_C(B,\Gamma(X',\O_{X'}))
+  \ar[u]
+ }\]
+So we have some $f':X'\to \spec B$ restricting to $f$.  Therefore,
+$f$ extends to $X$.  Uniqueness follows from Exercise II.4.2,
+which says that if two morphisms from a reduced scheme to a
+separated scheme agree on a dense open subset, then they agree
+everywhere.
+\end{proof}
+
+\begin{itemize}
+\item[Example 1:] The assumption that $X$ is regular is necessary.
+Take $X=\{y^2=x^2+x^3\}\subseteq \mathbb{A}^2_k$ for $k$ an
+algebraically closed field of characteristic $\not=2$.  Take
+$U=X\smallsetminus \{(0,0)\}$ and $f:U\to \P^1_k$, $(x,y)\mapsto
+[x,y]$ the projection from the point $(0,0)$.  Then the map cannot
+extend to the point $(0,0)$.
+
+\item[Example 2:] The assumption $\dim X=1$ is necessary.  Let
+$X=\P^2_k$, and let $Y$ be the blow-up of $\P^2_k$ at the origin,
+$[0,0,1]$.  Then there is an obvious birational equivalence
+between $X$ and $Y$, but they are not isomorphic.
+
+\item[Key Application:] (Number Theory)  If $R$ is a Dedekind ring
+and $Y=\spec R$, $K=\text{Frac}(R)$, and if $X$ is proper over $Y$
+(i.e. $\spec R$), then any $K$-morphism $\spec K \to X$ gives a
+rational map from $Y$ to $X$ by stuff from chapter I \S 4.  Thus,
+we get a unique $R$-morphism $Y\to X$ (i.e. a section of $X\to
+Y$).  Therefore, $X(K)=X(R)$.\footnote{Notation: For $X$ and $Y$
+$S$-schemes, $Y(X)$ means $\Hom_S(X,Y)$.  Also, by $X(K)$ we mean
+$X(\spec K)$.}
+\end{itemize}
+
+Recall that if $A$ is a ring and $n\in \mathbb{N}$, then $\P^n_Y
+=\proj A[x_0,\dots, x_n]$.  If $A\to A'$ is a homomorphism, then
+$\P^n_{A'} = \P^n_A\times_{\spec A} \spec A'$.
+
+\begin{definition}
+If $Y$ is an arbitrary scheme, then $\P^n_Y=\P^n_{\Z}\times Y$.
+\end{definition}
+
+\begin{definition}
+A morphism $f:X\to Y$ is \emph{projective} if there is a closed
+immersion $i:X\to \P^n_Y$ for some $n\in \mathbb{N}$ such that the
+diagram commutes:
+\[\xymatrix{
+ X\ar[r]^i \ar[dr]^f & \P^n_Y\ar[d]\\
+& Y }\]
+\end{definition}
+\begin{itemize}
+ \item[Caution:] EGA uses a more general definition.
+
+ \item[Note:] Neither definition is local on the base.  Why not?  For an
+ open cover $\{U_i\}$, we could have $f^{-1}(U_i)\to
+ \P^{n_i}_{U_i}$ with $n_i$ unbounded.  Or, more to the point, we
+ need an $\O(1)$ on $X$ that works globally.
+
+ \item[Example:] If $S$ is a graded ring, generated over $S_0=A$
+ by finitely many elements of degree 1.  Then $\proj S \to \spec
+ A$ is projective.
+ \begin{proof}
+ Let $s_0,\dots, s_n\in S_1$ be a generating set.  Then
+ $T = A[t_0,\dots,t_n] \twoheadrightarrow S$.  So we have
+ \[\xymatrix{
+ \proj S \ar[dr] \ar@{^(->}[r]^(.4){\stack{\txt{\tiny closed}}{\txt{\tiny imm}}} & \proj T =
+ \P^n_A \ar[d]\\
+ & \spec A
+ }\]
+ \end{proof}
+ \end{itemize}
+
+\begin{lemma}
+Let $n\in \mathbb{N}$.  Then $\P^n_{\Z}$ is proper over $\Z$.
+\end{lemma}
+\begin{proof}
+in the works.
+\renewcommand{\qedsymbol}{\text{\tiny proof continued in next lecture}}
+\end{proof}

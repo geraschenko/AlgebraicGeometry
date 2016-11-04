@@ -1,0 +1,121 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{20}
+ \sektion{Lecture 20}
+
+Last time we showed that if $Y$ is a locally complete intersection
+in a regular (or Cohen-Macauley) scheme $X$, then $Y$ is
+Cohen-Macaulay.
+
+To find an example of a non-Cohen-Macaulay scheme, we look to
+contradict facts we know about Cohen-Macaulay rings, like
+
+\begin{theorem}[Eisenbud Cor 18.10] In a Cohen-Macaulay ring, all
+associated primes are minimal. \end{theorem}
+
+If $k$ is a field and $A=k[x,y]/(x^2,xy)$, then is has an embedded
+point, so $\spec A$ is not Cohen-Macaulay.  To see this directly,
+let $\m=(x,y)\subseteq A$.  Then $A_{\m}$ is not Cohen-Macaulay
+since $\dim A_{\m}=1$, but $\depth A_{\m}=0$ since all elements of
+the maximal ideal are zero divisors.
+
+By II.8.21Ab, if $A$ is a local Cohen-Macaulay ring, then any
+localization of $A$ at a prime ideal is also Cohen-Macaulay. Thus,
+a scheme $X$ is Cohen-Macaulay if and only if all of its local
+rings \emph{at closed points} are Cohen-Macaulay.
+
+ \begin{remark}
+ Let $Y$ be a locally complete intersection in a Cohen-Macaulay
+ scheme $X$, and let $\I$ be its ideal sheaf.  Assume that $Y$ is
+ equicodimensional (all irreducible components are of the same
+ codimension, $r$).  Then $\I/\I^2$ is a locally free sheaf on $Y$
+ of rank $r$.
+ \begin{proof}
+ We may assume $Y$ is globally a complete intersection in $X$, cut
+ out by $x_1,\dots, x_r$, and that $X$ is affine, say $X=\spec A$.
+  Then $\I=\tilde I$ for $I=(x_1,\dots, x_r)$.  We have that
+  \[
+    (A/I)^r\to I/I^2\quad,\quad (a_1,\dots,a_r)\mapsto \sum a_ix_i
+  \]
+  is well defined and onto.  We need to show that it is injective.
+
+  Suppose not.  Then there is a prime $P\in A$ such that
+  $(\text{kernel})_P \not =0$.  Clearly $I\subseteq P$.  Replace
+  $A$ with $A_P$.  Then $A$ is Cohen-Macaulay and local, and
+  $x_1,\dots,x_r$ is a regular sequence.  Let $(b_1,\dots, b_r)$
+  be a nonzero element of the kernel in question.  We may assume
+  $b_r\not\in I$.  Then $\sum b_ix_i \in I^2$, so $\sum b_ix_i =
+  \sum c_ix_i$ with $c_i\in I$ for all $i$.  Then we have that
+  $\sum (b_i-c_i)x_i = 0$.  Since $b_r\not\in I=(x_1,\dots, x_r)$,
+  it is non-zero in $A/(x_1,\dots, x_{r-1})$.  Thus, we have that
+  $x_r$ is a zero divisor (or 0) in $A/(x_1,\dots, x_{r-1})$.
+  Contradiction.
+  \end{proof}
+  \end{remark}
+
+  \begin{theorem}
+  Let $X$ be a non-empty projective scheme of dimension $n$ over
+  an algebraically closed field $k$, and let $\omega_X^{\circ}$ be
+  a dualizing sheaf for $X$ (over $k$).  Then TFAE:
+  \begin{itemize}
+   \item[(i)] $X$ is equidimensional and Cohen-Macaulay
+   \item[(ii)] for all locally free sheaves $\F$ on $X$,
+   $H^{n-i}(X,\F(-q))=0$ for all $i>0$ and $q\gg 0$ (depending on
+   $\F$).
+   \item[(iii)] the maps $\theta^i:\ext^i(\F,\omega_X^{\circ})\to
+   H^{n-i}(X,\F)'$ are isomorphisms for all $i$ and for all
+   coherent sheaves $\F$.
+  \end{itemize}
+ \end{theorem}
+ \begin{proof}
+ in the works
+ \end{proof}
+
+ \begin{corollary}
+ Let $X$ be an equidimensional Cohen-Macaulay projective scheme of
+ dimension $n$ over an algebraically closed field $k$ (e.g. a
+ non-singular variety of dimension $n$).  Let $\F$ be a locally
+ free sheaf on $X$ and let $\omega_X^{\circ}$ be the dualizing
+ sheaf.  Then there is a natural isomorphism for all $i$:
+ \[
+    H^i(X,\F) \cong H^{n-i}(X,\check \F \otimes
+    \omega_X^{\circ})'.
+ \]
+ \end{corollary}
+ \begin{proof}
+ \[
+    H^{n-i}(X,\F)' \cong \ext_X^i(\F,\omega_X^{\circ}) \cong
+    \ext_X^i(\O_X,\check \F\otimes \omega_X^{\circ}) \cong
+    H^i(X,\check \F\otimes \omega_X^{\circ}).
+ \]
+ \end{proof}
+
+ \begin{remark}
+ In proving Lemmas III.7.3 and III.7.4, we only used duality for
+ $P$, so the proofs actually give
+ \begin{theorem} Let $P$ be an equidimensional Cohen-Macaulay
+ projective scheme of dimension $N$ over an algebraically closed
+ field $k$, and let $X$ be a non-empty closed subscheme of $P$ of
+ dimension $n$.  Then
+ \[
+    \omega_X^{\circ} = \Ext^{N-n}_P(\O_X,\omega_P^{\circ})
+ \]
+ \end{theorem}
+ \end{remark}
+
+ \begin{definition} Let $A$ be a ring, $f_1,\dots, f_r\in A$.
+ Then the \emph{Kozul complex} of $A$ is the complex $K_{\cdot} =
+ K_{\cdot}(f_1,\dots,f_r)$ defined by $K=$ free $A$-module of rank
+ $r$, and $K_i:=\wedge^i K$, and $d:K_p\to K_{p-1}$ is given by
+ \[
+    e_{i_1}\wedge \cdots \wedge e_{i_p} \mapsto \sum_{j=1}^p
+    (-1)^{j-1} f_{i_j} e_{i_1}\wedge\cdots \wedge \hat e_{i_j}
+    \wedge \cdots \wedge e_{i_p}
+ \]
+ for all $i_1<\cdots < i_p$, where $\{e_1,\dots, e_r\}$ is the
+ standard basis for $A^r$.  Note that $d^2=0$.  If $M$ is an
+ $A$-module, then se define
+ \[
+    K_{\cdot}(f_1,\dots, f_r, M) = K_{\cdot}(f_1,\dots,
+    f_r)\otimes_A M.
+ \]
+ \end{definition}

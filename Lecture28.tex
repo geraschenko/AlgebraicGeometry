@@ -1,0 +1,186 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{28}
+ \sektion{Lecture 28}
+
+ All schemes still of finite type over a field.
+
+ \begin{proof}[Continued Proof]
+ $X$ smooth of relative dimension $d$ over $k$ ... we were showing that $X$ is
+ regular.  All notation as in last lecture.
+
+ We need $\dim \m'/\m'^2 \le n-r=d$.
+ \[\xymatrix{
+    (I/I^2)\otimes k(x)\ar[d] \ar[r] & \Omega_{\O/k}\otimes k(x) \ar@{}[d]|{\parallel} \ar[r]^{\alpha'}
+    & \Omega_{\O_{X,x}/k}\otimes k(x) \ar@{->>}[d] \ar[r] & 0\\
+    \m/\m^2\ar[r] & \Omega_{\O/k}\otimes k(x) \ar[r] &
+    \Omega_{k(x)/k} \ar[r] & 0\\
+    & & \text{may be 0} &
+ }\]
+
+ By arrow chasing, the images of $f_1,\dots, f_r$ in $\m/\m^2$ ar linearly
+ independent over $k(x)$.  Thus, the dimension of $\m'/\m'^2$ is $n-r=d$.  Then by
+ the list of inequalities from the last lecture, equality holds.  So $\O'$ is a
+ regular local ring.  So $\O'$ is entire (II.6.11.1A), so $(0)$ is prime in $\O'$,
+ and it is the unique minimal prime, so it doesn't go away in $\O_{X,x}$.  Thus,
+ $\O'=\O_{X,x}$.  So $X$ is regular at $x$.
+ \end{proof}
+
+ \underline{Next:} Instead of \'{e}taleness, we'll do the jacobian criterion for
+ smoothness.
+
+ \begin{lemma}\label{lec28lem1} Let $\xymatrix{Z\ar[r]^j \ar[dr]_{\phi} &
+ X\ar[d]^{\psi}\\ & Y}$, be a commutative diagram of schemes (of finite type) over $k$.
+ Let $z\in Z$ be a closed point, with $x=j(z)$.  Assume that $j$ is an immersion and
+ that $\phi$ and $\psi$ are smooth of relative dimensions $d$ and $n$, respectively
+ (at $z$ and $x$, resp.).  Let $\I$ be the sheaf of ideals defining $Z$ in some open
+ neighborhood of $x\in X$. Let $r=n-d$ (the codimension of $Z$ in $X$).  Then
+ \begin{itemize}
+ \item[(a)] There is an open neighborhood $U$ ov $x$ in $X$ and sections $f_1,\dots,
+ f_r\in \I(U)$ such that the images $df_1,\dots, df_r$ in $\Omega_{X/Y}\otimes k(x)$
+ are linearly independent, and
+ \item[(b)] Any such $f_1,\dots, f_r$ generated $\I$ in a (possibly smaller) open
+ neighborhood of $x$.
+ \end{itemize}
+ \end{lemma}
+ \begin{proof}
+ We may assume that $Z\hookrightarrow X$ is a closed immersion.  Let $\O=\O_{X,x}$,
+ $\m =$ maximal ideal in $\O$, $I=\ker (\O_{X,x}\to \O_{Z,z})=\I_x$; note that
+ $I\subseteq \m$.  We have a commutative diagram with exact rows:
+ \[\xymatrix{
+   (I/I^2)\otimes k(x)\ar[d] \ar[r] & \Omega_{X/Y}\otimes k(x)
+   \ar@{}[d]|{\parallel}^{\wr}
+   \ar[r]^{\alpha'} & \Omega_{Z/Y}\otimes k(x) \ar@{->>}[d] \ar[r] & 0\\
+    \bar\m/\bar\m^2\ar[r] & \Omega_{X_y/k(y)}\otimes k(x) \ar[r] & \Omega_{k(x)/k(y)} \ar[r] & 0\\
+ }\]
+ where $y=\psi(x)=\phi(z)$.  Here, $\bar \O = \O\otimes k(y) = \O_{X_y,x} = \O/\m_y
+ \O$, and $\bar m = \m\bar\O$.  For part (a), pick $f_1,\dots, f_r\in I$ so that
+ their images form a basis for $\ker \alpha'$.  Let $\bar I = I\bar \O = \ker(\bar O \to
+ \O_{Z_y/k(y)})$, and let $\bar f_1,\dots, \bar f_r\in \bar I$ be the images of
+ $f_1,\dots,f_r$.  If we put bars on everything in the top row of the diagram, then
+ as in the previous proof, $\bar f_1,\dots,\bar f_r$ generate $\bar I$, so by
+ Nakayama's Lemma, $f_1,\dots,f_r$ generate $I$, so some open neighborhood $U\ni x$
+ in $X$, $f_1,\dots, f_r$ extend to sections of $\I(U)$ (by defn of a stalk), and
+ generated $\I(U)$ by coherence (after shrinking $U$).
+ \end{proof}
+
+ \begin{corollary}
+ In this situation (one smooth thing, $Z$, inside another smooth thing, $X$), $Z$ is
+ a locally complete intersection in $X$ of codimension $r$.
+ \end{corollary}
+
+ In the proof of the Lemma, we assumed that $z$ is a closed point, but we don't
+ really need that.  If $\Omega_{X/Y}$ is locally free (e.g. if $X$ is integral,
+ (III.10.0.2), or $X=\A^n_Y$, then the lemma holds for all $z\in Z$.  To see this,
+ let $z\in Z$ be any point.  Shrink to open neighborhoods of $z$ and $x$ such that
+ $Z\hookrightarrow X$ is a closed immersion, and $\Omega_{X/Y}$ is free.  Then at a
+ closed point $z'$ such that $z\rightsquigarrow z'$, the conclusions of the Lemma
+ hold.
+
+ But actually, we don't the assumption on $X$ because we just need $z$ to be a closed
+ point \emph{in its fiber} $Z_y$, and then use the fact that $\Omega_{X/Y}\otimes
+ k(x)$ is a localization of $\Omega_{X/Y}\otimes k(x')$.
+
+ \begin{lemma}\label{lec28lem2} Let $\phi:X\to Y$ be a smooth morphism of schemes
+ over $k$ of relative dimension $n$, and let $f\in \Gamma(X,\O_X)$. Let $x_0\in X$ a point such
+ that $x_0\in Z(f)$ (i.e. $f\in \m_{x_0}$), and the image of $df\in \Omega{X/Y}\otimes
+ k(x_0)$ is nonzero.  Then $Z:=Z(f)$ is smooth of relative dimension $n-1$ over $Y$ at
+ $x_0$.  Also, $\Omega_{Z/Y}\otimes k(x_0) \cong (\Omega_{X/Y}\otimes k(x_0))/(\text{image
+ of } f)$.
+ \end{lemma}
+ \begin{proof}
+ The condition on $df$ is equivalent to $x\not\in \supp (\ker (\O_X\xrightarrow{\cdot df}
+ \Omega_{X/Y}))$, so replace $X$ with an open neighborhood of $x_0$ such that this
+ condition (on $df$) holds for all $x\in Z$ (in place of $x_0$).  Also,
+ \[
+    ((f)/(f)^2)\otimes k(x) \xrightarrow{\delta'} \Omega_{X/Y}\otimes k(x) \to \Omega_{Z/Y}\otimes k(x)
+    \to 0
+ \]
+ is exact and the image of $\delta'$ has rank 1, so (3) holds at $x$ for all $x\in
+ Z$, and the last sentence in the lemma is true.
+
+ To show (2'), note that $\bar f$ is non-zero in $\O_{X_y,x}$, which is a regular
+ local ring, and therefore entire, so $\bar f$ is not a zero divisor, and therefore
+ (by Hauptidealsatz)
+ \begin{align*}
+ \dim_x Z &= \dim \O_{Z_y,z}\\
+ &= \dim \O_{Z_y,z}/(\bar f) \\
+ &= \dim \O_{X_y,z} -1\\
+ & = \dim_z X_y -1 = n-1
+ \end{align*}
+ Thus, (2') for $Z$ holds for all $x\in Z$.  here $y=\phi(x)$
+
+ To show that $Z$ is flat over $Y$, pick $x\in Z$, and let $y=\phi(x)$.  Then by
+ smoothness, $X_y$ is regular at $x$, so $\O_{X_y,x}$ is a regular local ring, and
+ therefore entire.  And again, $f$ is non-zero in this ring, so it is not a zero
+ divisor, so
+ \[
+    0\to \O_{X_y,x} \xrightarrow{f} \O_{X_y,x} \to \O_{Z_y,x} \to 0
+ \]
+ is exact, so
+ \[
+    0\to \O_{X,x}\otimes k(y) \to \O_{X,x}\otimes k(y) \to \O_{Z,x}\otimes k(y) \to 0
+ \]
+ is exact.  Also,
+ \[
+    \O_{X,x} \xrightarrow{f} \O_{X,x} \to \O_{Z,x} \to 0
+ \]
+ is exact, and forms part of a flat resolution for $\O_{Z,x}$ over $\O_{Y,y}$.  So
+ $\tor_1^{\O_{X,x}}(\O_{Z,x},k(y)) = \ker(\O_{X,x}\otimes k(x) \xrightarrow{\cdot f} \O_{X,x}\otimes
+ k(y))/(something)$.  Therefore, $\tor_1^{\O_{X,x}}(\O_{Z,x},k(y))=0$.  Therefore,
+ $\O_{Z,x}$ is flat over $\O_{Y,y}$ (Bourbaki; Comm Alg III\S 5 No. 2 Thm 1 and some
+ proposition a few pages later).  This holds for all $x\in Z$, so $Z$ is flat over
+ $Y$.
+
+  So $Z$ is smooth at $x$ over $Y$ of relative dimension $n-1$.
+ \end{proof}
+
+ \marginpar{Jacobian Criterion for Smoothness}
+ \begin{theorem}[Jacobian Criterion for Smoothness]
+ Let $Z$ be a subscheme of codimension $r$ is a scheme $X$, which is smooth over $Y$
+ of relative dimension $n$.  Then $Z$ is smooth over $Y$ at a point $z\in Z$ if and
+ only if:
+ locally at $z\in X$, the sheaf of ideals defining $Z$ can be generated by $r$
+ elements $f_1,\dots, f_r$, and the differentials $df_1,\dots, df_r$ are linearly
+ independent over $k(z)$ in $\Omega_{X/Y}\otimes k(z)$.  Moreover, if this hold, then
+ $Z$ is smooth of relative dimension $n-r$ over $Y$.
+ \end{theorem}
+ \begin{proof}
+ ($\Rightarrow$) This is given to us by Lemma (\ref{lec28lem1})
+
+ ($\Leftarrow$) This follows from repeated applications of Lemma (\ref{lec28lem2}).
+ \end{proof}
+
+ \underline{Next:} \'{E}tale morphisms.
+
+ \begin{lemma}
+ Let $k$ be a field, and let $(R,\m)$ be a noetherian local $k$-algebra.  Assume that
+ the residue field $k':=R/\m$ is a finite separable extension of $k$, and that
+ $\m^2=0$.  Then $\dim_{k'}\Omega_{R/k}\otimes k' = \dim_{k'} \m\quad (=\dim_{k'} \m/\m^2)$.
+ \end{lemma}
+ \begin{proof}
+ Let $a_1,\dots, a_r$ be a basis for $\m$ over $k'$.  Pick $t\in R$ such that $\bar t
+ \in R/\m$ is a primitive element for $k'$ over $k$, and let $f\in k[T]$ be its
+ irreducible polynomial.  Note that $f\in R[T]$, and $f(t)\in \m$, but $f'(t)\not\in
+ \m$ (since $k'$ is separable over $k$).
+
+ We have a map $\phi:k[T,X_1,\dots, X_r] \to R$ defined by $T\mapsto t$, $X_i\mapsto
+ a_i$ for all $i$, and $k$ is fixed.  Note that $\phi$ maps $(T)$\footnote{?} onto $R/\m$ and that
+ $(X_1,\dots,X_r)$ onto $\m$.  So $\phi$ is onto.  Since $f(t)\in \m$, there are
+ $g_1,\dots, g_r\in k[T,X_1,\dots,X_r]$ such that $f-\sum g_i X_i \in \ker \phi$.
+ Also, $X_i X_j \in \ker \phi$ for all $i,j$ (including $i=j$).  let $\a$ be the
+ ideal generated by these elements.
+ \begin{claim}
+ $\a = \ker \phi$
+ \end{claim}
+ \begin{proof}
+ $\a\in \ker \phi$ by construction.  Then the other inclusion follows by noting that
+ $\dim_k k[T,X_1,\dots,X_r]/\a \le \dim_k R = (r+1)[k':k]$
+
+ \renewcommand{\qedsymbol}{$\square_\text{\tiny Claim}$}
+ \end{proof}
+
+ Then $\Omega_{R/k}\otimes k' = \Omega_{R/k}/\m\Omega_{R/k}$ is described by
+ generators $dt,da_1,\dots,da_r$ over $k'$ and relations $\underbrace{f'(t)}_{\text{unit}}dt = \sum
+ (\underbrace{a_idg_i}_{\in \m}+g_ida_i)$ and $a_ida_j+a_jda_i\in \m$, so
+ $\Omega_{R/k}\otimes k'$ has basis $da_1,\dots, da_r$.
+ \end{proof}

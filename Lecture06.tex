@@ -1,0 +1,114 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{6}
+ \sektion{Lecture 6}
+
+Application to Corollary (\ref{C:lec5}): Every such sheaf has a
+quasi-coherent flasque resolution which can therefore be used to
+compute cohomology.
+
+Also (Exercise III.3.6) $\mathfrak{Qco}(X)$ has enough injectives,
+and the resulting derived functor cohomology theory agrees with
+the usual one.
+
+\begin{theorem}[Serre] Let $X$ be a noetherian scheme.  Then the
+following are equivalent:
+\begin{itemize}
+ \item[(1)] $X$ is affine
+ \item[(2)] All quasi-coherent sheaves on $X$ are acyclic
+ \item[(3)] For all (quasi-)coherent sheaves of ideals $\I$ on
+ $X$, $H^1(X,\I)=0$.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+$(1)\Rightarrow (2)$ is Theorem (\ref{T:lec5}).
+
+$(2)\Rightarrow (3)$ is trivial.
+
+$(3)\Rightarrow (1)$:  Assume (3) and let $A=\Gamma(X,\O_X)$.
+\vspace{-5mm}
+\begin{itemize}
+\item[] \begin{claim} Every closed point $P\in X$ has an open
+\underline{affine} neighborhood of the form $X_f$ for some $f\in
+A$.
+\end{claim}
+\begin{proof}[Proof of Claim]
+Let $U$ be any open affine neighborhood of $P$, and let
+$Y=X\smallsetminus U$.  Consider
+\[
+    0\to \I_{Y\cup \{P\}} \to \I_Y \to k(P) \to 0
+\]
+where $k(P)$ is the residue field skyscraper sheaf at $P$, and $Y$
+and $Y\cup \{P\}$ are taken as reduced subschemes of $X$.  By the
+long exact sequence, we have
+\[
+    H^0(X,\I_Y)\to \underbrace{H^0(X,k(P))}_{k(P)} \to
+    \underbrace{H^1(X,\I_{Y\cup\{P\}})}_{0 \text{ by }(3)}.
+\]
+Therefore, there is some $f\in \Gamma(X,\I_Y)$ mapping to $1\in
+k(P)$.  In particular, $f\not\in \mathfrak{m}_P$, so $P\in X_f$
+[$f\in H^0(X,\I_Y)\subseteq H^0(X,\O_X)=A$].  Also, for all $Q\in
+Y$, $f\in \I_Y \subseteq \mathfrak{m}_Q$, so $Q\not\in X_f$. Thus,
+$X_f\subseteq U$.  Let $B=\Gamma(U,\O_X)$ and $\bar f=f|_U\in B$.
+Then $X_f=X_f\cap U=D(\bar f) = \spec B_{\bar f}$ (in $U$).  So
+$X_f$ is affine.
+\renewcommand{\qedsymbol}{$\square_{\text{Claim}}$}
+\end{proof}
+\end{itemize}
+Since $X$ is noetherian, the sets $X_f$ cover $X$.  Take a finite
+subcover, $X_{f_1},\dots,X_{f_r}$.  By the handout (Exercises
+II.2.16 and II.2.17), it will suffice to check that the ideal
+$(f_1,\dots,f_n)\subseteq A$ is all of $A$.  Define a map of
+sheaves $\O_X^r\to \O_X$ by $(a_1,\dots,a_r)\mapsto \sum a_if_i$.
+We may assume it is onto, because if $P\in X$, then $P\in X_{f_i}$
+for some $i$ and $e_i = (0,\dots, 1,\dots, 0)\mapsto f_i\in \O_X$,
+and $f_i\not\in \mathfrak{m}_P$.
+
+Now blah blah \marginpar{Start:Fast forward}
+\end{proof}
+
+Application: Exercise III.3.1 (neat filtration trick)
+
+Exercise III.3.8: Lemma (\ref{L:lec5lemma1}) (Hartshorne Lemma
+III.3.3) and Lemma (\ref{L:lec5keylemma}) (Hartshorne Proposition
+III.3.4) are false without the noetherian hypothesis.
+
+\marginpar{Chapter II, \S 4:\\ Separated and Proper morphisms}
+
+\begin{definition} Let $f:X\to Y$ be a morphism of schemes.  Then
+the diagonal map is the morphism $\Delta:X\to X\times_Y X$ defined
+by the diagram
+\[\xymatrix{
+ X\ar@/_4ex/[ddr]_{\text{id}_X}\ar@{.>}[dr]^{\Delta}
+ \ar@/^4ex/[drr]_{\text{id}_X} \\
+ & X\times_Y X \ar[r] \ar[d] & X\ar[d]^f\\
+ & X\ar[r]^f & Y
+}\]
+ We say that $f$ is \emph{separated} if $\Delta$ is a closed
+ immersion.  In this case, we say that $X$ is \emph{separated
+ over} $Y$.  A \emph{separated scheme} is a scheme $X$ which is
+ separated over $\spec \Z$.
+\end{definition}
+
+Notation:
+\begin{itemize}
+ \item[1)] In EGA, prescheme is the same as scheme in Hartshorne,
+and scheme means separated scheme.
+ \item[2)] If $f_1:X\to Y_1$ and $f_2:X\to Y_2$ are morphisms in
+ $\mathfrak{Sch}(S)$, then $(f_1,f_2)$ is the $S$-morphism defined
+ by the diagram
+\[\xymatrix{
+ X\ar@/_4ex/[ddr]_{f_1}\ar@{.>}[dr]^{(f_1,f_2)}
+ \ar@/^4ex/[drr]_(.6){f_2} \\
+ & Y_1\times_S Y_2 \ar[r] \ar[d] & Y_2\ar[d]\\
+ & Y_1\ar[r] & S
+}\] Thus, $\Delta=(\text{id}_X,\text{id}_X)$.
+
+ On the other hand, if $f_i:X_i\to Y_i$ are morphisms for $i=1,2$,
+ then $f_1\times f_2 = (f_1\circ pr_1, f_2\circ pr_2)$.
+\end{itemize}
+
+Example: The affine line with two origins is not separated over
+$k$ because $\Delta\subseteq X\times_k X=\mathbb{A}^2$ with double
+axes and quadruple origin contains only two of the origins, but
+$\overline{\Delta}$ contains all four.  Thus, $\Delta$ is not a
+closed immersion.

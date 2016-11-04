@@ -1,0 +1,251 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{16}
+ \sektion{Lecture 16}
+
+ \marginpar{\S III.6: Ext Groups and Sheaves}
+ Let $(X,\O_X)$ be a ringed space.  We'll be working with the
+ category of $\O_X$-modules, so $\hom$ means $\hom_{\O_X}$ and
+ $\Hom$ means $\Hom_{\O_X}$.  Recall that $\Hom(\F,\G):U\mapsto
+ \hom_{\O_U}(\F|_U,\G|_U)$ is a sheaf (Ex. II.1.15).
+
+ For us, $(X,\O_X)$ will be one of
+ \begin{itemize}
+ \item[(i)] a scheme, or
+ \item[(ii)] $X=\{point\}$, $\O_X=$ some ring $A$, so $\Mod(X)=Mod(A)$.
+ \end{itemize}
+
+ \begin{definition}
+ Let $(X,\O_X)$ be a ringed space, and let $\F$ be a sheaf of
+ $\O_X$-modules.  Then \[\ext^i(\F,-)\] are the right derived
+ fuctors of $\hom(\F,-)$, and \[\Ext^i(\F,-)\] are the right
+ derived functors of $\Hom(\F,-)$. (Note that $\Mod(X)$ has enough
+ injectives)
+ \end{definition}
+
+ \underline{Motivation:}
+ \begin{itemize}
+ \item[(a)] $\hom$ and $\Hom$ are basic functors, so it makes sense to
+ look at thier derived functors.
+ \item[(b)] Used in duality.
+ \item[(c)] (Ex. III.6.1) $\ext^1(\F,\G)$ parameterizes \emph{extensions} of
+ $\F$ by $\G$.  An extension is a sheaf $\F'$ such that
+ \[
+    0\to \G\to \F'\to \F\to 0.
+ \]
+ \end{itemize}
+
+ \begin{lemma}
+ If $\I$ is an injective $\O_X$-module and $U\subseteq X$ is open,
+ then $\I|_U$ is an injective $\O_U$-module.
+ \end{lemma}
+ \begin{proof}
+ Say we have a diagram of $\O_U$-modules with the top row exact:
+ \[\xymatrix{
+ 0 \ar[r] & \F \ar[r] \ar[d] & \G\\ & \I|_U
+ }\]
+ Then we have
+ \[\xymatrix{
+ 0 \ar[r] & j_!\F \ar[r] \ar[d] & j_!\G\\ & j_!(\I|_U)
+ \ar[r]^-{\tiny \txt{ Ex.\\
+ II.1.19}} & \I
+ }\]
+ where $j:U\to X$ is the inclusion and $j_!$ is as in (Ex.
+ II.1.19).  By injectivity of $\I$, there is a map $\phi:j_!\G \to
+ \I$ extending this diagram.  Restricting to $U$, we have
+ $\phi|_U:(j_!\G)|_U=\G \to \I_U$, as desired.
+ \end{proof}
+
+ \begin{proposition} For any $U\subseteq X$, $\Ext^i(\F,\G)|_U =
+ \Ext^i(\F|_U,\G|_U)$ naturally.
+ \end{proposition}
+ \begin{proof}
+ Let $0\to \G \to \I^{\cdot}$ be an injective resolution of $\G$.
+ Then, by the lemma, $0\to \G|_U\to \I^{\cdot}|_U$ is an injective
+ resolution of $\G|_U$, so
+ \begin{align*}
+    \Ext^i(\F,\G)|_U &= h^i(\Hom(\F,\G))|_U \\
+        &= h^i(\Hom(\F|_U,\G|_U))\\
+        &= \Ext(\F|_U,\G|_U).
+ \end{align*}
+ \end{proof}
+
+ \begin{proposition}[III.6.3]\label{P:III.6.3}\begin{itemize}
+ \item[]
+ \item[(a)] $\Ext^i(\O_X,\G) = \left\{ \begin{tabular}{ll}
+  $\G$ & if $i=0$\\
+  0 & if $i\not=0$
+  \end{tabular} \right.$
+ \item[(b)] $\ext^i(\O_x,\G) = H^i(X,\G)$ for all  $i$.
+ \end{itemize}
+ \end{proposition}
+ \begin{proof}
+ (a) $\Ext^i(\O_X,-)$ are the right derived functors of
+ $\Hom(\O_X,-)$, which is the identity functor, which is exact.
+
+ (b) $\ext^i(\O_X,-)$ are the right derived functors of
+ $\hom(\O_X,-)$, which is the functor $\Gamma(X,-)$, whose right
+ derived functors are $H^i(X,-)$.
+ \end{proof}
+
+ \begin{proposition}[III.6.4]
+ If $0\to \F'\to \F\to \F''\to 0$ is a short exact sequence of
+ $\O_X$-modules, then we have long exact sequences
+ \[\xymatrix{
+ 0\to \hom(\F'',\G)\to \hom(\F,\G) \to \hom(\F',\G) \to
+ \ext^1(\F'',\G)\to \cdots
+ }\]
+ and
+ \[\xymatrix{
+ 0\to \Hom(\F'',\G)\to \Hom(\F,\G) \to \Hom(\F',\G) \to
+ \Ext^1(\F'',\G)\to \cdots
+ }\]
+ \end{proposition}
+ \begin{proof}
+ Let $0\to \G\to \I^{\cdot}$ be an injective resolution.  Then by
+ injectivity, we the exact sequences
+ \[
+    0\to \hom(\F'',\I^{\cdot})\to \hom(\F,\I^{\cdot}) \to
+    \hom(\F',\I^{\cdot}) \to 0.
+ \]
+ Applying the Snake Lemma gives the result.  Similarly for the
+ second long exact sequence.
+ \end{proof}
+
+ \begin{lemma}[III.6.6]
+ If $\I$ is an injective $\O_X$-module and $\L$ is locally free of
+ finite rank, then $\I\otimes \L$ is also injective.
+ \end{lemma}
+ \begin{proof}
+ Recall from Ex II.5.1 that $\check \L = \Hom(\L,\O_X)$ and
+ \begin{itemize}
+  \item[(a)] $\check{\check \L} \cong \L$
+  \item[(b)]$\Hom(\L,\F) \cong \F\otimes \check \L$ for all
+  sheaves $\F$
+  \item[(c)]  $\hom(\L\otimes \F,\G) \cong
+  \hom(\F,\Hom(\L,\G))$ for all $\F,\G$.  More generally, it is
+  true that
+  \[\hom(\F_1\otimes \F_2,\G) \cong \hom(\F_1,\Hom(\F_2,\L))\]
+  for all $\F_1,\F_2,\G$.
+ \end{itemize}
+  Thus, $\hom(-,\I\otimes\L)$ is equal to $\hom(-\otimes \check
+  \L,\I)$, which is the composite of two exact functors, and is
+  therefore exact.
+ \end{proof}
+
+ Note that
+ \[
+    \hom(\F\otimes\L,\G)\stackrel{(b),(c)}{\cong}
+    \hom(\F,\G\otimes\check \L) \cong \Hom(\F,\G)\otimes \check
+    \L \footnote{why is the second isormophism true?}
+ \]
+
+ \begin{proposition}
+ If $\L$ is locally free of finite rank and $\F,\G\in \Mod(X)$,
+ then
+ \begin{itemize}
+  \item[(a)] $\ext^i(\F\otimes \L,\G) \cong \ext^i(\F,\G\otimes
+  \check \L)$ and
+  \item[(b)] $\Ext^i(\F\otimes\L,\G) \cong \Ext^i(\F,\G\otimes
+  \check \L) \cong \Ext^i(\F,\G)\otimes \check \L$.
+ \end{itemize}
+ \end{proposition}
+ \begin{proof}
+ Let $0\to \G \to \I^{\cdot}$ be an injective resolution. Then
+ (a):
+ \begin{align*}
+ \ext^i(\F\otimes \L,\G) &= h^i(\hom(\F\otimes \L,\I^{\cdot}))\\
+    &= h^i(\hom(\F,\I^{\cdot}\otimes \check \L))\\
+    &= \ext^i(\F,\G\otimes \check \L) & (\I^{\cdot}\otimes \check \L
+        \text{ inj res of } \G\otimes \check \L)
+ \end{align*}
+ And for (b), the first isomorphism is ``the same''.  We also have
+ that
+ \begin{align*}
+ \Ext^i(\F,\G\otimes\check \L) &=
+ h^i(\Hom(\F,\I^{\cdot}\otimes\check \L) \\
+ &= h^i(\Hom(\F,\I^{\cdot}))\otimes \check \L\\
+ &= \Ext^i(\F,\G)\otimes \check \L
+ \end{align*}
+ \end{proof}
+
+ \begin{corollary}\label{C:lec16}
+ We know $\ext^i$ and $\Ext^i$ when the first argument is locally
+ free of finite rank:
+ \begin{align*}
+    \ext^i(\L,\G) &= \ext^i(\O_X\otimes \L,\G)\\
+        &= \ext^i(\O_X,\G\otimes \check \L)\\
+        &= H^i(X,\G\otimes \check \L)
+ \end{align*}
+ and
+ \begin{align*}
+    \Ext^i(\L,\G) &= \Ext^i(\O_X,\G)\otimes \check \L\\
+        &=\left\{\begin{tabular}{ll}
+            $\G\otimes \check \L$ & if $i=0$\\
+            0 & if $i\not=0$\end{tabular} \right.
+ \end{align*}
+ \end{corollary}
+
+ \begin{proposition}[III.6.5]
+ Suppose we have a locally free resolution of $\F$ (i.e. an exact
+ sequence $\cdots\to \L_1\to \L_0\to \F\to 0$, where $\L_i$ are
+ locally free of finite rank for all $i$).  Then for all $\G$,
+ \[
+    \Ext^i(\F,\G)\cong h^i(\Hom(\L_{\cdot},\G)).
+ \]
+ \end{proposition}
+ \begin{proof}
+ in the works
+ \end{proof}
+
+ \begin{proposition}[III.6.8]
+ Let $X$ be a noetherian scheme.  Let $\F$ be a coherent sheaf on
+ $X$, and let $\G$ be any sheaf of $\O_X$-modules.  Then for all
+ $x\in X$, and $i\in \mathbb{N}$,
+ \[
+    \Ext^i(\F,\G)_x = \ext^i_{\O_{X,x}}(\F_x,\G_x).
+ \]
+ \end{proposition}
+ \begin{proof}
+ This is a local question, so we may assume that $X$ is affine,
+ say $X=\spec A$ with $A$ noetherian, and $\F=\tilde M$ where $M$
+ is a finitely generated $A$-module.  Then ther is a free
+ resolution
+ \[
+    \cdots \to L_1\to L_0\to M\to 0
+ \]
+ giving the locally free resolution $\tilde L_{\cdot}\to \F \to
+ 0$.  So
+ \begin{align*}
+  \Ext^i_X(\F,\G)_x &= h^i(\Hom(\tilde L_{\cdot},\G))_x\\
+    &= h^i(\Hom(\tilde L_{\cdot},\G)_x)\\
+    &= h^i((\check{\tilde {L_{\cdot}}}\otimes \G)_x)\\
+    &= h^i(((\check{\tilde {L_{\cdot}}})_x\otimes_{\O_{X,x}} \G_x))\\
+    &= h^i(\hom_{\O_{X,x}}((L_{\cdot})_x,\G_x))\\
+    &= \ext^i_{\O_{X,x}}(\F_x,\G_x).
+ \end{align*}
+ \end{proof}
+
+ \begin{proposition}[III.6.9] Let $X$ be a projective scheme over a
+ noetherian ring $A$, let $\O_X(1)$ be a very ample line sheaf on
+ $X$ over $A$; let $\F$ and $\G$ be coherent sheaves on $X$, and
+ let $i\in \mathbb{N}$.  Then
+ \[
+    \Gamma(X,\Ext^i(\F,\G(n))) = \ext^i(\F,\G(n))
+ \]
+ for all $n\gg 0$ (depending on $i$).
+ \end{proposition}
+ \begin{proof}
+ If $i=0$, then its true for all $\F,\G,n$ by definition of
+ $\Hom$, so assume $i>0$.
+
+ If $\F$ is locally free of finite rank, then we compute that the
+ left hand side is 0 for all $n$ (Prop \ref{P:III.6.3}), and the right hand side
+ is zero for $n\gg 0$ (Cor \ref{C:lec16} and Thm \ref{T:III.5.2}).
+  In general, by Corollary (II.5.18), there is a short exact sequence
+  \[
+    0\to \R \to \E\to \F\to 0
+  \]
+  where $\E$ is a finite direct sum of twisted structure sheaves.
+  Then for $n\gg 0$, $\check \E \otimes \G(n)$ has no higher
+  cohomology (by Thm \ref{T:III.5.2}), so $\ext^i(\E,\G(n))=0$ for all $i>0$.
+ \end{proof}

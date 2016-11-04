@@ -1,0 +1,215 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{24}
+ \sektion{Lecture 24}
+
+
+Addendum: why part (b) of flatness lemma is true - $ (M$ flat over
+$A \Rightarrow M \otimes_AB$ flat over $B$)$\Leftarrow
+N\otimes_B(M\otimes_AB)) \cong N\otimes_AM$.
+
+
+
+Cohomology commutes with flat base change:
+
+\begin{proposition} Let
+
+\[
+\xymatrix{X' \ar[d]_g\ar[r]^v&X\ar[d]^f\\
+Y'\ar[r]^u&Y } \] Be a cartesian square of noetherian schemes,
+with $f$ separated and of finite type, and $u$ flat. Also, let
+$\F$ be a quasi-coherent sheaf on $X$. Then there is a natural
+isomorphism (as sheaves on $Y'$) \[
+u^*R^if_*(\F)\cong\text{R}^ig_*(v^*\F) \] \end{proposition}
+ \begin{proof} By locality and naturalness, we
+may assume $Y$ and $Y'$ are affine, say $Y = \spec{A}$ and $Y'
+=\spec{A'}$. Then \[ R^if_*(\F) \cong
+\text{H}^i(X,\F)^{\widetilde{}_Y} \] \[u^*R^if_*(\F) \cong
+(\text{H}^i(X,\F ))^{\widetilde{}_{Y'}}\otimes_A A' \cong
+(H^i(X,\F)\otimes_A A')^{\widetilde{}_{Y'}} \] and \[
+\text{R}^ig_*(v^*\F) = \text{H}^i(X',v^*\F)^{\widetilde{}_{Y'}} \]
+So we need a natural isomorphism \[ H^i(X,\F)\otimes_AA' \cong
+H^i(X',v^*\F) \] Use Cech cohomology: let $\U$ be an open affine
+cover of $X$. Say $\U = (U_i)_{i \in I}$ with $U_i = \spec{B_i}$.
+Then let $\U' = v^{-1}\U = \U = (v^{-1}(U_i))_{i \in I} =
+(\spec{B_i\otimes_A A'})_{i \in I}$. This is an open affine cover
+of $X'$.
+
+Then we have \[ H^i(X, \F)\otimes_AA' \cong
+h^i(\C^{\cdot}(\U,\F))\otimes_AA' \cong_{flatness}
+h^i(\C^{\cdot}(\U,\F)\otimes_AA') = h^i(\C^{\cdot}(\U,v^*F)) =
+H^i(X',v^*\F) \] \end{proof}
+
+\textbf{Flat Families} We want to exclude things like blow ups,
+where the dimension of fibres is not constant. For flat morphisms,
+this cannot happen. \begin{proposition} Let $f:X\rightarrow Y$ be
+a flat morphism of schemes of finite type over a field $k$. Let $x
+\in X$, let $y = f(x)$, and let $X_y$ be the fibre of $f$ over
+$y$. Then $\text{dim}_x X_y$ = $\text{dim}_x X$ - $\text{dim}_y
+Y$, where $\text{dim}_x X = dim \O_{X,x}$ \end{proposition}
+\begin{proof} \textbf{Step 1}: Reduce to the situation where $Y$
+is affine and there is a unique closed point, and $y$ is that
+point. \emph{(say a local ring)}. Let $Y' = \spec{\O_{Y,y}}$, and
+let $X' = X \times_Y Y'$. Then $X_y$ is unchanged, and so are all
+the local rings involved. (Now $X$ and $Y$ are covered by open
+affines which are
+localizations of $k$-algebras of finite type.\\
+
+\textbf{Step 2}: Reduce to $Y$ reduced. Base change to
+$Y_{\text{red}}$. All of the local rings are replaced by quotients
+by ideals contained in the nilradical. So essentially, nothing is
+changed.\\
+
+\textbf{Step 3}: The rest. Prove by induction on $\text{dim } Y$.
+Note that $\text{dim } Y$ = $\text{dim}_y Y$.
+
+\textbf{Base case}: If $\text{dim } Y$ = 0, then $Y$ has a unique
+minimal prime, which is also maximal.  Thus $Y$ is spec of an
+artin ring (it has a unique maximal ideal, which is also minimal),
+and since $Y$ is reduced \emph{(this excludes products of
+fields)}, $Y = \spec{E}$ for some field $E$. But then $X_y$ = $X$,
+so we're done.
+
+\textbf{Inductive Step}: If $\text{dim } Y > 0$, then the maximal
+ideal of $\O_{Y,y}$ contains a non-zero element $t$, which is not
+a zero divisor. (Later). Thus, \[ 0 \rightarrow \O_{Y,y}
+\rightarrow^t \O_{Y,y} \] is exact. By flatness(?), \[ 0
+\rightarrow \O_{X,x} \rightarrow^{f^{\#}t} \O_{X,x} \] is exact.
+Let $Y' = \spec{\O_{Y,y}/(t)}$. By the Hauptidealsatz and the fact
+that $\O_{Y,y}$ is catenary (?) \[ \text{dim }_y Y' = \text{dim
+}_y Y -  1 \] Let $X' = X \times_Y Y'$. Then
+$\O_{X',x}=\O_{X,x}(f^{\#}t)$. By flatness, $f^{\#}t$ is not a
+zero divisor (or 0), so $\text{dim }_x X' = \text{dim }_x X - 1$.
+
+Finally, $X'_y = X_y$, since $t \in \mathfrak{m}_y$. So we're done
+by induction. \end{proof}
+
+\begin{corollary} Let $f:X\rightarrow Y$ be as in the statement of
+the proposition. Assume also that $Y$ is irreducible. The the
+conditions \begin{itemize} \item[(i)] $X$ is equidimensional of
+dimension $\text{dim} Y + n$ \item[(ii)] $X_y$ is equidimensional
+of dimension  $n$ for all $y \in Y$ (closed or not). \end{itemize}
+are equivalent. \end{corollary} \begin{proof} $(i) \rightarrow
+(ii)$. Pick $y \in Y$, let $Z$ be an irreducible component of
+$X_y$, and let $x \in Z$ be a closed point not lying in any other
+irreducible component. By the proposition, \[\text{dim}_x Z =
+\text{dim} Z = \text{dim}_x X_y = \text{dim}_x X - \text{dim}_y
+Y\] Also, \[ \text{dim}_x X =  \text{dim} X - \text{dim}
+\overline{\{x\}} \] and likewise \[ \text{dim}_y Y =  \text{dim} Y
+- \text{dim} \overline{\{y\}}. \] But now, since $x$ is a closed
+point of $X_y$, $k(x)$ is a finite (and therefore algebraic)
+extension of $k(y)$. Thus, \[\text{dim} \overline{\{x\}} =
+\text{tr. deg}(k(x)/k) = \text{tr. deg}(k(y)/k) = \text{dim}
+\overline{\{y\}}\] Therefore the right hand side is
+$\text{dim}X - \text{dim} Y$, which by (i) is $n = \text{dim} Z$.\\
+
+$(ii) \rightarrow (i)$: Let $Z$ be an irreducible component of
+$X$, let $x \in Z$ be a closed point not lying in any other
+irreducible component, and let $y = f(x)$. Then $y$ is a closed
+point of $Y$, because $k \subset k(y) \subset k(x)$ (which are
+algebraic extensions). By the proposition (and assumption (ii)),
+\[ n = \text{dim}_x X_y = \text{dim}_x X - \text{dim}_y Y =
+\text{dim}_x Z - \text{dim} Y \] \end{proof}
+
+\textbf{Associated Primes}: Assume Noetherian throughout.
+\begin{definition} Let $A$ be a ring. An associated prime of $A$
+is a prime ideal equal to the annihilator of some element of $A$.
+\emph{Not every element of $A$ has its annihilator equal to some
+prime. You can even do this more generally for modules, just take
+associated primes to be the annihilators of elements of $M$.}
+\end{definition} \begin{theorem}(Eisennbud Thm 3.1): Let $A$ be a
+noetherian ring. Then \begin{itemize} \item[(a)] it has only
+finitely many associated primes \item[(b)] the union of the
+associated primes is the set of zero divisors of $A (\cup \{0\})$
+\end{itemize} \end{theorem} \begin{remark} All minimal primes of
+$A$ are also associated primes. And these associated primes
+localize nicely: If $S$ is a multiplicative subset of $A$, then a
+prime of $S^{-1}A$ is an associated prime iff the corrsponding
+prime of $A$ is an associated prime. In other words: \[
+\text{Ass}(S^{-1}A) ``=" (\text{Ass} A)\cup \spec{S^{-1}A} \]
+\end{remark} \begin{definition} Let $X$ be a (locally noetherian)
+scheme. Then an associated point of $X$ is a point $x \in X$ such
+that the maximal ideal of $\O_{X,x}$ is an associated prime of
+$\O_{X,x}$.
+
+If $A$ is noetherian, then the set of associated points of
+$\spec{A}$ corresponds to the set of associated primes of $A$ (by
+this comment about localization). \end{definition}
+
+\emph{Can almost fill in the `later' above, but need one more
+thing.
+Okay, several more things.}\\
+
+\begin{proposition}\textbf{Primary Decomposition}: If $A$ is a
+noetherian rind, then we can write $(0) = \mathfrak{q_1} \cap
+\cdots \cap \mathfrak{q_r}$, where the $\mathfrak{q_i}$ are
+primary ideals (\emph{this is more natural using Eisenbud's
+definition, which we don't know offhand}). A primary ideal
+satisfies (for $xy \in \mathfrak{q_i}, x \not \in \mathfrak{q_i}
+\Rightarrow y^n \in \mathfrak{q_i}$ for some $n$).
+\end{proposition} \begin{remark} Note that if $\mathfrak{q}$ is
+primary, then $\sqrt{\mathfrak{q}}$ is prime. If $\mathfrak{q_1}
+\cap \cdots \cap \mathfrak{q_r} = (0)$ is a minimal primary
+decomposition ($r$ minimal), then $\sqrt{\mathfrak{q_i}}$ are
+distinct and are exactly the set of associated primes of $A$.
+\end{remark}
+
+Primary decompositions localize well: \begin{definition} An
+\textbf{embedded prime} in a noetherian ring $A$ is a non-minimal
+associated prime. An \textbf{embedded point} in a noetherian
+scheme is an associated point that is not the generic point of an
+irrreducible component. \end{definition}
+
+\begin{proposition} A reduced noetherian scheme $X$ has no
+embedded points. \end{proposition} \begin{proof} This is a local
+question, so we may assume that $X = \spec{A}$ is affine (where by
+assumption $A$ is reduced).
+
+Then $0 = \text{nil}(A) = $ intersection of the minimal primes of
+$A$. \emph{In fact it is the intersection of all primes of $A$,
+but if a prime is not minimal its not needed in the intersection.}
+This gives a primary decomposition of $0$ in $A$. So all
+associated primes are minimal. \end{proof}
+
+\emph{The union of the minimal primes in not the maximal ideal
+because its of dimension greater than one, and by prime something,
+if you have the maximal ideal, and you have some primes that are
+strictly contained in that, then their union is not the whole
+maximal ideal because, its an exercise. But its basically prime
+something... ``later"...}\\
+
+Actually, a little more is true:
+
+\begin{remark} (Eisenbud Ex. 11.10) A noetherian ring is reduced
+iff it has no embedded primes and its localization at each minimal
+prime is a field.
+
+Intuition: Non-zero nilpotents in a ring $A$ correspond to 'fuzz'
+in $\spec{A}$. 'Fuzz' on a dense open subset of an irreducible
+component occurs iff the localization at the corresponding minimal
+prime is not a field. Embedded points correspond to fuzz nt spread
+over an irreducible component. Ex.
+$\spec{k[x,y]/(xy,y^2)}$\end{remark}
+
+\emph{This embedded stuff might be useful for the homework...}\\
+
+\emph{You'd like to represent a number theory problem as a problem
+over $\spec{\Z}$ or spec of a ring of integers in a number field.}\\
+
+\begin{proposition} Let $f:X\rightarrow Y$ be a morphism of
+schemes. Assume that $Y$ is integral and regular of dim 1. Then
+$f$ is flat iff all associated points of $X$ lie over the generic
+point of $Y$. \end{proposition} \begin{proof} ``$\Rightarrow$" Let
+$x \in X$ be a point lying over a closed point $y \in Y$. We want
+to show that $x$ is not an associated point. Then $\O_{Y,x}$ is a
+discrete valuation ring, so its maximal ideal contains a nonzero
+element $t$, which is a nonzerodivisor since $Y$ is integral. By
+flatness, $f^{\#}t$ is not a zero divisor in
+$\O_{X,x}$, so $x$ is not an associated point of $X$.\\
+
+\emph{Because if it was that would mean that the maximal ideal
+would be an associated prime. Multiplication by $t$ is injective
+in $\O_{Y,y}$, so it is in $\O_{X,x}$ too}.
+
+\emph{Remark: We didn't need $Y$ to be regular, or even dimension
+1. We just needed $Y$ to be integral of dimension greater than
+zero.} \end{proof}

@@ -1,0 +1,266 @@
+ \stepcounter{lecture}
+ \setcounter{lecture}{2}
+ \sektion{Lecture 2}
+
+\def\A{\mathcal{A}}
+
+\begin{definition}
+\marginpar{$\xymatrix@C=4mm @R=4mm{
+ \ker f \ar[d] & \im f \ar[d] \\
+ A \ar[r]^f \ar[d] & B\ar[d]\\
+ \coim f & \coker f}
+$} Given a morphism $f:A\to B$, the \emph{image} of $f$ is the
+kernel of its cokernel, and the \emph{coimage} of $f$ is the
+cokernel of its kernel.
+\end{definition}
+
+\begin{remark}\begin{list}{}{}
+\item[(1)] If $f_i:A_i\to B$ for $i=1,2$ are monomorphisms, then
+there is at most one $g:A_1\to A_2$ such that $f_2\circ g=f_1$
+($\Hom(A_1,A_2)\hookrightarrow \Hom(A_1,B)$ since $f_2$ mono).
+Thus, there is a partial ordering on monomorphisms to $B$.
+ \item[(2)] If $A\xrightarrow{f}B\xrightarrow{g}C$ with $g\circ
+ f=0$, then $\im f \subseteq \ker g$.  We define the
+ \emph{homology} at $B$ to be $\ker g/\im f = \ker (\coker f \to \coim g)$.
+\end{list}\end{remark}
+
+\begin{definition}
+An abelian category has \emph{enough injectives} if every object
+is a subobject of an injective object.  That is, there is a
+monomorphism from any object to an injective object.
+\end{definition}
+
+\begin{lemma}
+ In an abelian category with enough injectives, every object has
+ an injective resolution.
+\end{lemma}
+\begin{proof}
+Given $A\in \A$, there is a monomorphism to some injective object
+$I^0$.  Assume inductively that we have $0\to A \to I^0\to \cdots
+\to I^{n-1}\xrightarrow{d^{n-1}} I^n$ exact.  Then there must be a
+monomorphism $\coker d^{n-1}\to I^{n+1}$ with $I^{n+1}$ injective.
+Then the sequence $0\to A \to I^0\to \cdots \to I^n\to I^{n+1}$
+\end{proof}
+
+\begin{remark}
+\begin{itemize}
+ \item[]
+ \item[(1)] We haven't really used injectivity yet.
+ \item[(2)] In the following diagram, exactness of the horizontal
+ sequence is equivalent to exactness of the diagonal sequences,
+ where $K^0=\coker (\epsilon)$ and $K^{i+1}=\coker (d^i)$
+ \[\xymatrix @C=-1mm @R=3mm {
+ & 0\ar[dr]&   &   &   & 0\ar[dr] &   & 0 &   &   \\
+ &   & A\ar[dr] &   &   &   &K^1\ar[dr]\ar[ur]&   &   &   \\
+0\longrightarrow A\ar[rrr]_(.65){\epsilon} &  &   &I^0\ar[dr]\ar[rr]^{d^0}&   &I^1\ar[ur]\ar[rr]_{d^1}&   &I^2\ar[dr]\ar[rr]^{d^2}&   &\cdots   \\
+ &   &   &   &K^0\ar[dr]\ar[ur]&   &   &   &K^2\ar[dr]\ar[ur]&   \\
+ &   &   & 0\ar[ur] &   & 0 &   & 0\ar[ur] &   & 0 \\
+ }\]
+%If we have a left exact functor, $F$, then we have that
+%$\ker(FK^i\to FI^{i+1}) = \ker(FI^i\to FI^{i+1})$
+\end{itemize}\end{remark}
+
+Let $X$ be a scheme (or a topological space), and supposed we have
+a cohomology theory for $\Ab(X)$.
+
+\begin{definition}
+A sheaf $\F\in \Ab(X)$ is \emph{acyclic} if $H^i(X,\F)=0$ for all
+$i>0$.
+\end{definition}
+
+\begin{theorem}
+\marginpar{Acyclic objects can be used to compute cohomology.}
+
+Suppose $X$ as above with a cohomology theory.  If a sheaf $\F\in
+\Ab(X)$ has an acyclic resolution
+\[
+    0\to \F\to \I^0 \to \I^1 \to \cdots
+\]
+then there is a natural isomorphism $H^i(X,\F)\cong
+h^i(H^0(X,\I^{\cdot}))$.
+\end{theorem}
+
+\begin{proof}
+We have that
+\[
+    0\to \F \to \I^0\to K^0 \to 0
+\]
+is exact, so we get an exact sequence in cohomology
+\[
+    0\to H^0(X,\F) \to H^0(X,\I^0)\to H^0(X,K^0)\to H^1(X,\F) \to
+    \underbrace{H^1(X,\I^0)}_{0\quad \I^0\text{ acyclic}}
+\]
+from which we can say that
+\begin{align*}
+H^0(X,\F) &=\ker(H^0(X,\I^0)\to H^0(X,K^0))\\
+    &= \ker(H^0(X,\I^0)\to H^0(X,\I^1)) & \text{($K\hookrightarrow \I^1$ and $H^0$ left exact)}\\
+    &= h^0(H^0(X,\I^{\cdot}))
+\end{align*}
+and
+\begin{align}
+H^1(X,\F) &=H^0(X,K^0)/\im(H^0(X,\I^0)\to H^0(X,K^0)) \nonumber \\
+    &= \frac{\ker(H^0(X,\I^0)\to H^0(X,\I^1))}{\im(H^0(X,\I^0)\to H^0(X,\I^1))} & \text{($H^0(X,-)$ left exact)} \nonumber \\
+    &= h^1(H^0(X,\I^{\cdot})) \label{E:hom}
+\end{align}
+We also have that
+\[
+    \underbrace{H^i(X,\I^0)}_0 \to H^i(X,K^0) \stackrel{\sim}{\to} H^{i+1}(X,\F)\to
+    \underbrace{H^{i+1}(X,\I^0)}_0
+\]
+for all $i>0$. The exact sequences
+\[
+    0\to K^i\to \I^{i+1}\to K^{i+1} \to 0
+\]
+yield the isomorphisms $H^j(X,K^{i+1})\cong H^{j+1}(X,K^i)$ for
+all $j>0$ (since $\I^{i+1}$ is acyclic).  Thus,
+\[
+    H^i(X,\F) \cong H^{i-1}(X,K^0) \cong \cdots \cong
+    H^1(X,K^{i-2}).
+\]
+But $K^{i-2}$ has the acyclic resolution $K^{i-2}\to \I^{i-1}\to
+\I^i\to \cdots$, so we may apply formula (\ref{E:hom}) to get
+\[
+H^1(X,K^{i-2}) \cong h^1(H^0(X,\I^{\cdot+(i-1)})) \cong
+h^i(H^0(X,\I^{\cdot})))\cdot
+\]
+as desired.
+\end{proof}
+
+\marginpar{Derived Functors} Let $\A$ and $\mathcal{B}$ be abelian
+categories and let $F:\A \to \mathcal{B}$ be a left exact functor.
+Given $A\in \A$ with an injective resolution $0\to A\to
+I^{\cdot}$, define
+\[
+    R^i_{I^{\cdot}}F(A) = h^i(F(I^{\cdot}))
+\]
+for each $i\in \mathbb{N}$.
+
+\begin{lemma}\label{L:lec2lemma1} Let $A$ and $B$ be objects with injective
+resolutions $I^{\cdot}$ and $J^{\cdot}$ together with a map
+$f:A\to B$
+ \begin{equation}
+ \xymatrix{
+ 0\ar[r] & A \ar[r]^{\delta}\ar[d]^f & I^0\ar[r]^{d^0} & I^1 \ar[r]^{d^1}&\cdots \\
+ 0\ar[r] & B \ar[r]^{\epsilon} & J^0\ar[r]^{e^0} & J^1\ar[r]^{e^1} & \cdots
+} \label{E:data*} \end{equation}
+ , then there are functions $f^i:I^i\to J^i$ for each $i\in
+\mathbb{N}$ such that this diagram commutes:
+ \[\xymatrix{
+ 0\ar[r] & A \ar[r]^{\delta}\ar[d]^f & I^0\ar[r]^{d^0}\ar[d]^{f^0} & I^1 \ar[r]^{d^1}\ar[d]^{f^1}&\cdots \\
+ 0\ar[r] & B \ar[r]^{\epsilon} & J^0\ar[r]^{e^0} & J^1\ar[r]^{e^1} & \cdots
+}\]
+\end{lemma}
+\begin{proof}
+Applying injectivity of $J^0$ to $\epsilon\circ f:A\to J^0$, we
+obtain $f^0$.  Now assume inductively that we have $f^0,\dots,
+f^n$.  Let $K^0=\coker (\epsilon)$ and $K^i = \coker(d^{i-1})$ for
+$i>0$, then by the universal property of cokernels, we have a map
+$K^n\to J^{n+1}$.
+\[\xymatrix{
+ I^{n-1} \ar[r]^{d^{n-1}}\ar[d]^{f^{n-1}} & I^n \ar[r]\ar[d]^{f^n} & K^n \ar[r]\ar@{.>}[d]^{\exists !} & 0\\
+ J^{n-1} \ar[r] & J^n \ar[r] & J^{n+1}
+}\]
+ And $K^n\hookrightarrow I^{n+1}$, so injectivity of $J^{n+1}$
+ gives us $f^{n+1}$.
+\end{proof}
+
+\begin{lemma}\label{L:lec2lemma2} Any two choices of $f^{\cdot} =
+\{f^0,f^1,\dots\}$ for the same data (\ref{E:data*}) are
+\emph{homotopic}.  That is, there is a morphism, $k^{\cdot}$, of
+chain complexes of degree -1 such that
+\[
+    e^{n-1}k^n + k^{n+1}d^n = f^n-g^n
+\]
+where $e^{-1}=\epsilon$.
+\end{lemma}
+\begin{proof}
+Arrow chasing.
+\end{proof}
+
+\begin{corollary}
+If $f^{\cdot}$ and $g^{\cdot}$ are two maps of complexes as in
+Lemma (\ref{L:lec2lemma1}), then the induced maps
+$R^iF(f^{\cdot}), R^iF(g^{\cdot}): R_{I^{\cdot}}^iF(A) \to
+R_{J^{\cdot}}^iF(B)$ are the same, so we can call them
+$R_{I^{\cdot},J^{\cdot}}^iF(f)$.
+\end{corollary}
+
+\begin{corollary}
+If $B=A$ and $f=Id_A$, then these maps are isomorphisms.
+\end{corollary}
+\begin{proof}
+For two injective resolutions $I^{\cdot}$ and $J^{\cdot}$ of $A$,
+Lemma (\ref{L:lec2lemma1}) tells us that the identity induces
+$f^{\cdot}$ and $g^{\cdot}$ so that
+$I^{\cdot}\xrightarrow{f^{\cdot}} J^{\cdot}
+\xrightarrow{g^{\cdot}} I^{\cdot}$. Commutativity of the diagrams
+and functoriality tell us that \[\xymatrix{
+ 0 \ar[r] & A \ar[r]\ar@{=}[d] & I^{\cdot}\ar[d]^{f^{\cdot}}\\
+ 0 \ar[r] & A \ar[r]\ar@{=}[d] & J^{\cdot}\ar[d]^{g^{\cdot}}\\
+ 0 \ar[r] & A \ar[r] & I^{\cdot}
+ } \qquad Id =
+R_{I^{\cdot},I^{\cdot}}^iF(Id_A) =
+\underbrace{R_{I^{\cdot},J^{\cdot}}^iF(Id_A)}_{g^{\cdot}} \circ
+\underbrace{R_{J^{\cdot},I^{\cdot}}^iF(Id_A)}_{f^{\cdot}}
+\]
+and likewise with $I^{\cdot}$ and $J^{\cdot}$ interchanged.\
+\end{proof}
+
+\begin{corollary}
+$R_{I^{\cdot}}^iF(A)$ is independent of $I^{\cdot}$ up to unique
+isomorphism.  These isomorphisms are compatible with
+$R_{I^{\cdot},J^{\cdot}}^iF(f)$ at both ends.  Thus, we have well
+defined functors $R^iF:\A\to \mathcal{B}$ for all $i\in
+\mathbb{N}$.
+\end{corollary}
+
+\begin{remark}
+\begin{itemize}
+ \item[]\hspace{-1.3cm} If $I$ is injective, then it is
+$F$-acyclic (i.e. $R^iF(I)=0$ for all $i>0$).
+\begin{proof}
+$0\to I\to I \to 0$ is an injective resolution, so $R^iF(I) =
+h^i(0\to \underbrace{F(I)}_{\text{deg 0}}\to 0\to 0\to \cdots) =0$
+for $i>0$.
+\end{proof}
+\end{itemize}
+\end{remark}
+
+\begin{theorem}\label{T:lec2thm}
+If $F:\A \to \mathcal{B}$ is as above, then $\{R^iF\}_{i>0}$ is a
+$\delta$-functor with $R^0F\cong F$.
+\end{theorem}
+\begin{proof}[Proof(sketch)]
+ Let $A\in \A$ and let $0\to A\to I^{\cdot}$ be an injective
+ resolution, then $0\to F(A)\hookrightarrow F(I^0)\to F(I^1)$, so $F(A)\cong
+ \ker(F(I^0)\to F(I^1)) = h^0(F(I^{\cdot}))=R^0F(A)$.  To get the
+ morphisms, chase diagrams until you catch one.
+
+ Given a short exact sequence $0\to A\to B \to C\to 0$ in $\A$
+ with injective resolutions $I^{\cdot}$ and $J^{\cdot}$ for $A$
+ and $C$, we have
+ \[\xymatrix{
+ & 0\ar[d] & 0\ar[d] & 0\ar[d]\\
+ 0\ar[r] &A\ar[r]\ar[d] & B\ar[r]\ar@{.>}[d]\ar@{.>}[dl]|{I^0\text{
+ inj}} \ar[dr] & C\ar[r]\ar[d] & 0\\
+ 0\ar[r]& I^0\ar[r]\ar[d] & I^0\times J^0 \ar[r] & J^0 \ar[r]
+ \ar[d] & 0\\
+ & I^1 & & J^1
+} \]
+ Then by the Snake Lemma, we have the exact sequence
+ \[
+    0\to \coker(A\to I^0)\to \coker(B\to I^0\times J^0) \to
+    \coker(C\to J^0)\to 0
+ \]
+ and $\coker(A\to I^0) \hookrightarrow I^1$ and $\coker(C\to
+ J^0)\hookrightarrow J^1$, so repeat.  Then remove the top row and
+ apply $F$.  Note that the rows are still (split) short exact, and
+ apply the Snake Lemma to get the long exact sequence\footnote{Anton
+ doesn't see how to do this.} Verify commutativity of
+ \[\xymatrix{
+    R^iF(C)\ar[d]\ar[r]^{\delta} & R^{i+1}F{A}\ar[d]\\
+    R^iF(C)\ar[r]^{\delta} & R^{i+1}F{A'}\\
+ }\]
+\end{proof}
+The functors $R^iF$ are called the \emph{right derived functors}
+of $F$.
